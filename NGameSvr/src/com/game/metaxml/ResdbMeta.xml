@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+
+<metalib name="gameres" tagsetversion="1" version="2674" package ="com.game.metaxml">
+
+	<!--- 测试 卡牌 -->
+	<struct name="CardDef"  primarykey="ID" uniqueentryname="false" version="2463">
+		<entry name="ID" type="int" />
+		<entry name="Type" type="int"  />
+		<entry name="Star" type="int"  />
+		<entry name="Hp" type="int"  />
+		<entry name="Wuli" type="int"  />
+		<entry name="Wuxiu" type="int"  />
+		<entry name="Zhili" type="int"  />
+		<entry name="Zhixiu" type="int"  />
+		<entry name="Fangyu" type="int"  />
+		<entry name="Fangxiu" type="int"  />
+		<entry name="Zhencha" type="int"  />
+		<entry name="Zhan" type="int"  />
+		<entry name="Zhuibei" type="int"  />
+		<entry name="Xinyun" type="int"  />
+		<entry name="Mingzhong" type="int"  />
+		<entry name="Shanbi" type="int"  />
+		<entry name="NextStarID" type="int"  />
+		<entry name="Tili" type="int" desc="关卡消耗体力" />
+		<entry name="Skills" type="CardSkill" count="CARD_SKILL_NUM" extendtotable="true" version="2650"/>
+		
+		<entry name="SearchTime" type="int" version="2650" />
+
+		<entry name="StarUpLvl" type="int" version="2651" />
+		<entry name="StarUpGold" type="int" version="2651" />
+		<entry name="StarUpShuijing" type="int" version="2651" />
+		<entry name="StarUpCardNum" type="int" version="2651" />
+		<entry name="StarUpCardID" type="int" version="2651" />
+
+		<entry name="WuliLvlLimit" type="int" version="2652" />
+		<entry name="ZhiliLvlLimit" type="int" version="2652" />
+		<entry name="FangyuLvlLimit" type="int" version="2652" />
+		<entry name="WuliExp" type="int" version="2652" />
+		<entry name="ZhiliExp" type="int" version="2652" />
+		<entry name="FangyuExp" type="int" version="2652" />
+		<entry name="GroupID" type="int" version="2653" />
+		<entry name="HpXiu" type="int" version="2654" />
+		<entry name="ZhenchaXiu" type="int" version="2654" />
+		<entry name="ZhanXiu" type="int" version="2654" />
+		<entry name="ZhuibeiXiu" type="int" version="2654" />
+		<entry name="XinyunXiu" type="int" version="2654" />
+		<entry name="Name" type="String"   size="NAME_LEN" version="2655" />
+		<entry name="MaxLvl" type="int"  version="2656" />
+		<entry name="Exp" type="int" version="2658" />
+		<entry name="BaojiShangHai" type="int" version="2659" desc="暴击伤害 除以1000"/>
+		<entry name="CfSpeed" type="int" version="2660" desc="冲锋战出售速度"/>
+		<entry name="ZjSpeed" type="int" version="2660" desc="追击战出售速度" />
+
+		<entry name="Active" type="CardActivation" version="2661"  extendtotable="true" />
+		<entry name="BeAttkWeight" type="int" version="2662"   />
+ 
+		<entry name="Pingji" type="int" version="2663"   />
+		<entry name="Career" type="int" version="2663"   />
+		<entry name="CardScore" type="int" version="2665"   />
+		<entry name="EvolveUpGradeMinlvl" type="int" version="2666"   />
+		<entry name="EvolveMinActiveCount" type="int" version="2666"   />
+		<entry name="EvolveUpgradeCostID" type="int" version="2666"   />
+		<entry name="EvolveUpgradeCostValue" type="int" version="2666"   />
+		<entry name="EvolveCardId" type="int" version="2666"   />
+	</struct>
+	
+	<struct name="CardSkill">
+	  <entry name="ID" type="int" version="2662"/>
+	  <entry name="Lvl" type="int" version="2662"/>
+	  
+	</struct>
+	
+	<struct name="CardActivation"   version="2661">
+		<entry name="ActiveID" type="int" version="2662"/>
+		<entry name="One" type="CardActiveOne" count="CARD_ACTIVE_MAX" extendtotable="true" />
+	</struct>
+	
+	<struct name="CardActiveOne"   version="2657">
+		<entry name="ID" type="int" />
+		<entry name="Lvl" type="int" />
+		<entry name="Use" type="int" />
+		<entry name="AddAttrID" type="int" version="2663"/>
+		<entry name="AddAttrVal" type="int" version="2663"/>
+	</struct>
+	
+</metalib>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.game.db.dao.BaseDb" >
+
+
+	<select id="selectAll" resultType="java.util.Map" parameterType="java.lang.String"
+		statementType="STATEMENT">
+		select * from ${table}
+	</select>
+
+
+	<select id="selectWhere" resultType="java.util.Map"
+		parameterType="java.lang.String" statementType="STATEMENT">
+		SELECT * FROM ${table} WHERE ${where}
+	</select>
+
+
+	<delete id="deleteWhere" parameterType="java.lang.String">
+		delete from ${table} where ${where}
+	</delete>
+	
+	<insert id="insert" parameterType="java.lang.String">
+	    insert into ${table} (${column}) values(${columnData})  
+	</insert>
+	 
+	<insert id="insertBinary"  >
+	    insert into ${table} (${column}) values(${columnData},#{bytes})  
+	</insert> 
+
+	<update id="update"  parameterType="java.lang.String">
+	    UPDATE  ${table} SET ${setColumn} WHERE ${where};
+	</update>
+
+
+</mapper>

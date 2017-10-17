@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.game.db.dao.RoleDataDb">
+
+
+	<sql id="resultColumn">
+		`Uin` , 
+		`RoleID` , 
+		`RoleName` , 
+		`Lvl` , 
+		`IconID` ,
+		`CreateTime` , 
+		`LastLogin` , 
+		`LastLogout` , 
+		`Money` , 
+		`Gold` , 
+		`RMB` , 
+		`Tili` , 
+		`MaxTili` , 
+		`Exp` , 
+		`WorldID` , 
+		`SectionID` , 
+		`Misc`  
+	</sql>
+
+	<insert id="insertRoleData" parameterType="com.game.db.bean.RoleDataProxy">
+		INSERT INTO roledata (
+		<include refid="resultColumn" />
+		)
+		values (
+		#{Uin}
+		,#{RoleID}
+		,#{RoleName}
+		,#{Lvl}
+		,#{IconID}
+		,#{CreateTime}
+		,#{LastLogin}
+		,#{LastLogout}
+		,#{Money}
+		,#{Gold}
+		,#{RMB}
+		,#{Tili}
+		,#{MaxTili}
+		,#{Exp}
+		,#{WorldID}
+		,#{SectionID}
+		,#{Misc}
+		
+		)
+	</insert>
+	
+	<update id="updateRoleData" parameterType="com.game.db.bean.RoleDataProxy">
+	    UPDATE `roledata` SET 
+	    `Uin`=#{Uin} , 
+		`RoleID`=#{RoleID} , 
+		`RoleName`= #{RoleName}, 
+		`Lvl`= #{Lvl}, 
+		`IconID`= #{IconID},
+		`CreateTime`= #{CreateTime}, 
+		`LastLogin`=#{LastLogin} , 
+		`LastLogout`= #{LastLogout}, 
+		`Money`= #{Money}, 
+		`Gold`= #{Gold}, 
+		`RMB` =#{RMB}, 
+		`Tili`=#{Tili} , 
+		`MaxTili` =#{MaxTili}, 
+		`Exp` =#{Exp}, 
+		`WorldID`= #{WorldID}, 
+		`SectionID`= #{SectionID}, 
+		`Misc` = #{Misc} 
+	     WHERE Uin=#{Uin}
+	</update>
+
+	<resultMap id="roleDataMap" type="com.game.db.bean.RoleDataProxy">
+		<id column="Uin" property="Uin" jdbcType="INTEGER" />
+		<id column="RoleID" property="RoleID" jdbcType="INTEGER" />
+		<id column="RoleName" property="RoleName" jdbcType="VARCHAR" />
+		<id column="Lvl" property="Lvl" jdbcType="INTEGER" />
+		<id column="IconID" property="IconID" jdbcType="INTEGER" />
+		<id column="CreateTime" property="CreateTime" jdbcType="INTEGER" />
+		<id column="LastLogin" property="LastLogin" jdbcType="INTEGER" />
+		<id column="LastLogout" property="LastLogout" jdbcType="INTEGER" />
+		<id column="Money" property="Money" jdbcType="INTEGER" />
+		<id column="Gold" property="Gold" jdbcType="INTEGER" />
+		<id column="RMB" property="RMB" jdbcType="INTEGER" />
+		<id column="Tili" property="Tili" jdbcType="INTEGER" />
+		<id column="MaxTili" property="MaxTili" jdbcType="INTEGER" />
+		<id column="Exp" property="Exp" jdbcType="INTEGER" />
+		<id column="WorldID" property="WorldID" jdbcType="INTEGER" />
+		<id column="SectionID" property="SectionID" jdbcType="INTEGER" />
+		<result column="Misc" property="Misc" jdbcType="BLOB" />
+	</resultMap>
+
+	<select id="selectRoleData" parameterType="java.lang.Integer"
+		resultMap="roleDataMap">
+		SELECT
+		<include refid="resultColumn" />
+		from roledata WHERE
+		Uin=#{Uin}
+		order by Uin desc
+	</select>
+
+
+
+
+</mapper>

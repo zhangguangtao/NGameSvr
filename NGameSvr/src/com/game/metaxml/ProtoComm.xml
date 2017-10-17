@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<metalib name="ProtoComm" tagsetversion="1" version="2749" package ="com.game.metaxml" >
+
+	<macro name="TAKS_AREA_STOP_TIME"     value="3" desc="探索任务区域停留时间单位秒" />
+    
+    
+    <macrosgroup name="SHOPPING_BUY_UI_TYPE" desc="商品购买面板,32位一位表示一个面板">
+	  	<macro name="SHOPPING_BUY_UI_SHANGCHENG"		value="0" desc="默认在商城面板购买商品"/>
+	  	<macro name="SHOPPING_BUY_UI_PACKAGE"			value="0x00000001" desc="背包快捷购买"/>
+	  	<macro name="SHOPPING_BUY_UI_RELIVE"			value="0x00000002" desc="复活快捷购买"/>
+    </macrosgroup>
+    
+    <struct name="BoonAddEvent" version="1999" desc="就和爽肤水">
+		<entry name="ID" type="int" desc="取值为BOON_ADD_TYPE" value="88"/>
+		<entry name="Per" type="String" desc="加成百分比" value="hello word" />
+		<entry name="time" type="int" desc="时间" />
+		<entry name="title" type="short" value="5" desc="标题" />
+	</struct>
+	
+	<struct name="JjcOne" version="2717" >
+		<entry name="iDirty" type="int" />
+		<entry name="iTimeCount" type="int" />
+	</struct>
+	
+	
+	<struct name="JjcAuth" version="2717" >
+		<entry name="iStat" type="int" />
+		<entry name="iDBCount" type="int" />
+		<entry name="iNum" type="int" />
+		<entry name="JjcOne" type="JjcOne" count="MAX_JJC_DATA" />
+	</struct>
+	
+	<macro name="MAX_CARD_NUM" value="218" desc="最大卡牌数"/>
+	<macro name="MAX_ARM_NUM" value="100" desc="最大装备数"/>
+	
+	
+	
+	<!--start  RoleData  -->
+	<struct name="RoleData"    primarykey="RoleID"  version="2643" annotation="javax.xml.bind.annotation.XmlRootElement" >
+		<entry name="Uin" type="int" />
+		<entry name="RoleID" type="int"  desc="global unique role id" />
+		<entry name="RoleName" type="String" size="ROLE_NAME_LEN" unique="true"  />
+		<entry name="Lvl" type="int" />
+		<entry name="IconID" type="int"  />
+		<entry name="CreateTime" type="int" />
+		<entry name="LastLogin" type="int"  />
+		<entry name="LastLogout" type="int" />
+		<entry name="Money" type="int"  />
+		<entry name="Gold" type="int"  />
+		<entry name="RMB" type="int"  />
+		<entry name="Tili" type="int"  />
+		<entry name="MaxTili" type="int"  />
+		<entry name="Exp" type="int"  />
+		<entry name="WorldID" type="int" version="2674" />
+		<entry name="SectionID" type="int" version="2702" />
+		<entry name="Misc" type="RoleMisc" annotation="com.game.annotation.BinaryDb"  />
+	</struct>
+	
+	<struct name="RoleMisc"  version="2643">
+	    
+		<entry name="lastupdate" type="int" version="2644" desc=""/>
+		<entry name="Seq" type="int" version="2644" />
+		<entry name="ZhanjiQB" type="int" version="2651" desc="战姬情报"/>
+		<entry name="BingqiTz" type="int" version="2651" desc="兵器图纸"/>
+		<entry name="QSearch" type="int" version="2651" desc="快速搜索"/>
+		<entry name="QCure" type="int" version="2657" desc="快速治疗"/>
+		<entry name="XlReel" type="int" version="2682" defaultvalue="2" />
+		<entry name="XlReelG" type="int" version="2682" />
+		
+		<entry name="ArmInfo" type="ArmInfo" version="2647" value="ArmInfo" />
+		
+	</struct>
+	
+	<struct name="ArmInfo"  version="2647">
+		<entry name="MaxNum" type="int"  />
+		<entry name="Num" type="int" />
+		<entry name="One" type="ArmOne" count="MAX_ARM_NUM" refer="Num" />
+	</struct>
+	
+	<struct name="ArmOne"  version="2647">
+		<entry name="ID" type="int"  />
+		<entry name="Source" type="int"  />
+		<entry name="WID" type="int"  />
+		<entry name="StrLvl" type="int" desc="强化等级" />
+		<entry name="Star" type="int" desc="装备等级" />
+	</struct>
+	
+	
+	<!-- end RoleData -->
+	
+	<!-- player  -->
+    <struct name="Player" version="233" desc="player 类">
+		<entry name="iMagic" type="int"  desc=""/>
+		<entry name="tActive" type="long"  desc=""/>
+		<entry name="eStatus" type="char"  desc=""/>
+		<entry name="szAccount" type="String" value="test - account"  desc=""/>
+		<entry name="aMacAdd" type="String"  desc=""/>
+		<entry name="iUinCachePos" type="int"  desc=""/>
+		<entry name="sRes1" type="String"  desc=""/>
+		<entry name="iIdx" type="int"  desc=""/>
+		<entry name="stRoleData" type="RoleData"  desc=""/>
+		<entry name="sRes2" type="String"  desc=""/>
+		<entry name="stConnectInfo" type="ConnectInfo"  desc=""/>
+		
+	</struct>
+	
+	<struct name="ConnectInfo" desc="连接信息">
+	 <entry name="chVer" type="char" desc="" />
+	 <entry name="chCmd" type="char" desc="" />
+	 <entry name="chExtraType" type="char" desc="" />
+	 <entry name="chTimeStampType" type="char" desc="" />
+	
+	</struct>
+	
+	<!-- 服务器 配置 -->
+	<struct name="SvrConfig" desc="服务器配置">
+	   <entry name="IP" type="String" desc = "ip 地址"/>
+	   <entry name="Port" type="int"  desc = "端口号"/>
+	   <entry name="SvrName" type="String"  desc = "服务名称"/>
+	</struct>
+	
+	<!-- 认证 -->
+	<struct name="Account"  desc="用户认证">
+	     <entry name="Uin" type="int" desc = "uin"/>
+		 <entry name="RoleName" type="String" desc = "uin"/>
+		 <entry name="Password" type="String" desc = "uin"/>
+	</struct>
+		
+	
+	
+	<!-- start 资源 类 -->
+	<!--start armdef  -->
+	<struct name="Armdef" desc="装备  该类可以和 xml 互转 " annotation="javax.xml.bind.annotation.XmlRootElement">
+	   <entry name="ID" type="int" />
+	   <entry name="name" type="String" />
+	   <entry name="RlMoney" type="RlMoneyInfo" count="MAX_ARM_NUM" />
+	   
+	   <entry name="RecastMoney" type="RecastMoneyInfo" />
+	   
+	</struct>
+	
+	<struct name="RecastMoneyInfo">
+	   <entry name="Num" type="int" />
+	   <entry name="Type" type="int" />
+	</struct>
+	
+	<struct name="RlMoneyInfo">
+	   <entry name="Num" type="int" />
+	   <entry name="Type" type="int" />
+	</struct>
+	
+	<!--end armdef  -->
+	
+	
+	
+	
+	
+	
+	<!-- end 资源 类 -->
+
+
+	
+
+</metalib>
