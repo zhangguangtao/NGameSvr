@@ -69,6 +69,18 @@ public final class Cs {
      * <code>REG_TASK_RSP = 96;</code>
      */
     REG_TASK_RSP(9, 96),
+    /**
+     * <code>MAIL_REQ = 47;</code>
+     *
+     * <pre>
+     * 邮件
+     * </pre>
+     */
+    MAIL_REQ(10, 47),
+    /**
+     * <code>MAIL_RES = 48;</code>
+     */
+    MAIL_RES(11, 48),
     ;
 
     /**
@@ -123,6 +135,18 @@ public final class Cs {
      * <code>REG_TASK_RSP = 96;</code>
      */
     public static final int REG_TASK_RSP_VALUE = 96;
+    /**
+     * <code>MAIL_REQ = 47;</code>
+     *
+     * <pre>
+     * 邮件
+     * </pre>
+     */
+    public static final int MAIL_REQ_VALUE = 47;
+    /**
+     * <code>MAIL_RES = 48;</code>
+     */
+    public static final int MAIL_RES_VALUE = 48;
 
 
     public final int getNumber() { return value; }
@@ -139,6 +163,8 @@ public final class Cs {
         case 10: return HEART_RES;
         case 95: return REG_TASK_REQ;
         case 96: return REG_TASK_RSP;
+        case 47: return MAIL_REQ;
+        case 48: return MAIL_RES;
         default: return null;
       }
     }
@@ -188,6 +214,4259 @@ public final class Cs {
     }
 
     // @@protoc_insertion_point(enum_scope:MSG_TYPE)
+  }
+
+  public interface CsMailReqOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 MsgType = 1;
+    /**
+     * <code>required int32 MsgType = 1;</code>
+     *
+     * <pre>
+     * 	MAIL_OP
+     * </pre>
+     */
+    boolean hasMsgType();
+    /**
+     * <code>required int32 MsgType = 1;</code>
+     *
+     * <pre>
+     * 	MAIL_OP
+     * </pre>
+     */
+    int getMsgType();
+
+    // required int32 Wid = 2;
+    /**
+     * <code>required int32 Wid = 2;</code>
+     *
+     * <pre>
+     * 	邮件唯一ID
+     * </pre>
+     */
+    boolean hasWid();
+    /**
+     * <code>required int32 Wid = 2;</code>
+     *
+     * <pre>
+     * 	邮件唯一ID
+     * </pre>
+     */
+    int getWid();
+  }
+  /**
+   * Protobuf type {@code CsMailReq}
+   */
+  public static final class CsMailReq extends
+      com.google.protobuf.GeneratedMessage
+      implements CsMailReqOrBuilder {
+    // Use CsMailReq.newBuilder() to construct.
+    private CsMailReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private CsMailReq(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final CsMailReq defaultInstance;
+    public static CsMailReq getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public CsMailReq getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CsMailReq(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              msgType_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              wid_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.game.logic.net.Cs.internal_static_CsMailReq_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.game.logic.net.Cs.internal_static_CsMailReq_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.game.logic.net.Cs.CsMailReq.class, com.game.logic.net.Cs.CsMailReq.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<CsMailReq> PARSER =
+        new com.google.protobuf.AbstractParser<CsMailReq>() {
+      public CsMailReq parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CsMailReq(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CsMailReq> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 MsgType = 1;
+    public static final int MSGTYPE_FIELD_NUMBER = 1;
+    private int msgType_;
+    /**
+     * <code>required int32 MsgType = 1;</code>
+     *
+     * <pre>
+     * 	MAIL_OP
+     * </pre>
+     */
+    public boolean hasMsgType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 MsgType = 1;</code>
+     *
+     * <pre>
+     * 	MAIL_OP
+     * </pre>
+     */
+    public int getMsgType() {
+      return msgType_;
+    }
+
+    // required int32 Wid = 2;
+    public static final int WID_FIELD_NUMBER = 2;
+    private int wid_;
+    /**
+     * <code>required int32 Wid = 2;</code>
+     *
+     * <pre>
+     * 	邮件唯一ID
+     * </pre>
+     */
+    public boolean hasWid() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 Wid = 2;</code>
+     *
+     * <pre>
+     * 	邮件唯一ID
+     * </pre>
+     */
+    public int getWid() {
+      return wid_;
+    }
+
+    private void initFields() {
+      msgType_ = 0;
+      wid_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasMsgType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasWid()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, msgType_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, wid_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, msgType_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, wid_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.game.logic.net.Cs.CsMailReq parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.logic.net.Cs.CsMailReq parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.logic.net.Cs.CsMailReq parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.logic.net.Cs.CsMailReq parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.logic.net.Cs.CsMailReq parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.logic.net.Cs.CsMailReq parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.game.logic.net.Cs.CsMailReq parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.game.logic.net.Cs.CsMailReq parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.game.logic.net.Cs.CsMailReq parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.logic.net.Cs.CsMailReq parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.game.logic.net.Cs.CsMailReq prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CsMailReq}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.game.logic.net.Cs.CsMailReqOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.game.logic.net.Cs.internal_static_CsMailReq_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.game.logic.net.Cs.internal_static_CsMailReq_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.game.logic.net.Cs.CsMailReq.class, com.game.logic.net.Cs.CsMailReq.Builder.class);
+      }
+
+      // Construct using com.game.logic.net.Cs.CsMailReq.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        msgType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        wid_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.game.logic.net.Cs.internal_static_CsMailReq_descriptor;
+      }
+
+      public com.game.logic.net.Cs.CsMailReq getDefaultInstanceForType() {
+        return com.game.logic.net.Cs.CsMailReq.getDefaultInstance();
+      }
+
+      public com.game.logic.net.Cs.CsMailReq build() {
+        com.game.logic.net.Cs.CsMailReq result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.game.logic.net.Cs.CsMailReq buildPartial() {
+        com.game.logic.net.Cs.CsMailReq result = new com.game.logic.net.Cs.CsMailReq(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.msgType_ = msgType_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.wid_ = wid_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.game.logic.net.Cs.CsMailReq) {
+          return mergeFrom((com.game.logic.net.Cs.CsMailReq)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.game.logic.net.Cs.CsMailReq other) {
+        if (other == com.game.logic.net.Cs.CsMailReq.getDefaultInstance()) return this;
+        if (other.hasMsgType()) {
+          setMsgType(other.getMsgType());
+        }
+        if (other.hasWid()) {
+          setWid(other.getWid());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMsgType()) {
+          
+          return false;
+        }
+        if (!hasWid()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.game.logic.net.Cs.CsMailReq parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.game.logic.net.Cs.CsMailReq) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 MsgType = 1;
+      private int msgType_ ;
+      /**
+       * <code>required int32 MsgType = 1;</code>
+       *
+       * <pre>
+       * 	MAIL_OP
+       * </pre>
+       */
+      public boolean hasMsgType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 MsgType = 1;</code>
+       *
+       * <pre>
+       * 	MAIL_OP
+       * </pre>
+       */
+      public int getMsgType() {
+        return msgType_;
+      }
+      /**
+       * <code>required int32 MsgType = 1;</code>
+       *
+       * <pre>
+       * 	MAIL_OP
+       * </pre>
+       */
+      public Builder setMsgType(int value) {
+        bitField0_ |= 0x00000001;
+        msgType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 MsgType = 1;</code>
+       *
+       * <pre>
+       * 	MAIL_OP
+       * </pre>
+       */
+      public Builder clearMsgType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        msgType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 Wid = 2;
+      private int wid_ ;
+      /**
+       * <code>required int32 Wid = 2;</code>
+       *
+       * <pre>
+       * 	邮件唯一ID
+       * </pre>
+       */
+      public boolean hasWid() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 Wid = 2;</code>
+       *
+       * <pre>
+       * 	邮件唯一ID
+       * </pre>
+       */
+      public int getWid() {
+        return wid_;
+      }
+      /**
+       * <code>required int32 Wid = 2;</code>
+       *
+       * <pre>
+       * 	邮件唯一ID
+       * </pre>
+       */
+      public Builder setWid(int value) {
+        bitField0_ |= 0x00000002;
+        wid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 Wid = 2;</code>
+       *
+       * <pre>
+       * 	邮件唯一ID
+       * </pre>
+       */
+      public Builder clearWid() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        wid_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:CsMailReq)
+    }
+
+    static {
+      defaultInstance = new CsMailReq(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:CsMailReq)
+  }
+
+  public interface CsMailResOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 MsgType = 1;
+    /**
+     * <code>required int32 MsgType = 1;</code>
+     *
+     * <pre>
+     * 	MAIL_SVR_OP
+     * </pre>
+     */
+    boolean hasMsgType();
+    /**
+     * <code>required int32 MsgType = 1;</code>
+     *
+     * <pre>
+     * 	MAIL_SVR_OP
+     * </pre>
+     */
+    int getMsgType();
+
+    // required int32 Succ = 2;
+    /**
+     * <code>required int32 Succ = 2;</code>
+     */
+    boolean hasSucc();
+    /**
+     * <code>required int32 Succ = 2;</code>
+     */
+    int getSucc();
+
+    // repeated .CsMail Mails = 3;
+    /**
+     * <code>repeated .CsMail Mails = 3;</code>
+     *
+     * <pre>
+     * 	MAIL_INFO MAIL_CHG 返回
+     * </pre>
+     */
+    java.util.List<com.game.logic.net.Cs.CsMail> 
+        getMailsList();
+    /**
+     * <code>repeated .CsMail Mails = 3;</code>
+     *
+     * <pre>
+     * 	MAIL_INFO MAIL_CHG 返回
+     * </pre>
+     */
+    com.game.logic.net.Cs.CsMail getMails(int index);
+    /**
+     * <code>repeated .CsMail Mails = 3;</code>
+     *
+     * <pre>
+     * 	MAIL_INFO MAIL_CHG 返回
+     * </pre>
+     */
+    int getMailsCount();
+    /**
+     * <code>repeated .CsMail Mails = 3;</code>
+     *
+     * <pre>
+     * 	MAIL_INFO MAIL_CHG 返回
+     * </pre>
+     */
+    java.util.List<? extends com.game.logic.net.Cs.CsMailOrBuilder> 
+        getMailsOrBuilderList();
+    /**
+     * <code>repeated .CsMail Mails = 3;</code>
+     *
+     * <pre>
+     * 	MAIL_INFO MAIL_CHG 返回
+     * </pre>
+     */
+    com.game.logic.net.Cs.CsMailOrBuilder getMailsOrBuilder(
+        int index);
+
+    // repeated int32 Wids = 4;
+    /**
+     * <code>repeated int32 Wids = 4;</code>
+     *
+     * <pre>
+     *MAIL_GET MAIL_GET_ALL领取成功的邮件id（全部领取Succ返回错误时也可能部分邮件成功了）MAIL_DEL 删除的邮件
+     * </pre>
+     */
+    java.util.List<java.lang.Integer> getWidsList();
+    /**
+     * <code>repeated int32 Wids = 4;</code>
+     *
+     * <pre>
+     *MAIL_GET MAIL_GET_ALL领取成功的邮件id（全部领取Succ返回错误时也可能部分邮件成功了）MAIL_DEL 删除的邮件
+     * </pre>
+     */
+    int getWidsCount();
+    /**
+     * <code>repeated int32 Wids = 4;</code>
+     *
+     * <pre>
+     *MAIL_GET MAIL_GET_ALL领取成功的邮件id（全部领取Succ返回错误时也可能部分邮件成功了）MAIL_DEL 删除的邮件
+     * </pre>
+     */
+    int getWids(int index);
+  }
+  /**
+   * Protobuf type {@code CsMailRes}
+   */
+  public static final class CsMailRes extends
+      com.google.protobuf.GeneratedMessage
+      implements CsMailResOrBuilder {
+    // Use CsMailRes.newBuilder() to construct.
+    private CsMailRes(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private CsMailRes(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final CsMailRes defaultInstance;
+    public static CsMailRes getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public CsMailRes getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CsMailRes(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              msgType_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              succ_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                mails_ = new java.util.ArrayList<com.game.logic.net.Cs.CsMail>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              mails_.add(input.readMessage(com.game.logic.net.Cs.CsMail.PARSER, extensionRegistry));
+              break;
+            }
+            case 32: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                wids_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              wids_.add(input.readInt32());
+              break;
+            }
+            case 34: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008) && input.getBytesUntilLimit() > 0) {
+                wids_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                wids_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          mails_ = java.util.Collections.unmodifiableList(mails_);
+        }
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          wids_ = java.util.Collections.unmodifiableList(wids_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.game.logic.net.Cs.internal_static_CsMailRes_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.game.logic.net.Cs.internal_static_CsMailRes_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.game.logic.net.Cs.CsMailRes.class, com.game.logic.net.Cs.CsMailRes.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<CsMailRes> PARSER =
+        new com.google.protobuf.AbstractParser<CsMailRes>() {
+      public CsMailRes parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CsMailRes(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CsMailRes> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 MsgType = 1;
+    public static final int MSGTYPE_FIELD_NUMBER = 1;
+    private int msgType_;
+    /**
+     * <code>required int32 MsgType = 1;</code>
+     *
+     * <pre>
+     * 	MAIL_SVR_OP
+     * </pre>
+     */
+    public boolean hasMsgType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 MsgType = 1;</code>
+     *
+     * <pre>
+     * 	MAIL_SVR_OP
+     * </pre>
+     */
+    public int getMsgType() {
+      return msgType_;
+    }
+
+    // required int32 Succ = 2;
+    public static final int SUCC_FIELD_NUMBER = 2;
+    private int succ_;
+    /**
+     * <code>required int32 Succ = 2;</code>
+     */
+    public boolean hasSucc() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 Succ = 2;</code>
+     */
+    public int getSucc() {
+      return succ_;
+    }
+
+    // repeated .CsMail Mails = 3;
+    public static final int MAILS_FIELD_NUMBER = 3;
+    private java.util.List<com.game.logic.net.Cs.CsMail> mails_;
+    /**
+     * <code>repeated .CsMail Mails = 3;</code>
+     *
+     * <pre>
+     * 	MAIL_INFO MAIL_CHG 返回
+     * </pre>
+     */
+    public java.util.List<com.game.logic.net.Cs.CsMail> getMailsList() {
+      return mails_;
+    }
+    /**
+     * <code>repeated .CsMail Mails = 3;</code>
+     *
+     * <pre>
+     * 	MAIL_INFO MAIL_CHG 返回
+     * </pre>
+     */
+    public java.util.List<? extends com.game.logic.net.Cs.CsMailOrBuilder> 
+        getMailsOrBuilderList() {
+      return mails_;
+    }
+    /**
+     * <code>repeated .CsMail Mails = 3;</code>
+     *
+     * <pre>
+     * 	MAIL_INFO MAIL_CHG 返回
+     * </pre>
+     */
+    public int getMailsCount() {
+      return mails_.size();
+    }
+    /**
+     * <code>repeated .CsMail Mails = 3;</code>
+     *
+     * <pre>
+     * 	MAIL_INFO MAIL_CHG 返回
+     * </pre>
+     */
+    public com.game.logic.net.Cs.CsMail getMails(int index) {
+      return mails_.get(index);
+    }
+    /**
+     * <code>repeated .CsMail Mails = 3;</code>
+     *
+     * <pre>
+     * 	MAIL_INFO MAIL_CHG 返回
+     * </pre>
+     */
+    public com.game.logic.net.Cs.CsMailOrBuilder getMailsOrBuilder(
+        int index) {
+      return mails_.get(index);
+    }
+
+    // repeated int32 Wids = 4;
+    public static final int WIDS_FIELD_NUMBER = 4;
+    private java.util.List<java.lang.Integer> wids_;
+    /**
+     * <code>repeated int32 Wids = 4;</code>
+     *
+     * <pre>
+     *MAIL_GET MAIL_GET_ALL领取成功的邮件id（全部领取Succ返回错误时也可能部分邮件成功了）MAIL_DEL 删除的邮件
+     * </pre>
+     */
+    public java.util.List<java.lang.Integer>
+        getWidsList() {
+      return wids_;
+    }
+    /**
+     * <code>repeated int32 Wids = 4;</code>
+     *
+     * <pre>
+     *MAIL_GET MAIL_GET_ALL领取成功的邮件id（全部领取Succ返回错误时也可能部分邮件成功了）MAIL_DEL 删除的邮件
+     * </pre>
+     */
+    public int getWidsCount() {
+      return wids_.size();
+    }
+    /**
+     * <code>repeated int32 Wids = 4;</code>
+     *
+     * <pre>
+     *MAIL_GET MAIL_GET_ALL领取成功的邮件id（全部领取Succ返回错误时也可能部分邮件成功了）MAIL_DEL 删除的邮件
+     * </pre>
+     */
+    public int getWids(int index) {
+      return wids_.get(index);
+    }
+
+    private void initFields() {
+      msgType_ = 0;
+      succ_ = 0;
+      mails_ = java.util.Collections.emptyList();
+      wids_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasMsgType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSucc()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getMailsCount(); i++) {
+        if (!getMails(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, msgType_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, succ_);
+      }
+      for (int i = 0; i < mails_.size(); i++) {
+        output.writeMessage(3, mails_.get(i));
+      }
+      for (int i = 0; i < wids_.size(); i++) {
+        output.writeInt32(4, wids_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, msgType_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, succ_);
+      }
+      for (int i = 0; i < mails_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, mails_.get(i));
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < wids_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(wids_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getWidsList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.game.logic.net.Cs.CsMailRes parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.logic.net.Cs.CsMailRes parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.logic.net.Cs.CsMailRes parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.logic.net.Cs.CsMailRes parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.logic.net.Cs.CsMailRes parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.logic.net.Cs.CsMailRes parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.game.logic.net.Cs.CsMailRes parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.game.logic.net.Cs.CsMailRes parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.game.logic.net.Cs.CsMailRes parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.logic.net.Cs.CsMailRes parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.game.logic.net.Cs.CsMailRes prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CsMailRes}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.game.logic.net.Cs.CsMailResOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.game.logic.net.Cs.internal_static_CsMailRes_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.game.logic.net.Cs.internal_static_CsMailRes_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.game.logic.net.Cs.CsMailRes.class, com.game.logic.net.Cs.CsMailRes.Builder.class);
+      }
+
+      // Construct using com.game.logic.net.Cs.CsMailRes.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getMailsFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        msgType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        succ_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (mailsBuilder_ == null) {
+          mails_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          mailsBuilder_.clear();
+        }
+        wids_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.game.logic.net.Cs.internal_static_CsMailRes_descriptor;
+      }
+
+      public com.game.logic.net.Cs.CsMailRes getDefaultInstanceForType() {
+        return com.game.logic.net.Cs.CsMailRes.getDefaultInstance();
+      }
+
+      public com.game.logic.net.Cs.CsMailRes build() {
+        com.game.logic.net.Cs.CsMailRes result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.game.logic.net.Cs.CsMailRes buildPartial() {
+        com.game.logic.net.Cs.CsMailRes result = new com.game.logic.net.Cs.CsMailRes(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.msgType_ = msgType_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.succ_ = succ_;
+        if (mailsBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            mails_ = java.util.Collections.unmodifiableList(mails_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.mails_ = mails_;
+        } else {
+          result.mails_ = mailsBuilder_.build();
+        }
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          wids_ = java.util.Collections.unmodifiableList(wids_);
+          bitField0_ = (bitField0_ & ~0x00000008);
+        }
+        result.wids_ = wids_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.game.logic.net.Cs.CsMailRes) {
+          return mergeFrom((com.game.logic.net.Cs.CsMailRes)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.game.logic.net.Cs.CsMailRes other) {
+        if (other == com.game.logic.net.Cs.CsMailRes.getDefaultInstance()) return this;
+        if (other.hasMsgType()) {
+          setMsgType(other.getMsgType());
+        }
+        if (other.hasSucc()) {
+          setSucc(other.getSucc());
+        }
+        if (mailsBuilder_ == null) {
+          if (!other.mails_.isEmpty()) {
+            if (mails_.isEmpty()) {
+              mails_ = other.mails_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureMailsIsMutable();
+              mails_.addAll(other.mails_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.mails_.isEmpty()) {
+            if (mailsBuilder_.isEmpty()) {
+              mailsBuilder_.dispose();
+              mailsBuilder_ = null;
+              mails_ = other.mails_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              mailsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getMailsFieldBuilder() : null;
+            } else {
+              mailsBuilder_.addAllMessages(other.mails_);
+            }
+          }
+        }
+        if (!other.wids_.isEmpty()) {
+          if (wids_.isEmpty()) {
+            wids_ = other.wids_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+          } else {
+            ensureWidsIsMutable();
+            wids_.addAll(other.wids_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMsgType()) {
+          
+          return false;
+        }
+        if (!hasSucc()) {
+          
+          return false;
+        }
+        for (int i = 0; i < getMailsCount(); i++) {
+          if (!getMails(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.game.logic.net.Cs.CsMailRes parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.game.logic.net.Cs.CsMailRes) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 MsgType = 1;
+      private int msgType_ ;
+      /**
+       * <code>required int32 MsgType = 1;</code>
+       *
+       * <pre>
+       * 	MAIL_SVR_OP
+       * </pre>
+       */
+      public boolean hasMsgType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 MsgType = 1;</code>
+       *
+       * <pre>
+       * 	MAIL_SVR_OP
+       * </pre>
+       */
+      public int getMsgType() {
+        return msgType_;
+      }
+      /**
+       * <code>required int32 MsgType = 1;</code>
+       *
+       * <pre>
+       * 	MAIL_SVR_OP
+       * </pre>
+       */
+      public Builder setMsgType(int value) {
+        bitField0_ |= 0x00000001;
+        msgType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 MsgType = 1;</code>
+       *
+       * <pre>
+       * 	MAIL_SVR_OP
+       * </pre>
+       */
+      public Builder clearMsgType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        msgType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 Succ = 2;
+      private int succ_ ;
+      /**
+       * <code>required int32 Succ = 2;</code>
+       */
+      public boolean hasSucc() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 Succ = 2;</code>
+       */
+      public int getSucc() {
+        return succ_;
+      }
+      /**
+       * <code>required int32 Succ = 2;</code>
+       */
+      public Builder setSucc(int value) {
+        bitField0_ |= 0x00000002;
+        succ_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 Succ = 2;</code>
+       */
+      public Builder clearSucc() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        succ_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .CsMail Mails = 3;
+      private java.util.List<com.game.logic.net.Cs.CsMail> mails_ =
+        java.util.Collections.emptyList();
+      private void ensureMailsIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          mails_ = new java.util.ArrayList<com.game.logic.net.Cs.CsMail>(mails_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.game.logic.net.Cs.CsMail, com.game.logic.net.Cs.CsMail.Builder, com.game.logic.net.Cs.CsMailOrBuilder> mailsBuilder_;
+
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public java.util.List<com.game.logic.net.Cs.CsMail> getMailsList() {
+        if (mailsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(mails_);
+        } else {
+          return mailsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public int getMailsCount() {
+        if (mailsBuilder_ == null) {
+          return mails_.size();
+        } else {
+          return mailsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public com.game.logic.net.Cs.CsMail getMails(int index) {
+        if (mailsBuilder_ == null) {
+          return mails_.get(index);
+        } else {
+          return mailsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public Builder setMails(
+          int index, com.game.logic.net.Cs.CsMail value) {
+        if (mailsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMailsIsMutable();
+          mails_.set(index, value);
+          onChanged();
+        } else {
+          mailsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public Builder setMails(
+          int index, com.game.logic.net.Cs.CsMail.Builder builderForValue) {
+        if (mailsBuilder_ == null) {
+          ensureMailsIsMutable();
+          mails_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          mailsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public Builder addMails(com.game.logic.net.Cs.CsMail value) {
+        if (mailsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMailsIsMutable();
+          mails_.add(value);
+          onChanged();
+        } else {
+          mailsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public Builder addMails(
+          int index, com.game.logic.net.Cs.CsMail value) {
+        if (mailsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMailsIsMutable();
+          mails_.add(index, value);
+          onChanged();
+        } else {
+          mailsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public Builder addMails(
+          com.game.logic.net.Cs.CsMail.Builder builderForValue) {
+        if (mailsBuilder_ == null) {
+          ensureMailsIsMutable();
+          mails_.add(builderForValue.build());
+          onChanged();
+        } else {
+          mailsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public Builder addMails(
+          int index, com.game.logic.net.Cs.CsMail.Builder builderForValue) {
+        if (mailsBuilder_ == null) {
+          ensureMailsIsMutable();
+          mails_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          mailsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public Builder addAllMails(
+          java.lang.Iterable<? extends com.game.logic.net.Cs.CsMail> values) {
+        if (mailsBuilder_ == null) {
+          ensureMailsIsMutable();
+          super.addAll(values, mails_);
+          onChanged();
+        } else {
+          mailsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public Builder clearMails() {
+        if (mailsBuilder_ == null) {
+          mails_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          mailsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public Builder removeMails(int index) {
+        if (mailsBuilder_ == null) {
+          ensureMailsIsMutable();
+          mails_.remove(index);
+          onChanged();
+        } else {
+          mailsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public com.game.logic.net.Cs.CsMail.Builder getMailsBuilder(
+          int index) {
+        return getMailsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public com.game.logic.net.Cs.CsMailOrBuilder getMailsOrBuilder(
+          int index) {
+        if (mailsBuilder_ == null) {
+          return mails_.get(index);  } else {
+          return mailsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public java.util.List<? extends com.game.logic.net.Cs.CsMailOrBuilder> 
+           getMailsOrBuilderList() {
+        if (mailsBuilder_ != null) {
+          return mailsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(mails_);
+        }
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public com.game.logic.net.Cs.CsMail.Builder addMailsBuilder() {
+        return getMailsFieldBuilder().addBuilder(
+            com.game.logic.net.Cs.CsMail.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public com.game.logic.net.Cs.CsMail.Builder addMailsBuilder(
+          int index) {
+        return getMailsFieldBuilder().addBuilder(
+            index, com.game.logic.net.Cs.CsMail.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .CsMail Mails = 3;</code>
+       *
+       * <pre>
+       * 	MAIL_INFO MAIL_CHG 返回
+       * </pre>
+       */
+      public java.util.List<com.game.logic.net.Cs.CsMail.Builder> 
+           getMailsBuilderList() {
+        return getMailsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.game.logic.net.Cs.CsMail, com.game.logic.net.Cs.CsMail.Builder, com.game.logic.net.Cs.CsMailOrBuilder> 
+          getMailsFieldBuilder() {
+        if (mailsBuilder_ == null) {
+          mailsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.game.logic.net.Cs.CsMail, com.game.logic.net.Cs.CsMail.Builder, com.game.logic.net.Cs.CsMailOrBuilder>(
+                  mails_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          mails_ = null;
+        }
+        return mailsBuilder_;
+      }
+
+      // repeated int32 Wids = 4;
+      private java.util.List<java.lang.Integer> wids_ = java.util.Collections.emptyList();
+      private void ensureWidsIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          wids_ = new java.util.ArrayList<java.lang.Integer>(wids_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+      /**
+       * <code>repeated int32 Wids = 4;</code>
+       *
+       * <pre>
+       *MAIL_GET MAIL_GET_ALL领取成功的邮件id（全部领取Succ返回错误时也可能部分邮件成功了）MAIL_DEL 删除的邮件
+       * </pre>
+       */
+      public java.util.List<java.lang.Integer>
+          getWidsList() {
+        return java.util.Collections.unmodifiableList(wids_);
+      }
+      /**
+       * <code>repeated int32 Wids = 4;</code>
+       *
+       * <pre>
+       *MAIL_GET MAIL_GET_ALL领取成功的邮件id（全部领取Succ返回错误时也可能部分邮件成功了）MAIL_DEL 删除的邮件
+       * </pre>
+       */
+      public int getWidsCount() {
+        return wids_.size();
+      }
+      /**
+       * <code>repeated int32 Wids = 4;</code>
+       *
+       * <pre>
+       *MAIL_GET MAIL_GET_ALL领取成功的邮件id（全部领取Succ返回错误时也可能部分邮件成功了）MAIL_DEL 删除的邮件
+       * </pre>
+       */
+      public int getWids(int index) {
+        return wids_.get(index);
+      }
+      /**
+       * <code>repeated int32 Wids = 4;</code>
+       *
+       * <pre>
+       *MAIL_GET MAIL_GET_ALL领取成功的邮件id（全部领取Succ返回错误时也可能部分邮件成功了）MAIL_DEL 删除的邮件
+       * </pre>
+       */
+      public Builder setWids(
+          int index, int value) {
+        ensureWidsIsMutable();
+        wids_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 Wids = 4;</code>
+       *
+       * <pre>
+       *MAIL_GET MAIL_GET_ALL领取成功的邮件id（全部领取Succ返回错误时也可能部分邮件成功了）MAIL_DEL 删除的邮件
+       * </pre>
+       */
+      public Builder addWids(int value) {
+        ensureWidsIsMutable();
+        wids_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 Wids = 4;</code>
+       *
+       * <pre>
+       *MAIL_GET MAIL_GET_ALL领取成功的邮件id（全部领取Succ返回错误时也可能部分邮件成功了）MAIL_DEL 删除的邮件
+       * </pre>
+       */
+      public Builder addAllWids(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureWidsIsMutable();
+        super.addAll(values, wids_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 Wids = 4;</code>
+       *
+       * <pre>
+       *MAIL_GET MAIL_GET_ALL领取成功的邮件id（全部领取Succ返回错误时也可能部分邮件成功了）MAIL_DEL 删除的邮件
+       * </pre>
+       */
+      public Builder clearWids() {
+        wids_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:CsMailRes)
+    }
+
+    static {
+      defaultInstance = new CsMailRes(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:CsMailRes)
+  }
+
+  public interface CsItemOneOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 type = 1;
+    /**
+     * <code>required int32 type = 1;</code>
+     *
+     * <pre>
+     *1card 2-arm 3-money 4-tili 5-troop
+     * </pre>
+     */
+    boolean hasType();
+    /**
+     * <code>required int32 type = 1;</code>
+     *
+     * <pre>
+     *1card 2-arm 3-money 4-tili 5-troop
+     * </pre>
+     */
+    int getType();
+
+    // required int32 id = 2;
+    /**
+     * <code>required int32 id = 2;</code>
+     *
+     * <pre>
+     * cardid armid moneyid 1 troopid
+     * </pre>
+     */
+    boolean hasId();
+    /**
+     * <code>required int32 id = 2;</code>
+     *
+     * <pre>
+     * cardid armid moneyid 1 troopid
+     * </pre>
+     */
+    int getId();
+
+    // required int32 count = 3;
+    /**
+     * <code>required int32 count = 3;</code>
+     *
+     * <pre>
+     *cardnum armnum moneynum tili troopnum
+     * </pre>
+     */
+    boolean hasCount();
+    /**
+     * <code>required int32 count = 3;</code>
+     *
+     * <pre>
+     *cardnum armnum moneynum tili troopnum
+     * </pre>
+     */
+    int getCount();
+  }
+  /**
+   * Protobuf type {@code CsItemOne}
+   */
+  public static final class CsItemOne extends
+      com.google.protobuf.GeneratedMessage
+      implements CsItemOneOrBuilder {
+    // Use CsItemOne.newBuilder() to construct.
+    private CsItemOne(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private CsItemOne(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final CsItemOne defaultInstance;
+    public static CsItemOne getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public CsItemOne getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CsItemOne(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              type_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              id_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              count_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.game.logic.net.Cs.internal_static_CsItemOne_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.game.logic.net.Cs.internal_static_CsItemOne_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.game.logic.net.Cs.CsItemOne.class, com.game.logic.net.Cs.CsItemOne.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<CsItemOne> PARSER =
+        new com.google.protobuf.AbstractParser<CsItemOne>() {
+      public CsItemOne parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CsItemOne(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CsItemOne> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 type = 1;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
+    /**
+     * <code>required int32 type = 1;</code>
+     *
+     * <pre>
+     *1card 2-arm 3-money 4-tili 5-troop
+     * </pre>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 type = 1;</code>
+     *
+     * <pre>
+     *1card 2-arm 3-money 4-tili 5-troop
+     * </pre>
+     */
+    public int getType() {
+      return type_;
+    }
+
+    // required int32 id = 2;
+    public static final int ID_FIELD_NUMBER = 2;
+    private int id_;
+    /**
+     * <code>required int32 id = 2;</code>
+     *
+     * <pre>
+     * cardid armid moneyid 1 troopid
+     * </pre>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 id = 2;</code>
+     *
+     * <pre>
+     * cardid armid moneyid 1 troopid
+     * </pre>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    // required int32 count = 3;
+    public static final int COUNT_FIELD_NUMBER = 3;
+    private int count_;
+    /**
+     * <code>required int32 count = 3;</code>
+     *
+     * <pre>
+     *cardnum armnum moneynum tili troopnum
+     * </pre>
+     */
+    public boolean hasCount() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 count = 3;</code>
+     *
+     * <pre>
+     *cardnum armnum moneynum tili troopnum
+     * </pre>
+     */
+    public int getCount() {
+      return count_;
+    }
+
+    private void initFields() {
+      type_ = 0;
+      id_ = 0;
+      count_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, type_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, id_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, count_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, type_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, id_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, count_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.game.logic.net.Cs.CsItemOne parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.logic.net.Cs.CsItemOne parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.logic.net.Cs.CsItemOne parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.logic.net.Cs.CsItemOne parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.logic.net.Cs.CsItemOne parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.logic.net.Cs.CsItemOne parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.game.logic.net.Cs.CsItemOne parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.game.logic.net.Cs.CsItemOne parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.game.logic.net.Cs.CsItemOne parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.logic.net.Cs.CsItemOne parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.game.logic.net.Cs.CsItemOne prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CsItemOne}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.game.logic.net.Cs.CsItemOneOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.game.logic.net.Cs.internal_static_CsItemOne_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.game.logic.net.Cs.internal_static_CsItemOne_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.game.logic.net.Cs.CsItemOne.class, com.game.logic.net.Cs.CsItemOne.Builder.class);
+      }
+
+      // Construct using com.game.logic.net.Cs.CsItemOne.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        type_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.game.logic.net.Cs.internal_static_CsItemOne_descriptor;
+      }
+
+      public com.game.logic.net.Cs.CsItemOne getDefaultInstanceForType() {
+        return com.game.logic.net.Cs.CsItemOne.getDefaultInstance();
+      }
+
+      public com.game.logic.net.Cs.CsItemOne build() {
+        com.game.logic.net.Cs.CsItemOne result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.game.logic.net.Cs.CsItemOne buildPartial() {
+        com.game.logic.net.Cs.CsItemOne result = new com.game.logic.net.Cs.CsItemOne(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.id_ = id_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.count_ = count_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.game.logic.net.Cs.CsItemOne) {
+          return mergeFrom((com.game.logic.net.Cs.CsItemOne)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.game.logic.net.Cs.CsItemOne other) {
+        if (other == com.game.logic.net.Cs.CsItemOne.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasCount()) {
+          setCount(other.getCount());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasType()) {
+          
+          return false;
+        }
+        if (!hasId()) {
+          
+          return false;
+        }
+        if (!hasCount()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.game.logic.net.Cs.CsItemOne parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.game.logic.net.Cs.CsItemOne) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 type = 1;
+      private int type_ ;
+      /**
+       * <code>required int32 type = 1;</code>
+       *
+       * <pre>
+       *1card 2-arm 3-money 4-tili 5-troop
+       * </pre>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 type = 1;</code>
+       *
+       * <pre>
+       *1card 2-arm 3-money 4-tili 5-troop
+       * </pre>
+       */
+      public int getType() {
+        return type_;
+      }
+      /**
+       * <code>required int32 type = 1;</code>
+       *
+       * <pre>
+       *1card 2-arm 3-money 4-tili 5-troop
+       * </pre>
+       */
+      public Builder setType(int value) {
+        bitField0_ |= 0x00000001;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 type = 1;</code>
+       *
+       * <pre>
+       *1card 2-arm 3-money 4-tili 5-troop
+       * </pre>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 id = 2;
+      private int id_ ;
+      /**
+       * <code>required int32 id = 2;</code>
+       *
+       * <pre>
+       * cardid armid moneyid 1 troopid
+       * </pre>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 id = 2;</code>
+       *
+       * <pre>
+       * cardid armid moneyid 1 troopid
+       * </pre>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>required int32 id = 2;</code>
+       *
+       * <pre>
+       * cardid armid moneyid 1 troopid
+       * </pre>
+       */
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000002;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 id = 2;</code>
+       *
+       * <pre>
+       * cardid armid moneyid 1 troopid
+       * </pre>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 count = 3;
+      private int count_ ;
+      /**
+       * <code>required int32 count = 3;</code>
+       *
+       * <pre>
+       *cardnum armnum moneynum tili troopnum
+       * </pre>
+       */
+      public boolean hasCount() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 count = 3;</code>
+       *
+       * <pre>
+       *cardnum armnum moneynum tili troopnum
+       * </pre>
+       */
+      public int getCount() {
+        return count_;
+      }
+      /**
+       * <code>required int32 count = 3;</code>
+       *
+       * <pre>
+       *cardnum armnum moneynum tili troopnum
+       * </pre>
+       */
+      public Builder setCount(int value) {
+        bitField0_ |= 0x00000004;
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 count = 3;</code>
+       *
+       * <pre>
+       *cardnum armnum moneynum tili troopnum
+       * </pre>
+       */
+      public Builder clearCount() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        count_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:CsItemOne)
+    }
+
+    static {
+      defaultInstance = new CsItemOne(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:CsItemOne)
+  }
+
+  public interface CsMailOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 WID = 1;
+    /**
+     * <code>required int32 WID = 1;</code>
+     */
+    boolean hasWID();
+    /**
+     * <code>required int32 WID = 1;</code>
+     */
+    int getWID();
+
+    // required int32 DelTime = 2;
+    /**
+     * <code>required int32 DelTime = 2;</code>
+     *
+     * <pre>
+     * 到期时间 时间到了不能领取
+     * </pre>
+     */
+    boolean hasDelTime();
+    /**
+     * <code>required int32 DelTime = 2;</code>
+     *
+     * <pre>
+     * 到期时间 时间到了不能领取
+     * </pre>
+     */
+    int getDelTime();
+
+    // required string Title = 4;
+    /**
+     * <code>required string Title = 4;</code>
+     *
+     * <pre>
+     * 邮件标题
+     * </pre>
+     */
+    boolean hasTitle();
+    /**
+     * <code>required string Title = 4;</code>
+     *
+     * <pre>
+     * 邮件标题
+     * </pre>
+     */
+    java.lang.String getTitle();
+    /**
+     * <code>required string Title = 4;</code>
+     *
+     * <pre>
+     * 邮件标题
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getTitleBytes();
+
+    // required int32 Send = 5;
+    /**
+     * <code>required int32 Send = 5;</code>
+     *
+     * <pre>
+     * 谁发送的 0-系统邮件 大于0表示发送者UIN
+     * </pre>
+     */
+    boolean hasSend();
+    /**
+     * <code>required int32 Send = 5;</code>
+     *
+     * <pre>
+     * 谁发送的 0-系统邮件 大于0表示发送者UIN
+     * </pre>
+     */
+    int getSend();
+
+    // required int32 SendTime = 7;
+    /**
+     * <code>required int32 SendTime = 7;</code>
+     *
+     * <pre>
+     * 发送时间
+     * </pre>
+     */
+    boolean hasSendTime();
+    /**
+     * <code>required int32 SendTime = 7;</code>
+     *
+     * <pre>
+     * 发送时间
+     * </pre>
+     */
+    int getSendTime();
+
+    // required int32 Type = 8;
+    /**
+     * <code>required int32 Type = 8;</code>
+     *
+     * <pre>
+     *MAIL_TYPE
+     * </pre>
+     */
+    boolean hasType();
+    /**
+     * <code>required int32 Type = 8;</code>
+     *
+     * <pre>
+     *MAIL_TYPE
+     * </pre>
+     */
+    int getType();
+
+    // required string Text = 9;
+    /**
+     * <code>required string Text = 9;</code>
+     *
+     * <pre>
+     * 邮件正文
+     * </pre>
+     */
+    boolean hasText();
+    /**
+     * <code>required string Text = 9;</code>
+     *
+     * <pre>
+     * 邮件正文
+     * </pre>
+     */
+    java.lang.String getText();
+    /**
+     * <code>required string Text = 9;</code>
+     *
+     * <pre>
+     * 邮件正文
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getTextBytes();
+
+    // repeated .CsItemOne Items = 10;
+    /**
+     * <code>repeated .CsItemOne Items = 10;</code>
+     *
+     * <pre>
+     *奖励-最大8种
+     * </pre>
+     */
+    java.util.List<com.game.logic.net.Cs.CsItemOne> 
+        getItemsList();
+    /**
+     * <code>repeated .CsItemOne Items = 10;</code>
+     *
+     * <pre>
+     *奖励-最大8种
+     * </pre>
+     */
+    com.game.logic.net.Cs.CsItemOne getItems(int index);
+    /**
+     * <code>repeated .CsItemOne Items = 10;</code>
+     *
+     * <pre>
+     *奖励-最大8种
+     * </pre>
+     */
+    int getItemsCount();
+    /**
+     * <code>repeated .CsItemOne Items = 10;</code>
+     *
+     * <pre>
+     *奖励-最大8种
+     * </pre>
+     */
+    java.util.List<? extends com.game.logic.net.Cs.CsItemOneOrBuilder> 
+        getItemsOrBuilderList();
+    /**
+     * <code>repeated .CsItemOne Items = 10;</code>
+     *
+     * <pre>
+     *奖励-最大8种
+     * </pre>
+     */
+    com.game.logic.net.Cs.CsItemOneOrBuilder getItemsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code CsMail}
+   */
+  public static final class CsMail extends
+      com.google.protobuf.GeneratedMessage
+      implements CsMailOrBuilder {
+    // Use CsMail.newBuilder() to construct.
+    private CsMail(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private CsMail(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final CsMail defaultInstance;
+    public static CsMail getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public CsMail getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CsMail(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              wID_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              delTime_ = input.readInt32();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000004;
+              title_ = input.readBytes();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000008;
+              send_ = input.readInt32();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000010;
+              sendTime_ = input.readInt32();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000020;
+              type_ = input.readInt32();
+              break;
+            }
+            case 74: {
+              bitField0_ |= 0x00000040;
+              text_ = input.readBytes();
+              break;
+            }
+            case 82: {
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+                items_ = new java.util.ArrayList<com.game.logic.net.Cs.CsItemOne>();
+                mutable_bitField0_ |= 0x00000080;
+              }
+              items_.add(input.readMessage(com.game.logic.net.Cs.CsItemOne.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+          items_ = java.util.Collections.unmodifiableList(items_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.game.logic.net.Cs.internal_static_CsMail_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.game.logic.net.Cs.internal_static_CsMail_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.game.logic.net.Cs.CsMail.class, com.game.logic.net.Cs.CsMail.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<CsMail> PARSER =
+        new com.google.protobuf.AbstractParser<CsMail>() {
+      public CsMail parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CsMail(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CsMail> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 WID = 1;
+    public static final int WID_FIELD_NUMBER = 1;
+    private int wID_;
+    /**
+     * <code>required int32 WID = 1;</code>
+     */
+    public boolean hasWID() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 WID = 1;</code>
+     */
+    public int getWID() {
+      return wID_;
+    }
+
+    // required int32 DelTime = 2;
+    public static final int DELTIME_FIELD_NUMBER = 2;
+    private int delTime_;
+    /**
+     * <code>required int32 DelTime = 2;</code>
+     *
+     * <pre>
+     * 到期时间 时间到了不能领取
+     * </pre>
+     */
+    public boolean hasDelTime() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 DelTime = 2;</code>
+     *
+     * <pre>
+     * 到期时间 时间到了不能领取
+     * </pre>
+     */
+    public int getDelTime() {
+      return delTime_;
+    }
+
+    // required string Title = 4;
+    public static final int TITLE_FIELD_NUMBER = 4;
+    private java.lang.Object title_;
+    /**
+     * <code>required string Title = 4;</code>
+     *
+     * <pre>
+     * 邮件标题
+     * </pre>
+     */
+    public boolean hasTitle() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string Title = 4;</code>
+     *
+     * <pre>
+     * 邮件标题
+     * </pre>
+     */
+    public java.lang.String getTitle() {
+      java.lang.Object ref = title_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          title_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string Title = 4;</code>
+     *
+     * <pre>
+     * 邮件标题
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getTitleBytes() {
+      java.lang.Object ref = title_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        title_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int32 Send = 5;
+    public static final int SEND_FIELD_NUMBER = 5;
+    private int send_;
+    /**
+     * <code>required int32 Send = 5;</code>
+     *
+     * <pre>
+     * 谁发送的 0-系统邮件 大于0表示发送者UIN
+     * </pre>
+     */
+    public boolean hasSend() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required int32 Send = 5;</code>
+     *
+     * <pre>
+     * 谁发送的 0-系统邮件 大于0表示发送者UIN
+     * </pre>
+     */
+    public int getSend() {
+      return send_;
+    }
+
+    // required int32 SendTime = 7;
+    public static final int SENDTIME_FIELD_NUMBER = 7;
+    private int sendTime_;
+    /**
+     * <code>required int32 SendTime = 7;</code>
+     *
+     * <pre>
+     * 发送时间
+     * </pre>
+     */
+    public boolean hasSendTime() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required int32 SendTime = 7;</code>
+     *
+     * <pre>
+     * 发送时间
+     * </pre>
+     */
+    public int getSendTime() {
+      return sendTime_;
+    }
+
+    // required int32 Type = 8;
+    public static final int TYPE_FIELD_NUMBER = 8;
+    private int type_;
+    /**
+     * <code>required int32 Type = 8;</code>
+     *
+     * <pre>
+     *MAIL_TYPE
+     * </pre>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required int32 Type = 8;</code>
+     *
+     * <pre>
+     *MAIL_TYPE
+     * </pre>
+     */
+    public int getType() {
+      return type_;
+    }
+
+    // required string Text = 9;
+    public static final int TEXT_FIELD_NUMBER = 9;
+    private java.lang.Object text_;
+    /**
+     * <code>required string Text = 9;</code>
+     *
+     * <pre>
+     * 邮件正文
+     * </pre>
+     */
+    public boolean hasText() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>required string Text = 9;</code>
+     *
+     * <pre>
+     * 邮件正文
+     * </pre>
+     */
+    public java.lang.String getText() {
+      java.lang.Object ref = text_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          text_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string Text = 9;</code>
+     *
+     * <pre>
+     * 邮件正文
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getTextBytes() {
+      java.lang.Object ref = text_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        text_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // repeated .CsItemOne Items = 10;
+    public static final int ITEMS_FIELD_NUMBER = 10;
+    private java.util.List<com.game.logic.net.Cs.CsItemOne> items_;
+    /**
+     * <code>repeated .CsItemOne Items = 10;</code>
+     *
+     * <pre>
+     *奖励-最大8种
+     * </pre>
+     */
+    public java.util.List<com.game.logic.net.Cs.CsItemOne> getItemsList() {
+      return items_;
+    }
+    /**
+     * <code>repeated .CsItemOne Items = 10;</code>
+     *
+     * <pre>
+     *奖励-最大8种
+     * </pre>
+     */
+    public java.util.List<? extends com.game.logic.net.Cs.CsItemOneOrBuilder> 
+        getItemsOrBuilderList() {
+      return items_;
+    }
+    /**
+     * <code>repeated .CsItemOne Items = 10;</code>
+     *
+     * <pre>
+     *奖励-最大8种
+     * </pre>
+     */
+    public int getItemsCount() {
+      return items_.size();
+    }
+    /**
+     * <code>repeated .CsItemOne Items = 10;</code>
+     *
+     * <pre>
+     *奖励-最大8种
+     * </pre>
+     */
+    public com.game.logic.net.Cs.CsItemOne getItems(int index) {
+      return items_.get(index);
+    }
+    /**
+     * <code>repeated .CsItemOne Items = 10;</code>
+     *
+     * <pre>
+     *奖励-最大8种
+     * </pre>
+     */
+    public com.game.logic.net.Cs.CsItemOneOrBuilder getItemsOrBuilder(
+        int index) {
+      return items_.get(index);
+    }
+
+    private void initFields() {
+      wID_ = 0;
+      delTime_ = 0;
+      title_ = "";
+      send_ = 0;
+      sendTime_ = 0;
+      type_ = 0;
+      text_ = "";
+      items_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasWID()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDelTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTitle()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSend()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSendTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasText()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getItemsCount(); i++) {
+        if (!getItems(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, wID_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, delTime_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(4, getTitleBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(5, send_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(7, sendTime_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(8, type_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBytes(9, getTextBytes());
+      }
+      for (int i = 0; i < items_.size(); i++) {
+        output.writeMessage(10, items_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, wID_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, delTime_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getTitleBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, send_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, sendTime_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, type_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(9, getTextBytes());
+      }
+      for (int i = 0; i < items_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, items_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.game.logic.net.Cs.CsMail parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.logic.net.Cs.CsMail parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.logic.net.Cs.CsMail parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.game.logic.net.Cs.CsMail parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.game.logic.net.Cs.CsMail parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.logic.net.Cs.CsMail parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.game.logic.net.Cs.CsMail parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.game.logic.net.Cs.CsMail parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.game.logic.net.Cs.CsMail parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.game.logic.net.Cs.CsMail parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.game.logic.net.Cs.CsMail prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CsMail}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.game.logic.net.Cs.CsMailOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.game.logic.net.Cs.internal_static_CsMail_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.game.logic.net.Cs.internal_static_CsMail_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.game.logic.net.Cs.CsMail.class, com.game.logic.net.Cs.CsMail.Builder.class);
+      }
+
+      // Construct using com.game.logic.net.Cs.CsMail.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getItemsFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        wID_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        delTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        title_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        send_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        sendTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        type_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        text_ = "";
+        bitField0_ = (bitField0_ & ~0x00000040);
+        if (itemsBuilder_ == null) {
+          items_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+        } else {
+          itemsBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.game.logic.net.Cs.internal_static_CsMail_descriptor;
+      }
+
+      public com.game.logic.net.Cs.CsMail getDefaultInstanceForType() {
+        return com.game.logic.net.Cs.CsMail.getDefaultInstance();
+      }
+
+      public com.game.logic.net.Cs.CsMail build() {
+        com.game.logic.net.Cs.CsMail result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.game.logic.net.Cs.CsMail buildPartial() {
+        com.game.logic.net.Cs.CsMail result = new com.game.logic.net.Cs.CsMail(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.wID_ = wID_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.delTime_ = delTime_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.title_ = title_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.send_ = send_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.sendTime_ = sendTime_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.text_ = text_;
+        if (itemsBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+            items_ = java.util.Collections.unmodifiableList(items_);
+            bitField0_ = (bitField0_ & ~0x00000080);
+          }
+          result.items_ = items_;
+        } else {
+          result.items_ = itemsBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.game.logic.net.Cs.CsMail) {
+          return mergeFrom((com.game.logic.net.Cs.CsMail)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.game.logic.net.Cs.CsMail other) {
+        if (other == com.game.logic.net.Cs.CsMail.getDefaultInstance()) return this;
+        if (other.hasWID()) {
+          setWID(other.getWID());
+        }
+        if (other.hasDelTime()) {
+          setDelTime(other.getDelTime());
+        }
+        if (other.hasTitle()) {
+          bitField0_ |= 0x00000004;
+          title_ = other.title_;
+          onChanged();
+        }
+        if (other.hasSend()) {
+          setSend(other.getSend());
+        }
+        if (other.hasSendTime()) {
+          setSendTime(other.getSendTime());
+        }
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasText()) {
+          bitField0_ |= 0x00000040;
+          text_ = other.text_;
+          onChanged();
+        }
+        if (itemsBuilder_ == null) {
+          if (!other.items_.isEmpty()) {
+            if (items_.isEmpty()) {
+              items_ = other.items_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+            } else {
+              ensureItemsIsMutable();
+              items_.addAll(other.items_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.items_.isEmpty()) {
+            if (itemsBuilder_.isEmpty()) {
+              itemsBuilder_.dispose();
+              itemsBuilder_ = null;
+              items_ = other.items_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+              itemsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getItemsFieldBuilder() : null;
+            } else {
+              itemsBuilder_.addAllMessages(other.items_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasWID()) {
+          
+          return false;
+        }
+        if (!hasDelTime()) {
+          
+          return false;
+        }
+        if (!hasTitle()) {
+          
+          return false;
+        }
+        if (!hasSend()) {
+          
+          return false;
+        }
+        if (!hasSendTime()) {
+          
+          return false;
+        }
+        if (!hasType()) {
+          
+          return false;
+        }
+        if (!hasText()) {
+          
+          return false;
+        }
+        for (int i = 0; i < getItemsCount(); i++) {
+          if (!getItems(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.game.logic.net.Cs.CsMail parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.game.logic.net.Cs.CsMail) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 WID = 1;
+      private int wID_ ;
+      /**
+       * <code>required int32 WID = 1;</code>
+       */
+      public boolean hasWID() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 WID = 1;</code>
+       */
+      public int getWID() {
+        return wID_;
+      }
+      /**
+       * <code>required int32 WID = 1;</code>
+       */
+      public Builder setWID(int value) {
+        bitField0_ |= 0x00000001;
+        wID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 WID = 1;</code>
+       */
+      public Builder clearWID() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        wID_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 DelTime = 2;
+      private int delTime_ ;
+      /**
+       * <code>required int32 DelTime = 2;</code>
+       *
+       * <pre>
+       * 到期时间 时间到了不能领取
+       * </pre>
+       */
+      public boolean hasDelTime() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 DelTime = 2;</code>
+       *
+       * <pre>
+       * 到期时间 时间到了不能领取
+       * </pre>
+       */
+      public int getDelTime() {
+        return delTime_;
+      }
+      /**
+       * <code>required int32 DelTime = 2;</code>
+       *
+       * <pre>
+       * 到期时间 时间到了不能领取
+       * </pre>
+       */
+      public Builder setDelTime(int value) {
+        bitField0_ |= 0x00000002;
+        delTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 DelTime = 2;</code>
+       *
+       * <pre>
+       * 到期时间 时间到了不能领取
+       * </pre>
+       */
+      public Builder clearDelTime() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        delTime_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required string Title = 4;
+      private java.lang.Object title_ = "";
+      /**
+       * <code>required string Title = 4;</code>
+       *
+       * <pre>
+       * 邮件标题
+       * </pre>
+       */
+      public boolean hasTitle() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string Title = 4;</code>
+       *
+       * <pre>
+       * 邮件标题
+       * </pre>
+       */
+      public java.lang.String getTitle() {
+        java.lang.Object ref = title_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          title_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string Title = 4;</code>
+       *
+       * <pre>
+       * 邮件标题
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getTitleBytes() {
+        java.lang.Object ref = title_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          title_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string Title = 4;</code>
+       *
+       * <pre>
+       * 邮件标题
+       * </pre>
+       */
+      public Builder setTitle(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        title_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string Title = 4;</code>
+       *
+       * <pre>
+       * 邮件标题
+       * </pre>
+       */
+      public Builder clearTitle() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        title_ = getDefaultInstance().getTitle();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string Title = 4;</code>
+       *
+       * <pre>
+       * 邮件标题
+       * </pre>
+       */
+      public Builder setTitleBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        title_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int32 Send = 5;
+      private int send_ ;
+      /**
+       * <code>required int32 Send = 5;</code>
+       *
+       * <pre>
+       * 谁发送的 0-系统邮件 大于0表示发送者UIN
+       * </pre>
+       */
+      public boolean hasSend() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required int32 Send = 5;</code>
+       *
+       * <pre>
+       * 谁发送的 0-系统邮件 大于0表示发送者UIN
+       * </pre>
+       */
+      public int getSend() {
+        return send_;
+      }
+      /**
+       * <code>required int32 Send = 5;</code>
+       *
+       * <pre>
+       * 谁发送的 0-系统邮件 大于0表示发送者UIN
+       * </pre>
+       */
+      public Builder setSend(int value) {
+        bitField0_ |= 0x00000008;
+        send_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 Send = 5;</code>
+       *
+       * <pre>
+       * 谁发送的 0-系统邮件 大于0表示发送者UIN
+       * </pre>
+       */
+      public Builder clearSend() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        send_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 SendTime = 7;
+      private int sendTime_ ;
+      /**
+       * <code>required int32 SendTime = 7;</code>
+       *
+       * <pre>
+       * 发送时间
+       * </pre>
+       */
+      public boolean hasSendTime() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required int32 SendTime = 7;</code>
+       *
+       * <pre>
+       * 发送时间
+       * </pre>
+       */
+      public int getSendTime() {
+        return sendTime_;
+      }
+      /**
+       * <code>required int32 SendTime = 7;</code>
+       *
+       * <pre>
+       * 发送时间
+       * </pre>
+       */
+      public Builder setSendTime(int value) {
+        bitField0_ |= 0x00000010;
+        sendTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 SendTime = 7;</code>
+       *
+       * <pre>
+       * 发送时间
+       * </pre>
+       */
+      public Builder clearSendTime() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        sendTime_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 Type = 8;
+      private int type_ ;
+      /**
+       * <code>required int32 Type = 8;</code>
+       *
+       * <pre>
+       *MAIL_TYPE
+       * </pre>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required int32 Type = 8;</code>
+       *
+       * <pre>
+       *MAIL_TYPE
+       * </pre>
+       */
+      public int getType() {
+        return type_;
+      }
+      /**
+       * <code>required int32 Type = 8;</code>
+       *
+       * <pre>
+       *MAIL_TYPE
+       * </pre>
+       */
+      public Builder setType(int value) {
+        bitField0_ |= 0x00000020;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 Type = 8;</code>
+       *
+       * <pre>
+       *MAIL_TYPE
+       * </pre>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required string Text = 9;
+      private java.lang.Object text_ = "";
+      /**
+       * <code>required string Text = 9;</code>
+       *
+       * <pre>
+       * 邮件正文
+       * </pre>
+       */
+      public boolean hasText() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required string Text = 9;</code>
+       *
+       * <pre>
+       * 邮件正文
+       * </pre>
+       */
+      public java.lang.String getText() {
+        java.lang.Object ref = text_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          text_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string Text = 9;</code>
+       *
+       * <pre>
+       * 邮件正文
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getTextBytes() {
+        java.lang.Object ref = text_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          text_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string Text = 9;</code>
+       *
+       * <pre>
+       * 邮件正文
+       * </pre>
+       */
+      public Builder setText(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        text_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string Text = 9;</code>
+       *
+       * <pre>
+       * 邮件正文
+       * </pre>
+       */
+      public Builder clearText() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        text_ = getDefaultInstance().getText();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string Text = 9;</code>
+       *
+       * <pre>
+       * 邮件正文
+       * </pre>
+       */
+      public Builder setTextBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        text_ = value;
+        onChanged();
+        return this;
+      }
+
+      // repeated .CsItemOne Items = 10;
+      private java.util.List<com.game.logic.net.Cs.CsItemOne> items_ =
+        java.util.Collections.emptyList();
+      private void ensureItemsIsMutable() {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+          items_ = new java.util.ArrayList<com.game.logic.net.Cs.CsItemOne>(items_);
+          bitField0_ |= 0x00000080;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.game.logic.net.Cs.CsItemOne, com.game.logic.net.Cs.CsItemOne.Builder, com.game.logic.net.Cs.CsItemOneOrBuilder> itemsBuilder_;
+
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public java.util.List<com.game.logic.net.Cs.CsItemOne> getItemsList() {
+        if (itemsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(items_);
+        } else {
+          return itemsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public int getItemsCount() {
+        if (itemsBuilder_ == null) {
+          return items_.size();
+        } else {
+          return itemsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public com.game.logic.net.Cs.CsItemOne getItems(int index) {
+        if (itemsBuilder_ == null) {
+          return items_.get(index);
+        } else {
+          return itemsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public Builder setItems(
+          int index, com.game.logic.net.Cs.CsItemOne value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.set(index, value);
+          onChanged();
+        } else {
+          itemsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public Builder setItems(
+          int index, com.game.logic.net.Cs.CsItemOne.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public Builder addItems(com.game.logic.net.Cs.CsItemOne value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.add(value);
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public Builder addItems(
+          int index, com.game.logic.net.Cs.CsItemOne value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.add(index, value);
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public Builder addItems(
+          com.game.logic.net.Cs.CsItemOne.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.add(builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public Builder addItems(
+          int index, com.game.logic.net.Cs.CsItemOne.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public Builder addAllItems(
+          java.lang.Iterable<? extends com.game.logic.net.Cs.CsItemOne> values) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          super.addAll(values, items_);
+          onChanged();
+        } else {
+          itemsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public Builder clearItems() {
+        if (itemsBuilder_ == null) {
+          items_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+          onChanged();
+        } else {
+          itemsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public Builder removeItems(int index) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.remove(index);
+          onChanged();
+        } else {
+          itemsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public com.game.logic.net.Cs.CsItemOne.Builder getItemsBuilder(
+          int index) {
+        return getItemsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public com.game.logic.net.Cs.CsItemOneOrBuilder getItemsOrBuilder(
+          int index) {
+        if (itemsBuilder_ == null) {
+          return items_.get(index);  } else {
+          return itemsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public java.util.List<? extends com.game.logic.net.Cs.CsItemOneOrBuilder> 
+           getItemsOrBuilderList() {
+        if (itemsBuilder_ != null) {
+          return itemsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(items_);
+        }
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public com.game.logic.net.Cs.CsItemOne.Builder addItemsBuilder() {
+        return getItemsFieldBuilder().addBuilder(
+            com.game.logic.net.Cs.CsItemOne.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public com.game.logic.net.Cs.CsItemOne.Builder addItemsBuilder(
+          int index) {
+        return getItemsFieldBuilder().addBuilder(
+            index, com.game.logic.net.Cs.CsItemOne.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .CsItemOne Items = 10;</code>
+       *
+       * <pre>
+       *奖励-最大8种
+       * </pre>
+       */
+      public java.util.List<com.game.logic.net.Cs.CsItemOne.Builder> 
+           getItemsBuilderList() {
+        return getItemsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.game.logic.net.Cs.CsItemOne, com.game.logic.net.Cs.CsItemOne.Builder, com.game.logic.net.Cs.CsItemOneOrBuilder> 
+          getItemsFieldBuilder() {
+        if (itemsBuilder_ == null) {
+          itemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.game.logic.net.Cs.CsItemOne, com.game.logic.net.Cs.CsItemOne.Builder, com.game.logic.net.Cs.CsItemOneOrBuilder>(
+                  items_,
+                  ((bitField0_ & 0x00000080) == 0x00000080),
+                  getParentForChildren(),
+                  isClean());
+          items_ = null;
+        }
+        return itemsBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:CsMail)
+    }
+
+    static {
+      defaultInstance = new CsMail(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:CsMail)
   }
 
   public interface DirReqOrBuilder
@@ -12869,6 +17148,26 @@ public final class Cs {
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_CsMailReq_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CsMailReq_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_CsMailRes_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CsMailRes_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_CsItemOne_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CsItemOne_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_CsMail_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CsMail_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_DirReq_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -12947,127 +17246,159 @@ public final class Cs {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\010cs.proto\"\031\n\006DirReq\022\017\n\007LastVer\030\001 \002(\005\"\261\001" +
-      "\n\014DirWorldInfo\022\014\n\004Name\030\001 \002(\t\022\n\n\002IP\030\002 \002(\t" +
-      "\022\014\n\004Port\030\003 \002(\005\022\017\n\007WorldID\030\004 \002(\005\022\020\n\010Regio" +
-      "nID\030\005 \002(\005\022\021\n\tRegionIdx\030\006 \002(\005\022\017\n\007NewFlag\030" +
-      "\007 \002(\005\022\016\n\006AuthIP\030\010 \002(\t\022\020\n\010AuthPort\030\t \002(\005\022" +
-      "\020\n\010StatFlag\030\n \002(\005\"<\n\rDirRegionInfo\022\014\n\004Na" +
-      "me\030\001 \002(\t\022\013\n\003Url\030\002 \002(\t\022\020\n\010StatFlag\030\003 \002(\r\"" +
-      "W\n\006DirRes\022\017\n\007LastVer\030\001 \002(\005\022\036\n\006Region\030\002 \003" +
-      "(\0132\016.DirRegionInfo\022\034\n\005World\030\003 \003(\0132\r.DirW" +
-      "orldInfo\"^\n\007AuthReq\022\014\n\004Type\030\001 \002(\005\022\013\n\003Uin",
-      "\030\002 \002(\005\022\022\n\npartner_id\030\004 \001(\t\022\027\n\017partner_ch" +
-      "annel\030\005 \001(\005\022\013\n\003Enc\030\003 \002(\t\"\237\001\n\007AuthRes\022\014\n\004" +
-      "Type\030\001 \002(\005\022\023\n\013AccountName\030\002 \002(\t\022\013\n\003Uin\030\003" +
-      " \002(\005\022\013\n\003Enc\030\004 \002(\t\022\022\n\nNewAccount\030\005 \001(\005\022\017\n" +
-      "\007WorldID\030\006 \001(\005\022\016\n\006ZoneIP\030\007 \001(\t\022\020\n\010ZonePo" +
-      "rt\030\010 \001(\003\022\020\n\010RegionID\030\t \001(\003\"\035\n\nCsHeartReq" +
-      "\022\017\n\007SvrTime\030\001 \002(\005\"3\n\nCsHeartRes\022\017\n\007SvrTi" +
-      "me\030\001 \002(\005\022\024\n\014MessageCount\030\002 \002(\005\"5\n\010LoginR" +
-      "eq\022\013\n\003Uin\030\001 \002(\005\022\017\n\007AccName\030\002 \002(\t\022\013\n\003Enc\030" +
-      "\003 \002(\t\"t\n\010LoginRes\022\014\n\004Succ\030\001 \002(\005\022\r\n\005MemID",
-      "\030\002 \002(\005\022\017\n\007SvrTime\030\004 \002(\005\022\024\n\014IsSelectCamp\030" +
-      "\005 \002(\005\022\020\n\010LoginSeq\030\006 \002(\r\022\022\n\nRegTaskDay\030\007 " +
-      "\002(\005\"7\n\013RegTaskInfo\022\n\n\002Id\030\001 \002(\005\022\r\n\005Value\030" +
-      "\002 \002(\005\022\r\n\005State\030\003 \002(\005\".\n\021RegShopBoughtInf" +
-      "o\022\n\n\002Id\030\001 \002(\005\022\r\n\005Count\030\002 \002(\005\"=\n\nRegTaskR" +
-      "eq\022\017\n\007MsgType\030\001 \002(\005\022\016\n\006TaskId\030\003 \001(\005\022\016\n\006S" +
-      "hopId\030\004 \001(\005\"~\n\nRegTaskRsp\022\014\n\004Succ\030\001 \002(\005\022" +
-      "\013\n\003Day\030\002 \002(\005\022\033\n\005infos\030\n \003(\0132\014.RegTaskInf" +
-      "o\022\016\n\006bought\030\013 \003(\005\022(\n\014bought_infos\030\014 \003(\0132" +
-      "\022.RegShopBoughtInfo*\240\001\n\010MSG_TYPE\022\013\n\007DIR_",
-      "REQ\020\001\022\013\n\007DIR_RES\020\002\022\014\n\010AUTH_REQ\020\003\022\014\n\010AUTH" +
-      "_RES\020\004\022\r\n\tLOGIN_REQ\020\005\022\r\n\tLOGIN_RES\020\006\022\r\n\t" +
-      "HEART_REQ\020\t\022\r\n\tHEART_RES\020\n\022\020\n\014REG_TASK_R" +
-      "EQ\020_\022\020\n\014REG_TASK_RSP\020`B\030\n\022com.game.logic" +
-      ".netB\002Cs"
+      "\n\010cs.proto\")\n\tCsMailReq\022\017\n\007MsgType\030\001 \002(\005" +
+      "\022\013\n\003Wid\030\002 \002(\005\"P\n\tCsMailRes\022\017\n\007MsgType\030\001 " +
+      "\002(\005\022\014\n\004Succ\030\002 \002(\005\022\026\n\005Mails\030\003 \003(\0132\007.CsMai" +
+      "l\022\014\n\004Wids\030\004 \003(\005\"4\n\tCsItemOne\022\014\n\004type\030\001 \002" +
+      "(\005\022\n\n\002id\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\"\214\001\n\006CsMail" +
+      "\022\013\n\003WID\030\001 \002(\005\022\017\n\007DelTime\030\002 \002(\005\022\r\n\005Title\030" +
+      "\004 \002(\t\022\014\n\004Send\030\005 \002(\005\022\020\n\010SendTime\030\007 \002(\005\022\014\n" +
+      "\004Type\030\010 \002(\005\022\014\n\004Text\030\t \002(\t\022\031\n\005Items\030\n \003(\013" +
+      "2\n.CsItemOne\"\031\n\006DirReq\022\017\n\007LastVer\030\001 \002(\005\"" +
+      "\261\001\n\014DirWorldInfo\022\014\n\004Name\030\001 \002(\t\022\n\n\002IP\030\002 \002",
+      "(\t\022\014\n\004Port\030\003 \002(\005\022\017\n\007WorldID\030\004 \002(\005\022\020\n\010Reg" +
+      "ionID\030\005 \002(\005\022\021\n\tRegionIdx\030\006 \002(\005\022\017\n\007NewFla" +
+      "g\030\007 \002(\005\022\016\n\006AuthIP\030\010 \002(\t\022\020\n\010AuthPort\030\t \002(" +
+      "\005\022\020\n\010StatFlag\030\n \002(\005\"<\n\rDirRegionInfo\022\014\n\004" +
+      "Name\030\001 \002(\t\022\013\n\003Url\030\002 \002(\t\022\020\n\010StatFlag\030\003 \002(" +
+      "\r\"W\n\006DirRes\022\017\n\007LastVer\030\001 \002(\005\022\036\n\006Region\030\002" +
+      " \003(\0132\016.DirRegionInfo\022\034\n\005World\030\003 \003(\0132\r.Di" +
+      "rWorldInfo\"^\n\007AuthReq\022\014\n\004Type\030\001 \002(\005\022\013\n\003U" +
+      "in\030\002 \002(\005\022\022\n\npartner_id\030\004 \001(\t\022\027\n\017partner_" +
+      "channel\030\005 \001(\005\022\013\n\003Enc\030\003 \002(\t\"\237\001\n\007AuthRes\022\014",
+      "\n\004Type\030\001 \002(\005\022\023\n\013AccountName\030\002 \002(\t\022\013\n\003Uin" +
+      "\030\003 \002(\005\022\013\n\003Enc\030\004 \002(\t\022\022\n\nNewAccount\030\005 \001(\005\022" +
+      "\017\n\007WorldID\030\006 \001(\005\022\016\n\006ZoneIP\030\007 \001(\t\022\020\n\010Zone" +
+      "Port\030\010 \001(\003\022\020\n\010RegionID\030\t \001(\003\"\035\n\nCsHeartR" +
+      "eq\022\017\n\007SvrTime\030\001 \002(\005\"3\n\nCsHeartRes\022\017\n\007Svr" +
+      "Time\030\001 \002(\005\022\024\n\014MessageCount\030\002 \002(\005\"5\n\010Logi" +
+      "nReq\022\013\n\003Uin\030\001 \002(\005\022\017\n\007AccName\030\002 \002(\t\022\013\n\003En" +
+      "c\030\003 \002(\t\"t\n\010LoginRes\022\014\n\004Succ\030\001 \002(\005\022\r\n\005Mem" +
+      "ID\030\002 \002(\005\022\017\n\007SvrTime\030\004 \002(\005\022\024\n\014IsSelectCam" +
+      "p\030\005 \002(\005\022\020\n\010LoginSeq\030\006 \002(\r\022\022\n\nRegTaskDay\030",
+      "\007 \002(\005\"7\n\013RegTaskInfo\022\n\n\002Id\030\001 \002(\005\022\r\n\005Valu" +
+      "e\030\002 \002(\005\022\r\n\005State\030\003 \002(\005\".\n\021RegShopBoughtI" +
+      "nfo\022\n\n\002Id\030\001 \002(\005\022\r\n\005Count\030\002 \002(\005\"=\n\nRegTas" +
+      "kReq\022\017\n\007MsgType\030\001 \002(\005\022\016\n\006TaskId\030\003 \001(\005\022\016\n" +
+      "\006ShopId\030\004 \001(\005\"~\n\nRegTaskRsp\022\014\n\004Succ\030\001 \002(" +
+      "\005\022\013\n\003Day\030\002 \002(\005\022\033\n\005infos\030\n \003(\0132\014.RegTaskI" +
+      "nfo\022\016\n\006bought\030\013 \003(\005\022(\n\014bought_infos\030\014 \003(" +
+      "\0132\022.RegShopBoughtInfo*\274\001\n\010MSG_TYPE\022\013\n\007DI" +
+      "R_REQ\020\001\022\013\n\007DIR_RES\020\002\022\014\n\010AUTH_REQ\020\003\022\014\n\010AU" +
+      "TH_RES\020\004\022\r\n\tLOGIN_REQ\020\005\022\r\n\tLOGIN_RES\020\006\022\r",
+      "\n\tHEART_REQ\020\t\022\r\n\tHEART_RES\020\n\022\020\n\014REG_TASK" +
+      "_REQ\020_\022\020\n\014REG_TASK_RSP\020`\022\014\n\010MAIL_REQ\020/\022\014" +
+      "\n\010MAIL_RES\0200B\030\n\022com.game.logic.netB\002Cs"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_DirReq_descriptor =
+          internal_static_CsMailReq_descriptor =
             getDescriptor().getMessageTypes().get(0);
+          internal_static_CsMailReq_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_CsMailReq_descriptor,
+              new java.lang.String[] { "MsgType", "Wid", });
+          internal_static_CsMailRes_descriptor =
+            getDescriptor().getMessageTypes().get(1);
+          internal_static_CsMailRes_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_CsMailRes_descriptor,
+              new java.lang.String[] { "MsgType", "Succ", "Mails", "Wids", });
+          internal_static_CsItemOne_descriptor =
+            getDescriptor().getMessageTypes().get(2);
+          internal_static_CsItemOne_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_CsItemOne_descriptor,
+              new java.lang.String[] { "Type", "Id", "Count", });
+          internal_static_CsMail_descriptor =
+            getDescriptor().getMessageTypes().get(3);
+          internal_static_CsMail_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_CsMail_descriptor,
+              new java.lang.String[] { "WID", "DelTime", "Title", "Send", "SendTime", "Type", "Text", "Items", });
+          internal_static_DirReq_descriptor =
+            getDescriptor().getMessageTypes().get(4);
           internal_static_DirReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_DirReq_descriptor,
               new java.lang.String[] { "LastVer", });
           internal_static_DirWorldInfo_descriptor =
-            getDescriptor().getMessageTypes().get(1);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_DirWorldInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_DirWorldInfo_descriptor,
               new java.lang.String[] { "Name", "IP", "Port", "WorldID", "RegionID", "RegionIdx", "NewFlag", "AuthIP", "AuthPort", "StatFlag", });
           internal_static_DirRegionInfo_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_DirRegionInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_DirRegionInfo_descriptor,
               new java.lang.String[] { "Name", "Url", "StatFlag", });
           internal_static_DirRes_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_DirRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_DirRes_descriptor,
               new java.lang.String[] { "LastVer", "Region", "World", });
           internal_static_AuthReq_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_AuthReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_AuthReq_descriptor,
               new java.lang.String[] { "Type", "Uin", "PartnerId", "PartnerChannel", "Enc", });
           internal_static_AuthRes_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_AuthRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_AuthRes_descriptor,
               new java.lang.String[] { "Type", "AccountName", "Uin", "Enc", "NewAccount", "WorldID", "ZoneIP", "ZonePort", "RegionID", });
           internal_static_CsHeartReq_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_CsHeartReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CsHeartReq_descriptor,
               new java.lang.String[] { "SvrTime", });
           internal_static_CsHeartRes_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_CsHeartRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CsHeartRes_descriptor,
               new java.lang.String[] { "SvrTime", "MessageCount", });
           internal_static_LoginReq_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_LoginReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_LoginReq_descriptor,
               new java.lang.String[] { "Uin", "AccName", "Enc", });
           internal_static_LoginRes_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_LoginRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_LoginRes_descriptor,
               new java.lang.String[] { "Succ", "MemID", "SvrTime", "IsSelectCamp", "LoginSeq", "RegTaskDay", });
           internal_static_RegTaskInfo_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_RegTaskInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_RegTaskInfo_descriptor,
               new java.lang.String[] { "Id", "Value", "State", });
           internal_static_RegShopBoughtInfo_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_RegShopBoughtInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_RegShopBoughtInfo_descriptor,
               new java.lang.String[] { "Id", "Count", });
           internal_static_RegTaskReq_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_RegTaskReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_RegTaskReq_descriptor,
               new java.lang.String[] { "MsgType", "TaskId", "ShopId", });
           internal_static_RegTaskRsp_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_RegTaskRsp_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_RegTaskRsp_descriptor,

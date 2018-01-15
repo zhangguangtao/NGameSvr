@@ -8,7 +8,7 @@ import com.game.logic.net.Cs.AuthRes;
 import com.game.logic.net.Cs.DirReq;
 import com.game.metaxml.Account;
 import com.game.metaxml.CommMisc;
-import com.game.metaxml.Cspb;
+import com.game.metaxml.ProtoComm;
 import com.game.service.message.CSMSG;
 import com.game.spring.DataSourceType;
 
@@ -23,7 +23,7 @@ public class AuthSvr extends BaseSvr{
 
 	@Override
 	public void initCmdMap() {
-		map.put(Cspb.MSG__TYPE__AUTH_REQ, "authSvrMsg");
+		map.put(ProtoComm.MSG__TYPE__AUTH_REQ, "authSvrMsg");
 	}
 	
 	public void authSvrMsg(CSMSG stMsg)throws Exception{
@@ -43,7 +43,7 @@ public class AuthSvr extends BaseSvr{
 		
 		
 		
-		this.svrMsgSend(Cspb.MSG__TYPE__AUTH_RES,authRes);
+		this.svrMsgSend(ProtoComm.MSG__TYPE__AUTH_RES,authRes);
 	}
 
 	@Override

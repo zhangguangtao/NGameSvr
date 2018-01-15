@@ -16,6 +16,7 @@ import java.io.Writer;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -633,7 +634,7 @@ public class CommMisc {
 	 */
 	private static boolean isBaseType(Class type){
 		boolean b = false;
-		Class [] baseTypes = new Class[]{byte.class,short.class,int.class,long.class,float.class,double.class,boolean.class,char.class,String.class};
+		Class [] baseTypes = new Class[]{byte.class,short.class,int.class,long.class,float.class,double.class,boolean.class,char.class,String.class,BigInteger.class};
 		for (Class clazz : baseTypes) {
 			if (clazz.equals(type)) {
 				b = true;

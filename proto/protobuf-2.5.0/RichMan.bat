@@ -1,0 +1,1 @@
+protoc.exe ./RichMan.proto --java_out=./

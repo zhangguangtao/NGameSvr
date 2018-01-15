@@ -1,0 +1,369 @@
+
+// 消息类型
+enum MSG_TYPE
+{
+	DIR_REQ=1;
+	DIR_RES=2;
+	AUTH_REQ=3;
+	AUTH_RES=4;
+	LOGIN_REQ=5;
+	LOGIN_RES=6;	
+	
+	AUTH_TEST_REQ=7;
+	SYS_TIP=8;
+	HEART_REQ=9;			// 心跳包请求
+	HEART_RES=10;			// 心跳包回复
+	
+	TOLLGATE_REQ=11;		// 关卡请求
+	TOLLGATE_RES=12;		// 关卡回复
+	
+	TEAM_REQ=13;			// 卡牌队伍请求
+	TEAM_RES=14;			// 卡牌队伍回复	
+}
+
+
+enum AUTH_TYPE
+{
+	QUICK=1;	//快速游戏
+	REGIS=2;	//注册
+	LOGIN=3; 	//登录验证
+}
+
+enum AUTH_ERROR
+{
+	SYS=-1;			// 系统错误
+	NO_ACC_NAME=-2;		// 没有输入账号
+	NO_ACC_PASSWD=-3;	//没有输入密码
+	PASSWD=-4;		// 密码错误
+	ACC_NAME_EXIST=-5;	// 账号已经存在
+}
+
+message CsAuthTestReq
+{
+	required string Enc=1;
+	required uint32 AuthType=2;
+}
+
+
+// Type=QUICK时  Uin AccountName AccountPasswd都为0 服务器返回Uin
+// Type=REGIS  Uin大于0表示补全账号和密码 否则表示新注册，服务器返回Uin
+// Type=LOGIN  账号和密码必须有值 服务器返回Uin
+message AuthReq
+{
+	required int32 Type=1; // AUTH_TYPE
+	required int32 Uin=2;
+	
+	// 用rsa public_key非对称加密的账号和密码二次哈希
+	// 约定第一个字节为 账号长度 第二个字节为密码长度
+	// |账号长度|密码长度|账号|密码|
+	// Enc包含两个字段 len和data len约定为256
+	required string Enc=3;
+	
+}
+
+// 验证请求服务器回复
+// Uin <0表示出错 出错代码为AUTH_ERROR
+message AuthRes
+{
+	required int32 Type=1; 	// AUTH_TYPE
+	required string AccountName=2;	
+	required int32 Uin=3;	
+	
+	// 服务器返回的签名 LoginReq要发给服务器
+	required string Enc=4;
+}
+
+// DIR_REQ 
+message DirReq
+{
+	required int32 LastVer=1;
+}
+
+// DIR_RES
+message DirRegionInfo
+{
+	required string Name=1;
+	required string Url=2;
+	required uint32 StatFlag=3;
+}
+
+message DirWorldInfo
+{
+	required string Name=1;
+	required string IP=2;  /*zone_svr前端连接IP*/
+	required int32 Port=3;/*zone_svr前端连接端口*/
+	required int32 WorldID=4;
+	required int32 RegionID=5;
+	required int32 RegionIdx=6;
+	required int32 NewFlag=7;	// 1表示新区
+	required string AuthIP=8;  /*auth_svr前端连接IP*/
+	required int32 AuthPort=9;/*auth_svr前端连接端口*/
+	required int32 StatFlag=10;	// 服务器状态 0-维护 1-很好 2-正常 3-繁忙 4-爆满
+}
+
+message DirRes
+{
+	required int32 LastVer=1;
+	repeated DirRegionInfo Region=2;	
+	repeated DirWorldInfo World=3;
+}
+
+message LoginReq
+{
+	required int32 Uin=1;
+	required string AccName=2;
+	required string Enc=3;
+}
+
+message CsCardOne
+{
+	required int32 ID=1;
+	required uint32 WID=2;
+}
+
+message CsCardInfo
+{
+	required int32 Maxnum=1;		// 最大卡牌格子
+	repeated CsCardOne Cards=2;
+}
+
+message CsSectionInfo
+{
+	required int32 CurrSectionID=1;		// 当前能进入的章节
+	required int32 LeaveHp=2;		// 当前章节boss剩余hp
+	//required int32 CurrTollgateID=3;	// 章节当前位置 0-初始位置,返回主界面  大于0表示关卡ID,显示章节界面
+}
+
+message CsTeamCardOne
+{
+	required int32 ID=1;
+	required uint32 WID=2;	
+}
+
+message CsTeamOne
+{
+	repeated CsTeamCardOne TeamCards=1;	// 队伍卡牌
+}
+
+message CsTeamInfo
+{
+	repeated CsTeamOne Teams=1;		// 所有队伍	
+}
+
+message PlayerData
+{
+	required int32 Uin=1;
+	required string Name=2;
+	required int32 Icon=3;
+	required int32 Lvl=4;
+	required int32 Shuijing=5;			// 水晶
+	required int32 Tili=6;				// 体力
+	required int32 Gold=7;				// 金币
+	required int32 RMB=8;				// 充值币
+	required uint64 WID=9;
+	required CsCardInfo Card=10;			// 卡牌
+	required CsSectionInfo Section=11;		// 章节
+	required CsTeamInfo Team=12;			// 队伍
+}
+
+message LoginRes
+{
+	required int32 Succ=1; 			//1-成功
+	required int32 MemID=2; 		// 角色服务器内存ID
+	required PlayerData PlayerData=3;	// 角色数据
+	required int32 SvrTime=4;		// 服务器当前时间
+}
+
+// 系统提示
+message CsSysTip
+{
+	required int32 Type=1;			// 1-系统错误提示
+	required string Tip=2;			// 系统提示内容
+}
+
+// 心跳包请求 --客户端把当前服务器时间返回给服务器
+message CsHeartReq
+{
+	required int32 SvrTime=1;		// 	
+}
+
+// 心跳包回复 --服务器会根据请求中的时间误差来调整 发给客户端新的服务器时间 小于等于-不用调整 大于0表示服务器时间
+message CsHeartRes
+{
+	required int32 SvrTime=1;		// 	
+}
+
+enum CLT_TG_TYPE
+{
+	CLT_TG_SECTION_ENTER=1;		// 进入某个章节
+	CLT_TG_GO=2;			// 前进
+	CLT_TG_EXIT=3;			// 撤退	
+	CLT_TG_FIGTH=4;			// 战斗
+	CLT_TG_LINEUP=5;		// 阵型选择
+}
+
+message CsEnterSection
+{
+	required int32 SectionID=1;		// 章节ID
+	required int32 TeamIdx=2;		// 选择第几队 0-3	
+}
+
+message CsSectionGo
+{
+	required int32 SectionID=1;
+	
+}
+
+message CsSectionExit
+{
+	required int32 SectionID=1;	
+}
+
+message CsSectionFight
+{
+	required int32 SectionID=1;	// 哪个章节
+	required int32 TollgateID=2;	// 哪个关卡
+	required int32 Phase=3;		// 哪个阶段 进入关卡服务器就会回复侦查战结果  1-计谋战 2-冲锋站1 3-冲锋站2 4-追击战 
+}
+
+message CsSectionLineUp
+{
+	required int32 LineUp=1;	// 1-5	
+	required int32 SectionID=2;	// 章节ID
+	required int32 TollgateID=3;	// 关卡ID
+}
+
+message CsTollgateReq
+{
+	required int32 MsgType=1;  		// CLT_TG_TYPE  
+	required CsEnterSection EnterSection=2; // CLT_TG_SECTION_ENTER
+	required CsSectionGo Go=3;		// CLT_TG_GO
+	required CsSectionExit Exit=4;		// TG_TYPE_EXIT
+	required CsSectionLineUp LineUp=5;	// CLT_TG_LINEUP
+	required CsSectionFight Fight=6;	// CLT_TG_FIGTH
+}
+
+
+enum SVR_TG_TYPE
+{
+	SVR_TG_SECTION_ENTER=1;			// 进入某个章节
+	SVR_TG_GO=2;				// 前进
+	SVR_TG_EXIT=3;				// 撤退	
+	SVR_TG_FIGTH=4;				// 战斗信息回复	
+	SVR_TG_LINEUP=5;			// 阵型选择回复
+}
+
+message CsSvrEnterSection
+{
+	required int32 Succ=1;			// 0-成功 
+	required int32 SectionID=2;		// 哪个章节	
+}
+
+message CsSvrTollgateGo
+{
+	required int32 Succ=1;			// 0-成功 	
+	required int32 TollgateID=2;		// 进入的关卡ID
+	required int32 Spy=3;			// 如果是战斗副本 0-侦查成功
+	required int32 Award=4;			// 如果不是战斗副本 表示奖励列表 先用一个字段代替 以后再加		
+}
+
+message CsSvrTollgateFight
+{
+	required int32 SectionID=1;		// 哪个章节
+	required int32 TollgateID=2;		// 哪个关卡
+	required int32 Phase=3;			// 哪个阶段 	1-计谋战 2-冲锋站1 3-冲锋站2 4-追击战 
+	required int32 FightInfo=4;		// 战斗信息 以后再加
+}
+
+message CsSvrSectionExit
+{
+	required int32 Succ=1;			// 0-成功 
+	required int32 SectionID=2;		// 哪个章节
+}
+
+message CsSvrLineUp
+{
+	required int32 Succ=1;			// 0-成功 
+	required int32 SectionID=2;		// 哪个章节
+	required int32 TollgateID=3;
+	required int32 LineUp=4;
+}
+
+message CsTollgateRes
+{
+	required int32 MsgType=1;  		// SVR_TG_TYPE  
+	required CsSvrEnterSection Enter=2; 	// SVR_TG_SECTION_ENTER
+	required CsSvrTollgateGo Go=3;		// SVR_TG_GO
+	required CsSvrTollgateFight Fight=4;	// SVR_TG_FIGTH
+	required CsSvrSectionExit Exit=5;	// SVR_TG_EXIT
+	required CsSvrLineUp LineUp=6;		
+}
+
+
+
+
+// 队伍请求
+// 1-如果源中数据为空 表示离队
+// 
+message CsTeamSrc  				// 源-对应卡牌背包     
+{
+	required uint32 Wid=1;			// 卡牌wid
+	required int32 ID=2;			// 卡牌ID
+}
+
+message CsTeamDst				// 目标-对应team中的卡牌
+{
+	required int32 TeamIdx=1;		// 第几队 0开始
+	required uint32 Wid=2;			// 卡牌wid
+	required int32 ID=3;			// 卡牌ID
+}
+
+message CsTeamChgReq				// TEAM_REQ
+{
+	required CsTeamSrc Src=1;		// 
+	required CsTeamDst Dst=2;		//
+}
+
+// 队伍回复
+message CsTeamChgRes				// TEAM_RES
+{
+	required int32 Succ=1;			// 0-成功
+	required int32 TeamIdx=2;		// 第几对 0-3
+	required CsTeamOne Team=3;		// 队伍信息
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

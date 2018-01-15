@@ -10,6 +10,30 @@ import java.util.ArrayList;
 
 public final class ProtoComm {
  	private ProtoComm(){}
+	/** dir req */
+	public static short  MSG__TYPE__DIR_REQ  = 1;
+	/** dir res */
+	public static short  MSG__TYPE__DIR_RES  = 2;
+	/** 认证请求 */
+	public static short  MSG__TYPE__AUTH_REQ  = 3;
+	/** 认证回复 */
+	public static short  MSG__TYPE__AUTH_RES  = 4;
+	/**  登陆 请求 */
+	public static short  MSG__TYPE__LOGIN_REQ  = 5;
+	/** 登陆 回复 */
+	public static short  MSG__TYPE__LOGIN_RES  = 6;
+	/** 心跳包请求 */
+	public static short  MSG__TYPE__HEART_REQ  = 9;
+	/** 心跳包回复 */
+	public static short  MSG__TYPE__HEART_RES  = 10;
+	/** RegTaskReq 注册7日活动 */
+	public static short  MSG__TYPE__REG_TASK_REQ  = 95;
+	/** RegTaskReq 注册7日活动回复  rsp 是活动 */
+	public static short  MSG__TYPE__REG_TASK_RSP  = 96;
+	/** 邮件req */
+	public static short  MSG__TYPE__MAIL_REQ  = 47;
+	/** 邮件res */
+	public static short  MSG__TYPE__MAIL_RES  = 48;
 	/** 探索任务区域停留时间单位秒 */
 	public static int  TAKS_AREA_STOP_TIME  = 3;
 	/** 商品购买面板,32位一位表示一个面板 */
@@ -255,6 +279,7 @@ public final class ProtoComm {
 		private  int  XlReel;
 		private  int  XlReelG;
 		private  ArmInfo  ArmInfo =  new ArmInfo();
+		private  MailInfo  MailInfo =  new MailInfo();
 		public int getLastupdate(){
 			return this.lastupdate;
 		}
@@ -308,6 +333,24 @@ public final class ProtoComm {
 		}
 		public void setArmInfo(ArmInfo ArmInfo){
 			this.ArmInfo = ArmInfo;
+		}
+		public MailInfo getMailInfo(){
+			return this.MailInfo;
+		}
+		public void setMailInfo(MailInfo MailInfo){
+			this.MailInfo = MailInfo;
+		}
+
+	}
+	public final static class MailInfo  implements java.io.Serializable {
+ 		public MailInfo(){}
+		/** 记录领取过的邮件的wid */
+		private  ArrayList<java.math.BigInteger>  MailWid;
+		public ArrayList<java.math.BigInteger> getMailWid(){
+			return this.MailWid;
+		}
+		public void setMailWid(ArrayList<java.math.BigInteger> MailWid){
+			this.MailWid = MailWid;
 		}
 
 	}
@@ -562,6 +605,174 @@ public final class ProtoComm {
 		}
 		public void setPassword(String Password){
 			this.Password = Password;
+		}
+
+	}
+	/** 邮件 */
+	public final static class HMail  implements java.io.Serializable {
+ 		public HMail(){}
+		/** wid */
+		private  java.math.BigInteger  Wid;
+		/** 0-所有本服玩家都能收到 */
+		private  int  Recv;
+		/** 0-系统邮件  */
+		private  int  Send;
+		/** 这里记删除时间,因为有些邮件存在时间不固定  */
+		private  int  DelTime;
+		/** Flag  */
+		private  int  Flag;
+		/** 标题  */
+		private  String  Title;
+		/** 发送时间  */
+		private  int  SendTime;
+		/** 类型  */
+		private  int  Type;
+		/** 邮件详情  */
+		@com.game.annotation.BinaryDb
+		private  HMailDetail  Detail;
+		public java.math.BigInteger getWid(){
+			return this.Wid;
+		}
+		public void setWid(java.math.BigInteger Wid){
+			this.Wid = Wid;
+		}
+		public int getRecv(){
+			return this.Recv;
+		}
+		public void setRecv(int Recv){
+			this.Recv = Recv;
+		}
+		public int getSend(){
+			return this.Send;
+		}
+		public void setSend(int Send){
+			this.Send = Send;
+		}
+		public int getDelTime(){
+			return this.DelTime;
+		}
+		public void setDelTime(int DelTime){
+			this.DelTime = DelTime;
+		}
+		public int getFlag(){
+			return this.Flag;
+		}
+		public void setFlag(int Flag){
+			this.Flag = Flag;
+		}
+		public String getTitle(){
+			return this.Title;
+		}
+		public void setTitle(String Title){
+			this.Title = Title;
+		}
+		public int getSendTime(){
+			return this.SendTime;
+		}
+		public void setSendTime(int SendTime){
+			this.SendTime = SendTime;
+		}
+		public int getType(){
+			return this.Type;
+		}
+		public void setType(int Type){
+			this.Type = Type;
+		}
+		public HMailDetail getDetail(){
+			return this.Detail;
+		}
+		public void setDetail(HMailDetail Detail){
+			this.Detail = Detail;
+		}
+
+	}
+	/** 邮件详情 */
+	public final static class HMailDetail  implements java.io.Serializable {
+ 		public HMailDetail(){}
+		/** 正文 */
+		private  String  Text;
+		/** 体力 */
+		private  int  Tili;
+		/** CardID */
+		private  int  CardID;
+		/** ArmID */
+		private  int  ArmID;
+		/** Param */
+		private  int  Param;
+		/** MoneyNum */
+		private  int  MoneyNum;
+		/** MoneyOne */
+		private  ArrayList<MoneyOne>  Moneys;
+		public String getText(){
+			return this.Text;
+		}
+		public void setText(String Text){
+			this.Text = Text;
+		}
+		public int getTili(){
+			return this.Tili;
+		}
+		public void setTili(int Tili){
+			this.Tili = Tili;
+		}
+		public int getCardID(){
+			return this.CardID;
+		}
+		public void setCardID(int CardID){
+			this.CardID = CardID;
+		}
+		public int getArmID(){
+			return this.ArmID;
+		}
+		public void setArmID(int ArmID){
+			this.ArmID = ArmID;
+		}
+		public int getParam(){
+			return this.Param;
+		}
+		public void setParam(int Param){
+			this.Param = Param;
+		}
+		public int getMoneyNum(){
+			return this.MoneyNum;
+		}
+		public void setMoneyNum(int MoneyNum){
+			this.MoneyNum = MoneyNum;
+		}
+		public ArrayList<MoneyOne> getMoneys(){
+			return this.Moneys;
+		}
+		public void setMoneys(ArrayList<MoneyOne> Moneys){
+			this.Moneys = Moneys;
+		}
+
+	}
+	/** MoneyOne */
+	public final static class MoneyOne  implements java.io.Serializable {
+ 		public MoneyOne(){}
+		/** Type */
+		private  int  Type;
+		/** Num */
+		private  int  Num;
+		/** Id */
+		private  int  Id;
+		public int getType(){
+			return this.Type;
+		}
+		public void setType(int Type){
+			this.Type = Type;
+		}
+		public int getNum(){
+			return this.Num;
+		}
+		public void setNum(int Num){
+			this.Num = Num;
+		}
+		public int getId(){
+			return this.Id;
+		}
+		public void setId(int Id){
+			this.Id = Id;
 		}
 
 	}

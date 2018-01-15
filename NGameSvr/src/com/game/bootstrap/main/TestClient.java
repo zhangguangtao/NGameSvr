@@ -1,7 +1,7 @@
 package com.game.bootstrap.main;
 
 import com.game.logic.net.Cs.CsHeartReq;
-import com.game.metaxml.Cspb;
+import com.game.metaxml.ProtoComm;
 import com.game.service.message.CSMSG;
 import com.game.service.message.CSMSGHEAD;
 import com.game.service.message.decoder.NetMessageTCPDecoder;
@@ -109,13 +109,13 @@ public class TestClient {
 				
 				   CsHeartReq.Builder heartReq = CsHeartReq.newBuilder();
 				   
-				   heartReq.setSvrTime(1);
+				    heartReq.setSvrTime(1);
 				   
 				
 					byte [] body = heartReq.build().toByteArray();
 					System.out.println(body.length);
 					CSMSG csmsg = new CSMSG();
-					csmsg.setHead(new CSMSGHEAD(Cspb.MSG__TYPE__HEART_REQ,(short) body.length));
+					csmsg.setHead(new CSMSGHEAD(ProtoComm.MSG__TYPE__HEART_REQ,(short) body.length));
 					csmsg.setBody(body);
 					ctx.writeAndFlush(csmsg);
 			}

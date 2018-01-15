@@ -1,11 +1,15 @@
 package com.game.db.util;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Map;
+
+import com.game.annotation.BinaryDb;
+import com.game.metaxml.CommMisc;
 
 /**
  * 映射 工具
@@ -78,7 +82,15 @@ public class MapperUtils {
 				}else {
 					Field f = clazz.getDeclaredField(key);
 					f.setAccessible(true); 
-					f.set(obj, entry.getValue());
+					Annotation BinaryAnnotation = f.getAnnotation(BinaryDb.class);
+					if (BinaryAnnotation!=null) {  
+						byte[] bytes = (byte[]) entry.getValue();
+						Object object = CommMisc.bytes2obj(bytes);
+						f.set(obj, object);
+					}else {
+						f.set(obj, entry.getValue());
+					}
+					
 				}
 			}
 			return obj;

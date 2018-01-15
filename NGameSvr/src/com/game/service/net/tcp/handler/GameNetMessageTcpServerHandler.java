@@ -5,8 +5,10 @@ import org.springframework.context.annotation.EnableLoadTimeWeaving;
 import com.game.common.util.BeanUtil;
 import com.game.logic.net.AuthSvr;
 import com.game.logic.net.DirSvr;
+import com.game.logic.net.ZoneHttpSvr;
 import com.game.logic.net.ZoneSvr;
 import com.game.metaxml.CommMisc;
+import com.game.metaxml.ProtoCs;
 import com.game.metaxml.ProtoComm.Player;
 import com.game.service.message.CSMSG;
 import com.game.spring.DataSourceType;
@@ -51,6 +53,11 @@ public class GameNetMessageTcpServerHandler extends SimpleChannelInboundHandler<
 		if(zoneSvr!=null){
 			zoneSvr.dispatchMsg(pstMsg);
 			System.out.println(zoneSvr);
+		}
+		
+		//处理http的请求
+		if (pstMsg.getHead().getCmd() == ProtoCs.MSG__TYPE__HTTP_REQ){
+			ZoneHttpSvr.getInstance().Get(ctx, pstMsg);
 		}
 	}
 	

@@ -7,6 +7,8 @@ import com.game.metaxml.CommMisc;
 import com.game.metaxml.ResdbMeta.CardDef;
 import com.game.spring.DataSourceType;
 
+import io.netty.channel.ChannelHandlerContext;
+
 /**
  * 区服 环境 配置
  * @author zgt
@@ -23,10 +25,25 @@ public class ZONESVRENV {
 	}
 	
 	private HashMap<Integer, CardDef> CardDef;
+	
+	/**
+	 * 全区的uin
+	 */
+	private HashMap<Integer, ChannelHandlerContext> Uins;
+	
 	private ZONESVRENV(){
+		Uins = new HashMap<>();
 		init();
 	}
 	
+	
+	
+	public HashMap<Integer, ChannelHandlerContext> getUins() {
+		return Uins;
+	}
+
+
+
 	/**
 	 * 初始化 数据
 	 */
@@ -39,6 +56,10 @@ public class ZONESVRENV {
 
 	public HashMap<Integer, CardDef> getCardDef() {
 		return CardDef;
+	}
+	
+	public long getSvrTime(){
+		return System.currentTimeMillis();
 	}
 
 	

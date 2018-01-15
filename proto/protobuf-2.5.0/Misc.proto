@@ -1,0 +1,19 @@
+option java_outer_classname = "MiscBean";
+ 
+message TaskInfoOne{
+	required int32 WeekNum = 1;
+	required int32 Num = 2;
+	required int32 Flag = 3;
+	required int32 Stat = 4;
+	required int32 ID = 5;
+	required int32 DayNum = 6;
+}
+
+message MiscTaskInfo{
+   required int32 Num = 1;
+   repeated TaskInfoOne One = 2;
+}
+
+message Misc {  
+	required MiscTaskInfo TaskInfo = 1;  
+}

@@ -1,0 +1,7 @@
+
+// 消息类型
+enum MSG_TYPE
+{
+	DIR_REQ=1;
+	
+}

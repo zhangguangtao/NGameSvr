@@ -18,7 +18,7 @@ import com.game.logic.net.Cs.LoginRes;
 import com.game.logic.net.Cs.RegShopBoughtInfo;
 import com.game.logic.net.Cs.RegTaskInfo;
 import com.game.logic.net.Cs.RegTaskRsp;
-import com.game.metaxml.Cspb;
+import com.game.metaxml.ProtoComm;
 import com.game.metaxml.ProtoComm.Player;
 import com.game.service.message.CSMSG;
 
@@ -53,16 +53,22 @@ public class ZoneSvr extends BaseSvr{
 
 	public void initCmdMap(){
 		//登陆请求
-		map.put(Cspb.MSG__TYPE__LOGIN_REQ, "playerLoginReq");
+		map.put(ProtoComm.MSG__TYPE__LOGIN_REQ, "playerLoginReq");
 		//心跳 请求
-		map.put(Cspb.MSG__TYPE__HEART_REQ, "playerHeartReq");
+		map.put(ProtoComm.MSG__TYPE__HEART_REQ, "playerHeartReq");
 		//RegTaskReq 注册7日活动
-		map.put(Cspb.MSG__TYPE__REG_TASK_REQ, "regTaskReq");
+		map.put(ProtoComm.MSG__TYPE__REG_TASK_REQ, "regTaskReq");
+		//邮件
+		map.put(ProtoComm.MSG__TYPE__MAIL_REQ, "mailOpReq");
 	}
 	
 	
 	
 	/*---start 业务逻辑-------------------------------------------------------------------------------------------*/
+	
+	public void mailOpReq(CSMSG stMsg)throws Exception{
+		ZoneMail.getInstance().mailOpReq(this,pstPlayer, stMsg);
+	}
 	
 	public void playerLoginReq(CSMSG stMsg)throws Exception{
 		
@@ -79,8 +85,10 @@ public class ZoneSvr extends BaseSvr{
 		if (pstPlayer == null){
 			pstPlayer = zonePlayer.getPlayerByUin(pstReq.getUin());
 		}
-
-  
+		
+		if (pstPlayer!=null) {
+			ZONESVRENV.getInstance().getUins().put(pstReq.getUin(), channelHandler);
+		}
 		
 		//回复数据
 		LoginRes.Builder res = LoginRes.newBuilder();
@@ -92,7 +100,7 @@ public class ZoneSvr extends BaseSvr{
 		res.setRegTaskDay(9);
 		
 		
-		this.svrMsgSend(Cspb.MSG__TYPE__LOGIN_RES,res);
+		this.svrMsgSend(ProtoComm.MSG__TYPE__LOGIN_RES,res);
 		
 	}
 	
@@ -111,7 +119,7 @@ public class ZoneSvr extends BaseSvr{
 		heartRes.setSvrTime(longtime);
 		heartRes.setMessageCount(0);
 		
-		this.svrMsgSend(Cspb.MSG__TYPE__HEART_RES,heartRes);
+		this.svrMsgSend(ProtoComm.MSG__TYPE__HEART_RES,heartRes);
 	}
 	
 	
@@ -143,7 +151,7 @@ public class ZoneSvr extends BaseSvr{
 //			shopBoughInfo.setCount(2);
 //		}
 		
-		this.svrMsgSend(Cspb.MSG__TYPE__REG_TASK_RSP,stRes);
+		this.svrMsgSend(ProtoComm.MSG__TYPE__REG_TASK_RSP,stRes);
 	}
 	
 	/*-----end 结束业务逻辑------------------------------------------------------------------------------------------------*/

@@ -86,6 +86,8 @@ public class HttpServerHandler extends ChannelInboundHandlerAdapter {
         	}
         	
             Request request = new Request(0, command, params, "0", ctx);
+            request.setHttpRequest(currHttpRequest);
+            request.setHttpContent(httpContent);
             Response response = servlet.service(request);
             
             ByteBuf responseBuf = Unpooled.wrappedBuffer(response.getContents());

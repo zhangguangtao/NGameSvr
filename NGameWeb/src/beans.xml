@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd" 
+    >
+     
+    <!-- 
+    http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+     -->
+    
+	<!-- 使用注解式注入 -->
+    <context:annotation-config/>    
+    <!-- 自动扫描 -->
+    <context:component-scan base-package="com.game"/>
+    <!-- aop -->
+   <!--  <aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
+    
+    <!-- 加载配置文件 -->
+    <!-- <context:property-placeholder location="classpath:conn.properties"/> -->
+    
+	
+	 <!-- PropertyPlaceholderConfigurer类中有个locations属性，接收的是一个数组，即我们可以在下面配好多个properties文件   -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+	    <property name="locations">
+	      <!-- <value>classpath:conn.properties</value> -->
+	       <!--  <array>  
+	            <value>classpath*:*.properties</value>  
+	        </array>   -->
+	        
+	        <list>  
+	            <value>classpath*:*.properties</value>  
+	        </list>
+	        
+	    </property>  
+	    <property name="fileEncoding" value="utf-8"/> 
+	</bean> 
+     
+	
+	 <!-- 多数据源配置 -->  
+   <bean id ="ds_admin" class= "org.apache.commons.dbcp.BasicDataSource" >  
+          <property name ="driverClassName" value= "com.mysql.jdbc.Driver"></property >  
+          <property name ="url" value= "jdbc:mysql://localhost:3306/cs_daily_config?useUnicode=true&amp;characterEncoding=UTF-8" />  
+          <property name ="username" value="root"/>  
+          <property name ="password" value="123"/>  
+   </bean >  
+   <bean id ="resdb" class= "org.apache.commons.dbcp.BasicDataSource" >  
+          <property name ="driverClassName" value= "com.mysql.jdbc.Driver"/>  
+          <property name ="url" value= "${resdb_url}" />  
+          <property name ="username" value="${resdb_username}"/>  
+          <property name ="password" value="${resdb_password}"/>  
+   </bean >  
+   <bean id ="account" class="org.apache.commons.dbcp.BasicDataSource">  
+         <!--  
+          <property name ="driverClassName" value= "com.mysql.jdbc.Driver"></property >  
+          <property name ="url" value= "jdbc:mysql://localhost:3306/account_1?useUnicode=true&amp;characterEncoding=UTF-8" />  
+          <property name ="username" value="${conn.username}"/>  
+          <property name ="password" value="${conn.password}"/>  
+          -->
+        <!-- 加载驱动 -->  
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>  
+        <!-- 数据库的名字 -->  
+        <property name="url" value="${account_url}"></property>  
+        <!-- 用户名密码 -->  
+        <property name="username" value="${account_username}"></property>  
+        <property name="password" value="${account_password}"></property>  
+        <!-- 最大连接数 -->  
+        <property name="maxActive" value="100000"></property>  
+        <!-- 最大可空闲 -->  
+        <property name="maxIdle" value="0"></property>  
+        <!-- 最大等待秒数，单位为毫秒， 超过时间会报出错误信息 -->  
+        <property name="maxWait" value="1000"></property>  
+        <!-- 默认自动提交，跟事务有关系，true，每执行就会提交，所以没有事务 -->  
+        <property name="defaultAutoCommit" value="false"></property>  
+   </bean >  
+  
+   <!-- 动态配置数据源 -->  
+   <bean id ="dataSource" class= "com.game.spring.DynamicDataSource" >  
+          <property name ="targetDataSources">  
+                <map key-type ="java.lang.String">  
+                      <entry value-ref ="ds_admin" key= "ds_admin"></entry >  
+                      <entry value-ref ="resdb" key= "resdb"></entry >  
+                      <entry value-ref ="account" key="account"></entry>  
+                </map >  
+          </property >  
+          <property name ="defaultTargetDataSource" ref= "account"></property >      <!-- 默认使用ds1的数据源 -->  
+   </bean >  
+	
+	
+	<!-- 创建SqlSessionFactory -->  
+	<bean id ="sqlSessionFactory" class= "org.mybatis.spring.SqlSessionFactoryBean" >  
+	       <!-- 指定数据源 -->  
+	       <property name ="dataSource" ref="dataSource" />  
+	       <!-- 指定mybatis 的配置文件 -->  
+	       <property name ="configLocation" value= "classpath:mybatis-config.xml" />  
+	</bean >  
+	
+	
+	<!-- 配置SqlSessionTemplate -->  
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">  
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean>  
+
+    <!-- 配置mybatis mapper接口 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.game.db.dao"/>
+        <property name="sqlSessionTemplateBeanName" value="sqlSessionTemplate"/>
+    </bean>
+	
+	
+	<!-- start 添加 异常配置 -->
+	  
+	<aop:config proxy-target-class="true"></aop:config>
+	<!-- aop激活自动代理功能 -->
+    <!-- <aop:aspectj-autoproxy proxy-target-class="true"/> -->
+	
+	
+	<!-- Spring 统一日志处理   LogInterceptor拦截器 配置　-->   
+	<bean id="logLnterceptor" class="com.game.exception.LogInterceptor"/>  
+	<!-- Spring 统一异常处理  ExceptionAdvisor配置 -->  
+	<bean id="exceptionHandler" class="com.game.exception.ExceptionAdvisor"></bean>
+	<bean id="beforeMethod" class="com.game.exception.BeforeMethod"></bean>  
+	<bean id="afterMethod" class="com.game.exception.AfterMethod" ></bean>
+	
+	<!-- Bean自动代理处理器 配置-->    
+	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator" >  
+	 <property name="beanNames">
+		 <list>     
+	       <value>TestException</value>
+	       <value>*Svr</value>  
+	       <value>*Action</value>  
+	    </list>   
+	 </property>
+	 
+	 <property name="interceptorNames"> 
+		  <list>  
+		        <value>exceptionHandler</value>  
+		        <value>logLnterceptor</value>  
+		        <value>beforeMethod</value>
+		        <value>afterMethod</value>
+		        <!--<value>transactionInterceptor</value>-->  
+		   </list>  
+	 </property>
+	
+	</bean>
+	
+	<!-- end 添加 异常配置 -->
+	
+	
+	
+</beans>

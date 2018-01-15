@@ -317,9 +317,9 @@ public class Xml2Class {
 	
 	public static void main(String[] args) {
 		
-		String BaseFilePath = "E:\\xiangtoneWork\\netty_server\\workj2ee03\\mygame-core\\src\\com\\game\\metaxml\\";
+		String BaseFilePath = "E:\\xiangtoneWork\\NGameSvr\\NGameSvr\\src\\com\\game\\metaxml\\";
 		
-		String file[] = new String[]{"ProtoComm.xml","ResdbMeta.xml","Cspb.xml"}; 
+		String file[] = new String[]{"ProtoComm.xml","ResdbMeta.xml","ProtoCs.xml"}; 
 		
 		ArrayList<String> filePathArr = new ArrayList<>();
 		

@@ -8,7 +8,7 @@ import com.game.logic.net.Cs.DirRegionInfo;
 import com.game.logic.net.Cs.DirReq;
 import com.game.logic.net.Cs.DirRes;
 import com.game.logic.net.Cs.DirWorldInfo;
-import com.game.metaxml.Cspb;
+import com.game.metaxml.ProtoComm;
 import com.game.service.message.CSMSG;
 
 import io.netty.channel.ChannelHandlerContext;
@@ -23,7 +23,7 @@ public class DirSvr extends BaseSvr{
 	@Override
 	public void initCmdMap() {
 		//dir req
-		map.put(Cspb.MSG__TYPE__DIR_REQ, "dirSvrMsg");
+		map.put(ProtoComm.MSG__TYPE__DIR_REQ, "dirSvrMsg");
 	}
 	
 	public void dirSvrMsg(CSMSG stMsg)throws Exception{
@@ -58,7 +58,7 @@ public class DirSvr extends BaseSvr{
 		dirRes.addWorld(World);
 		//CsHeartRes.Builder heartRes = CsHeartRes.newBuilder();
 		
-		this.svrMsgSend(Cspb.MSG__TYPE__DIR_RES,dirRes);
+		this.svrMsgSend(ProtoComm.MSG__TYPE__DIR_RES,dirRes);
 	}
 
 	@Override

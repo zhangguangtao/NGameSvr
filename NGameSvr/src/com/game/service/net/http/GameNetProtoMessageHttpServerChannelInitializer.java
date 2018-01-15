@@ -5,9 +5,11 @@ import com.game.service.net.servlet.Servlet;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
+import io.netty.handler.codec.http.HttpContentCompressor;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpRequestDecoder;
 import io.netty.handler.codec.http.HttpResponseEncoder;
+import io.netty.handler.stream.ChunkedWriteHandler;
 
 public class GameNetProtoMessageHttpServerChannelInitializer extends ChannelInitializer<SocketChannel>{
 
@@ -26,8 +28,11 @@ public class GameNetProtoMessageHttpServerChannelInitializer extends ChannelInit
 	        channelPipLine.addLast("encoder", new HttpResponseEncoder());
 	        channelPipLine.addLast("trunk", new HttpObjectAggregator(1048576));
 	        channelPipLine.addLast("decoder", new HttpRequestDecoder());
-	        
+	        channelPipLine.addLast("chunkedWriter", new ChunkedWriteHandler());
+	     // Remove the following line if you don't want automatic content compression.
+	        channelPipLine.addLast("compressor", new HttpContentCompressor());  
 	        channelPipLine.addLast(new HttpServerHandler(this.servlet));
+	         
 	   
 	}
 

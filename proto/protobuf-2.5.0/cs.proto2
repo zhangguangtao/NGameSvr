@@ -1,0 +1,2535 @@
+
+// 消息类型
+enum MSG_TYPE
+{
+	DIR_REQ=1;
+	DIR_RES=2;
+	AUTH_REQ=3;
+	AUTH_RES=4;
+	LOGIN_REQ=5;
+	LOGIN_RES=6;
+	REGISTER_INFO_REQ= 205;			//注册信息
+	REGISTER_INFO_RSP= 206;
+//	AUTH_PARTNER_BIND_REQ = 201;		//合作方账号绑定
+//	AUTH_PARTNER_BIND_RSP = 202;		//合作方账号绑定回复
+//	AUTH_PARTNER_LOGIN_REQ = 203;		//合作方账号登陆
+//	AUTH_PARTNER_LOGIN_RSP = 204;		//合作方账号登陆回复
+	
+	AUTH_TEST_REQ=7;
+	SYS_TIP=8;
+	HEART_REQ=9;			// 心跳包请求
+	HEART_RES=10;			// 心跳包回复
+	
+	TOLLGATE_REQ=11;		// 关卡请求
+	TOLLGATE_RES=12;		// 关卡回复
+	
+	TEAM_REQ=13;			// 卡牌队伍请求
+	TEAM_RES=14;			// 卡牌队伍回复	
+	
+	CARD_INFO_CHG=15;		// 卡牌信息变化
+	ROLE_INFO_CHG=16;		// 角色信息变化
+	ARM_INFO_CHG=17;		// 装备信息变化
+	
+	CHAT_REQ=18;			// 说话---gm指令
+	
+	CARD_SEARCH_REQ=19;		// 卡牌搜索请求
+	CARD_SEARCH_RES=20;		// 卡牌搜索回复
+	ARM_SEARCH_REQ=21;		// arm搜索请求
+	ARM_SEARCH_RES=22;		// arm搜索回复
+	
+	CARD_SWAP_RES=23;		// 卡牌换ID回复 
+	
+	CARD_STAR_UP_REQ=24;		// 卡牌升星请求（已废弃）
+	CARD_STAR_UP_RES=25;		// 卡牌升星回复
+	
+	CARD_STREN_REQ=26;		// 卡牌强化请求
+	CARD_STREN_RES=27;		// 卡牌强化回复
+	
+	CARD_TRAINING_REQ=28;		// 卡牌训练请求
+	CARD_TRAINING_RES=29;		// 卡牌训练回复
+	
+	CARD_CURE_REQ=30;		// 卡牌治疗请求
+	CARD_CURE_RES=31;		// 卡牌治疗回复
+	
+	CARD_SKILL_UP_REQ=32;		// 卡牌技能升级请求
+	CARD_SKILL_UP_RES=33;		// 卡牌技能升级回复
+	
+	ARM_REQ=34;			// 装备请求
+	ARM_RES=35;			// 装备回复
+	
+	ROLE_DETAIL_INFO_REQ=36;	// 角色详细信息请求
+	ROLE_DETAIL_INFO_RES=37;	// 角色详细信息回复
+	
+	PLOY_SECTION_INFO_REQ=38;	// 活动章节信息请求
+	PLOY_SECTION_INFO_RES=39;	// 活动章节信息回复
+	
+	SELECT_CAMP_REQ=40;		// 选择正营请求
+	SELECT_CAMP_RES=41;		// 选择正营回复
+	
+	TASK_REQ=42;			// 任务请求
+	TASK_RES=43;			// 任务回复
+	
+	AWARD_REQ=44;			// 抽奖请求
+	AWARD_RES=45;
+	
+	GRID_CHG_NOTIFY=46;		// 卡牌 装备最大格子变化
+	
+	MAIL_REQ=47;			// 邮件
+	MAIL_RES=48;
+	
+	SHOP_REQ=49;			// 商城请求
+	SHOP_RES=50;
+	
+	JJC_REQ=51;			// 竞技场请求
+	JJC_RES=52;
+	
+	SIGNIN_REQ=53;			// 签到请求
+	SIGNIN_RES=54;
+	
+	NAME_CHG_REQ=55;		// NameReq 改名
+	NAME_CHG_RES=56;
+	
+	ARM_MACHINING_REQ=57;		// 装备加工请求
+	ARM_MACHINING_RES=58;		// 装备加工回复
+	
+	CARD_STUNT_REQ=59;		// 卡牌特技学习请求
+	CARD_STUNT_RES=60;		// 卡牌特技学习回复
+	
+	CARD_XL_REQ=61;			// 卡牌训练请求
+	CARD_XL_RES=62;			// 卡牌训练回复
+	
+	CARD_ACTIVE_REQ=63;			// 卡牌激活请求
+	CARD_ACTIVE_RES=64;			// 卡牌激活回复
+	
+	JUDGE_REQ=65;
+	JUDGE_RES=66;				// 评价回复
+	
+	RISK_REQ=67;			// 冒险小队请求
+	RISK_RES=68;			// 冒险小队回复
+	
+	SEEK_REQ=69;			// 探索请求
+	SEEK_RES=70;
+	
+	TUJIAN_REQ=71;			// 图鉴请求
+	TUJIAN_RES=72;			// 图鉴回复
+	
+	BCT_REQ=73;			// 勇者之塔
+	BCT_RES=74;			// 勇者之塔回复
+
+	TILI_ACTION_REQ = 75;		// 体力操作
+	TILI_ACTION_RES = 76;
+
+	MONTH_CARD_REQ=77;			// 月卡请求
+	MONTH_CARD_RES=78;
+
+	LEVELUP_REWARD_REQ=79;			// 升级礼包请求
+	LEVELUP_REWARD_RES=80;
+
+	CLIENT_EXTEND_REQ = 81;			//客户端扩展信息更新
+	CLIENT_EXTEND_RES = 82;
+
+	CHARGE_ORDER_REQ = 83;			//充值-下单
+	CHARGE_ORDER_RSP = 84;
+	APPLE_VERIFY_REQ = 89;			//充值-苹果验证
+	APPLE_VERIFY_RSP = 90;
+
+	ACTIVITY_REQ = 85;		//活动请求(首冲，boss斩杀，欧皇)
+	ACTIVITY_RSP = 86;		
+	
+	SCORE_SHOP_REQ = 87;		//积分商店
+	SCORE_SHOP_RSP = 88;
+
+	CARD_EVOLVE_REQ = 91;		//卡牌蜕变
+	CARD_EVOLVE_RSP = 92;
+
+	MANOR_REQ = 93;			//ManorReq 宅邸请求
+	MANOR_RSP = 94;
+
+	REG_TASK_REQ = 95;		// RegTaskReq 注册7日活动
+	REG_TASK_RSP = 96;
+
+	FUND_REQ = 97;			// FundReq开服基金
+	FUND_RSP = 98;
+
+	MESSAGE_REQ = 99;		// 聊天
+	MESSAGE_RSP = 100;
+
+	CARD_LOCK_REQ = 101;		// 卡牌锁
+	CARD_LOCK_RSP = 102;
+
+	MONTH_FUND_REQ = 103;		// MonthFundReq月基金
+	MONTH_FUND_RSP = 104;
+}
+
+// 货币类型
+enum MONEY_TYPE
+{
+	MONEY_TYPE_GOLD=1;			// 金币	
+	MONEY_TYPE_SHUIJING=2;			// 水晶
+	MONEY_TYPE_RMB=3;			// 钻石
+	MONEY_TYPE_ZJQB=4;			// 战姬情报
+	MONEY_TYPE_BQTZ=5;			// 兵器图纸
+	MONEY_TYPE_QSEARCH=6;			// 快速搜索
+	MONEY_TYPE_QCURE=7;			// 快速治疗
+	MONEY_TYPE_GOUYU=8;			// 勾玉
+	MONEY_TYPE_FREEAWARD=9;			// 免费抽奖
+	MONEY_TYPE_GLORY=10;			// 竞技场荣誉
+	
+	MONEY_TYPE_WOOD=11;			// 木材
+	MONEY_TYPE_IRON=12;			// 钢铁
+	MONEY_TYPE_CLOTH=13;			// 布匹
+	MONEY_TYPE_ROCK=14;			// 原石
+	MONEY_TYPE_XUANIRON=15;			// 玄铁
+	MONEY_TYPE_SILK=16;			// 丝绸
+	MONEY_TYPE_QIROCK=17;			// 奇石
+	
+	MONEY_TYPE_XLREEL=18;			// 训练卷轴
+	MONEY_TYPE_XLREEL_GAO=19;		// 高级训练卷轴
+	MONEY_TYPE_QREEL=20;			// 加速卷轴
+	MONEY_TYPE_TSVAL=21;			// 探索值 探索文档上的体力
+	MONEY_TYPE_TS_EVENT_MAX=22;		// 探索事件上限 
+	MONEY_TYPE_TSVAL_MAX=23;		// 探索值上限
+	MONEY_TYPE_QUICK_FIGHT=24;		// 快速战斗
+	MONEY_TYPE_CARD_SCORE=25;		// 卡牌积分
+	
+	MONEY_TYPE_CARD_EVOLVE_A=26;		// 卡牌蜕变道具A
+	MONEY_TYPE_CARD_EVOLVE_B=27;		// 卡牌蜕变道具B
+	MONEY_TYPE_CARD_EVOLVE_C=28;		// 卡牌蜕变道具C
+	MONEY_TYPE_CARD_EVOLVE_D=29;		// 卡牌蜕变道具D
+	MONEY_TYPE_CARD_EVOLVE_E=30;		// 卡牌蜕变道具E
+
+	MONEY_TYPE_EXPLOIT = 31;		// 功勋
+}
+
+
+enum AUTH_TYPE
+{
+	QUICK=1;	//快速游戏
+	REGIS=2;	//注册
+	LOGIN=3; 	//登录验证
+	PARTNER=4;	//合作方账号登陆
+	
+	PARTNER_BIND = 100;	//合作方绑定 服务器使用
+}
+
+enum AUTH_ERROR
+{
+	SYS=-1;			// 系统错误
+	NO_ACC_NAME=-2;		// 没有输入账号
+	NO_ACC_PASSWD=-3;	//没有输入密码
+	PASSWD=-4;		// 密码错误
+	ACC_NAME_EXIST=-5;	// 账号已经存在
+}
+
+message CsAuthTestReq
+{
+	required string Enc=1;
+	required uint32 AuthType=2;
+}
+
+enum PARTNER_CHANNEL
+{
+	HAIMA = 101;	//海马
+	LE8	= 102;	//乐8
+	XY 	= 103;	//XY
+	I4	= 104;	//爱思
+	APPLE = 110;	// appstore
+
+	HAIMA_2 = 201;	//海马-安卓
+}
+
+// Type=QUICK时  Uin AccountName AccountPasswd都为0 服务器返回Uin
+// Type=REGIS  Uin大于0表示补全账号和密码 否则表示新注册，服务器返回Uin
+// Type=LOGIN  账号和密码必须有值 服务器返回Uin
+// Type=PARTNER partner_id，partner_channel必须有值，Enc为对应token，服务器返回Uin
+message AuthReq
+{
+	required int32 Type=1; // AUTH_TYPE
+	required int32 Uin=2;
+	optional string partner_id = 4;
+	optional int32  partner_channel = 5;	//PARTNER_CHANNEL
+	
+	// 用rsa public_key非对称加密的账号和密码二次哈希
+	// 约定第一个字节为 账号长度 第二个字节为密码长度
+	// |账号长度|密码长度|账号|密码|
+	// Enc包含两个字段 len和data len约定为256
+	required string Enc=3;
+	
+}
+
+// 验证请求服务器回复
+// Uin <0表示出错 出错代码为AUTH_ERROR
+message AuthRes
+{
+	required int32 Type=1; 	// AUTH_TYPE
+	required string AccountName=2;	
+	required int32 Uin=3;	
+	
+	// 服务器返回的签名 LoginReq要发给服务器
+	required string Enc=4;
+	optional int32 NewAccount = 5;	//1-new account
+}
+
+//合作方账号绑定操作
+//message AuthPartnerBindReq 
+//{
+//	required int32 Uin=1;
+//	required string partner_id = 2;
+//	required int32  partner_channel = 3;
+//}
+
+//message AuthPartnerBindRsp
+//{
+//	required int32 iSucc=1;
+//}
+
+// DIR_REQ 
+message DirReq
+{
+	required int32 LastVer=1;
+}
+
+// DIR_RES
+message DirRegionInfo
+{
+	required string Name=1;
+	required string Url=2;
+	required uint32 StatFlag=3;
+}
+
+message DirWorldInfo
+{
+	required string Name=1;
+	required string IP=2;  /*zone_svr前端连接IP*/
+	required int32 Port=3;/*zone_svr前端连接端口*/
+	required int32 WorldID=4;
+	required int32 RegionID=5;
+	required int32 RegionIdx=6;
+	required int32 NewFlag=7;	// 1表示新区
+	required string AuthIP=8;  /*auth_svr前端连接IP*/
+	required int32 AuthPort=9;/*auth_svr前端连接端口*/
+	required int32 StatFlag=10;	// 服务器状态 0-维护 1-很好 2-正常 3-繁忙 4-爆满 5-隐藏 6-维护（客户端不可进入）
+}
+
+message DirRes
+{
+	required int32 LastVer=1;
+	repeated DirRegionInfo Region=2;	
+	repeated DirWorldInfo World=3;
+}
+
+message LoginReq
+{
+	required int32 Uin=1;
+	required string AccName=2;
+	required string Enc=3;
+}
+
+message CsCardSkill
+{
+	required int32 ID=1;
+	required uint32 Lvl=2;
+}
+
+message CsCardStren
+{
+	required int32 WuliLvl=1;
+	required int32 ZhiliLvl=2;
+	required int32 FangyuLvl=3;
+	required int32 WuliExp=4;
+	required int32 ZhiliExp=5;
+	required int32 FangyuExp=6;    
+}
+
+message CsCardArm
+{
+	required int32 Idx=1;			// 0-3第几个格子
+	required CsArmOne Arm=2;		// 具体装备数据
+}
+
+message CsCardOne
+{
+	required int32 ID=1;
+	required uint32 WID=2;
+	required int32 Hp=3;
+	required int32 MaxHp=4;
+	required int32 Exp=5;
+	required int32 Lvl=6;
+	repeated CsCardSkill Skills=7;
+	required CsCardStren Stren=8;		// 卡牌强化数据
+	required int32 MaxArmNum=9;		// 最大装备格子数
+	repeated CsCardArm Arms=10;		// 装备
+	required int32 Wuli=11;
+	required int32 Zhili=12;
+	required int32 Fangyu=13;
+	required int32 Shanbi=14;
+	required int32 Mingzhong=15;
+	required int32 Zhancha=16;
+	required int32 Zhan=17;
+	required int32 Xingyun=18;
+	required int32 Zhuiji=19;
+	repeated CsStuntOne Ones=20;		// 特技
+	required int32 Flag=21;			// 标记 Flag&1表示激活了第一个 Flag&2第二个 Flag&4第三个
+	required int32 EvolveLvl = 22;		// 修炼等级
+	required int32 EvolveExp = 23;		// 修炼经验
+	required int32 EvolveUpgrade = 24;	// 蜕变次数
+	required int32 Lock = 25;		// 是否上锁
+}
+
+message CsCardInfo
+{
+	required int32 Maxnum=1;		// 最大卡牌格子
+	repeated CsCardOne Cards=2;
+}
+
+message CsSectionInfo
+{
+	required int32 CurrSectionID=1;		// 当前能进入的章节
+	required int32 LeaveHp=2;		// 当前章节boss剩余hp
+	required int32 CountHp=3;		// 总血量
+	required int32 IsBossDie=4;		// 当前章节boss是否死亡
+	required int32 MaxExtremeId = 5;	// 极限模式最大通关id
+}
+
+message CsTeamCardOne
+{
+	required int32 ID=1;
+	required uint32 WID=2;	
+	
+}
+
+message CsTeamOne
+{
+	repeated CsTeamCardOne TeamCards=1;	// 队伍卡牌
+}
+
+message CsTeamInfo
+{
+	repeated CsTeamOne Teams=1;		// 所有队伍	
+}
+
+message RoleBaseInfo
+{
+	required int32 Lvl=1;
+	required int32 Exp=2;
+	required int32 Shuijing=3;			// 水晶
+	required int32 Tili=4;
+	required int32 Gold=5;				// 金币
+	required int32 RMB=6;				// 充值币
+	required int32 QuickSearch=7;			// 快速搜索币
+	required int32 ZhanjiQb=8;			// 战姬情报币	
+	required int32 BingqiTz=9;			// 兵器图纸
+	required int32 MaxTili=10;			// 最大体力
+	required int32 QCure=11;			// 快速治疗币
+	required int32 GouYu=12;			// 勾玉
+	required int32 FreeAward=13;			// 免费抽奖次数
+	required int32 VipLvl=14;			// vip等级
+	required int32 ChongZhiCount=15;		// 总充值数
+	required int32 JjcGlory=16;			// 竞技场荣誉
+	required int32 Wood=17;				// 木材
+	required int32 Iron=18;				//  钢铁	
+	required int32 Cloth=19;			//  布
+	required int32 Rock=20;				//  原石	
+	required int32 XuanIron=21;			//  玄铁	
+	required int32 Silk=22;				//  丝绸
+	required int32 QiRock=23;			//  奇石
+	required int32 XLReel=24;			//  训练卷轴
+	required int32 XLReelGao=25;			//  高级训练卷轴
+	required int32 QReel=26;			// 加速卷轴
+	required int32 TSVal=27;			// 探索值 探索文档上的体力
+	required int32 MaxTSVal=28;			// 最大探索值
+	required int32 MaxTsEvent=29;			// 探索事件上限 
+	required int32 NextFreeAddTiliTime = 30;	// 下次可以免费领取体力的时刻
+	required int32 NextFreeAwardTime = 31;		// 下次可以免费抽卡的时刻
+	required int32 NextVipFreeAwardTime = 32;	// 下次可以vip免费抽卡的时刻
+	required int32 QuickFightItem = 33;		// 快速战斗道具
+	required int32 CardScore = 34;			// 卡牌积分
+	required int32 CardEvolveItemA = 35;		// 蜕变道具a
+	required int32 CardEvolveItemB = 36;		// 蜕变道具b
+	required int32 CardEvolveItemC = 37;		// 蜕变道具c
+	required int32 CardEvolveItemD = 38;		// 蜕变道具d
+	required int32 CardEvolveItemE = 39;		// 蜕变道具e
+	required int32 Exploit = 40;			// 功勋
+
+	required RoleDayInfo DayInfo = 100;		// 每日信息
+}
+
+message RoleDayInfo 
+{
+	required int32 NextResetTime = 1;		//下次重置时刻
+	required int32 AddTiliMoneyCount = 10;		//金币购买体力次数
+	required int32 AddTiliRMBCount = 11;		//钻石购买体力次数
+	required int32 AwardMoneyCount = 20;		//金币招募次数
+	required int32 TiliOutTime = 12;		//副本无体力挑战次数
+}
+
+message MonthCardInfo
+{
+	required int32 ExpireTime = 1;		//到期时间
+	required int32 NextRewardTime = 2;	//下一次可领取奖励时间
+}
+
+message CsArmOne
+{
+	required int32 ArmID=1;
+	required uint32 WID=2;
+	required int32 Star=3;
+}
+
+message CsArmInfo
+{
+	required int32 Maxnum=1;			// 最大装备格子
+	repeated CsArmOne Arms=2;
+}
+
+message PlayerData
+{
+	required int32 Uin=1;
+	required string Name=2;
+	required int32 Icon=3;
+	required int32 Title=5;//称谓id
+	required string extend= 6;//客户端使用	最大256
+	required RoleBaseInfo BaseInfo=4;
+		
+}
+
+message LoginRes
+{
+	required int32 Succ=1; 			//1-成功
+	required int32 MemID=2; 		// 角色服务器内存ID
+	required PlayerData PlayerData=3;	// 角色数据
+	required int32 SvrTime=4;		// 服务器当前时间
+	required int32 IsSelectCamp=5;		// 是否选择了阵营 1-是
+	required uint32 LoginSeq=6;		// 第几次登录 第一次登录为1
+	required int32 RegTaskDay=7;		// 注册活动当前天数
+}
+
+// 系统提示
+message CsSysTip
+{
+	required int32 Type=1;			// 1-系统错误提示
+	required string Tip=2;			// 系统提示内容
+}
+
+// 心跳包请求 --客户端把当前服务器时间返回给服务器
+message CsHeartReq
+{
+	required int32 SvrTime=1;		// 	
+}
+
+// 心跳包回复 --服务器会根据请求中的时间误差来调整 发给客户端新的服务器时间 小于等于-不用调整 大于0表示服务器时间
+message CsHeartRes
+{
+	required int32 SvrTime=1;		// 
+	required int32 MessageCount = 2;	//当前未读聊天数量	
+}
+
+enum CLT_TG_TYPE
+{
+	CLT_TG_SECTION_ENTER=1;		// 进入某个章节
+	CLT_TG_GO=2;			// 前进
+	CLT_TG_EXIT=3;			// 撤退	
+	CLT_TG_FIGTH_SELECT=4;		// 战斗选择 追击或者撤退
+	CLT_TG_LINEUP=5;		// 阵型选择
+	CLT_TG_AWARD=6;			// 领取奖励
+	CLT_TG_SD=7;			// 扫荡
+	CLT_EXTREME=8;			// 极限挑战排行榜
+}
+
+message CsEnterSection
+{
+	required int32 SectionID=1;		// 章ID
+	required int32 TeamIdx=2;		// 选择第几队 0-3
+	optional int32 Extreme=3;		// 极限挑战模式	
+}
+
+message CsSectionGo
+{
+	required int32 SectionID=1;		// 章ID
+	required int32 TollgateID=2;		// 关卡ID
+	optional int32 CurrTollgateID = 3;	// 当前关卡ID
+}
+
+message CsSectionExit
+{
+	required int32 SectionID=1;		// 章ID
+}
+
+message CsSectionFightSelect
+{
+	required int32 SectionID=1;	// 哪个章节
+	required int32 TollgateID=2;	// 哪个关卡
+	required int32 Exit=3;		// 1-撤退 0-追击
+}
+
+message CsSectionLineUp
+{
+	required int32 LineUp=1;	// 0-5	
+	required int32 SectionID=2;	// 章节ID
+	required int32 TollgateID=3;	// 关卡ID
+	optional int32 FastFight=4;	// 快速战斗 1-是
+}
+
+message CsSectionAward
+{
+	required int32 SectionID=1;		// 章ID
+	required int32 TollgateID=2;		// 哪个关卡
+}
+
+message CsSectionSD
+{
+	required int32 SectionID=1;		// 章ID
+	required int32 TollgateID=2;		// 关卡ID
+}
+
+// 章节关卡请求
+message CsTollgateReq
+{
+	required int32 MsgType=1;  		// CLT_TG_TYPE  
+	required CsEnterSection EnterSection=2; // CLT_TG_SECTION_ENTER
+	required CsSectionGo Go=3;		// CLT_TG_GO
+	required CsSectionExit Exit=4;		// TG_TYPE_EXIT
+	required CsSectionLineUp LineUp=5;	// CLT_TG_LINEUP
+	required CsSectionFightSelect Select=6;	// CLT_TG_FIGTH_SELECT
+	required CsSectionAward Award=7;	// CLT_TG_AWARD
+	required CsSectionSD SD=8;		// CLT_TG_SD
+}
+
+
+enum SVR_TG_TYPE
+{
+	SVR_TG_SECTION_ENTER=1;			// 进入某个章节
+	SVR_TG_GO=2;				// 前进
+	SVR_TG_EXIT=3;				// 撤退	
+	SVR_TG_FIGTH_SELECT=4;			// 选择追击战回复	
+	SVR_TG_LINEUP=5;			// 阵型选择回复
+	SVR_TG_SECTION_CHG=6;			// 通关章节信息变化
+	SVR_TG_SECTION_AWARD=7;			// 领取奖励回复
+	SVR_TG_EXTREME=8;			// 极限挑战排行榜
+	//SVR_TG_SD;				// 扫荡
+}
+
+message CsSvrSectionAward
+{
+	required int32 Succ=1;			// 0-成功 
+	required int32 SectionID=2;		// 哪个章节	
+	required int32 TollgateID=3;		// 
+	required CsSvrAward Award=4;		// 具体奖励
+	required int32 IsEnd=5;			// 是否终点
+}
+
+message CsSvrEnterSection
+{
+	required int32 Succ=1;			// 0-成功 
+	required int32 SectionID=2;		// 哪个章节	
+}
+
+message CsSvrAward
+{
+	required int32 CardID=1;		// 奖励卡牌
+	required int32 ArmID=2;			// 装备
+	required int32 RoleExp=3;		// 角色经验
+	required int32 Gold=4;			// 金币
+	required int32 Shuijing=5;		// 水晶	
+	required int32 Tili=6;			// 体力
+	repeated int32 CardExps=7;		// 卡牌经验数组
+	required int32 MvpIdx=8;		// 
+	required int32 PreRoleExp=9;		
+	required int32 PreRoleGold=10;
+	required int32 PreRoleShuijing=11;
+	required int32 PreRoleLvl=12;
+	required int32 Star=13;
+	required int32 Wood=14;				// 木材
+	required int32 Iron=15;				//  钢铁	
+	required int32 Cloth=16;			//  布
+	required int32 Rock=17;				//  原石	
+	required int32 XuanIron=18;			//  玄铁	
+	required int32 Silk=19;				//  丝绸
+	required int32 QiRock=20;			//  奇石
+	required int32 CardWID=21;		// 奖励卡牌
+	required int32 ArmWID=22;		
+}
+
+message CsSvrTollgateGo
+{
+	required int32 Succ=1;			// 0-成功 	
+	required int32 TollgateID=2;		// 进入的关卡ID
+	required int32 Spy=3;			// 如果是战斗副本 1-侦查成功
+	//required CsSvrAward Award=4;		// 如果不是战斗副本 表示奖励列表		
+}
+
+message CsAttkList
+{
+	required int32 Idx=1;			// 第几张卡牌被击
+	required int32 Hp=2;			// 被击血量
+	required int32 AttkType=3;		// 1-正常 2-暴击 3-斩 4-Miss 99-释放buff
+	required int32 Side=4;			// 0-我方 1-敌方
+	required int32 BuffID=5;
+}
+
+message CsAttkOne
+{
+	required int32 AttkSide=1;		// 攻击方 0-我方 1-敌方
+	required int32 Attkidx=2;		// 第几张卡牌攻击
+	required int32 Phase=3;			// 阶段1-侦查战 2-计谋战 3-冲锋1 4-冲锋2 5-追击战	
+	repeated CsAttkList List=4;		// 被击列表		
+	required int32 SkillID=5;		// 攻击技能
+	required int32 SkillLvl=6;		// 技能等级
+}
+
+message CsFightInfo
+{
+	repeated CsAttkOne Hurt=1;
+	//required int32 Star=2;	
+}
+
+message CsSvrTollgateFight
+{
+	required int32 SectionID=1;		// 哪个章节
+	required int32 TollgateID=2;		// 哪个关卡
+	required CsFightInfo FightInfo=3;	// 战斗信息 以后再加
+	required int32 Succ=4;			// 0-成功
+	required int32 EnemyLineup = 5;		// 对方阵型
+	//required CsSvrAward Award=5;		// 奖励列表
+}
+
+message CsSvrSectionExit
+{
+	required int32 Succ=1;			// 0-成功 
+	required int32 SectionID=2;		// 哪个章节
+}
+
+
+message ExtremeRankInfo
+{
+	required int32 Uin = 1;
+	required string Name =2;
+	required int32 SectionId = 3;
+	required int32 Time = 4;
+	required int32 Buildingid = 5;	//官职建筑
+}
+
+message CsTollgateRes
+{
+	required int32 MsgType=1;  			// SVR_TG_TYPE  
+	required CsSvrEnterSection Enter=2; 		// SVR_TG_SECTION_ENTER
+	required CsSvrTollgateGo Go=3;			// SVR_TG_GO
+	required CsSvrTollgateFight FightSelect=4;	// SVR_TG_FIGTH_SELECT
+	required CsSvrSectionExit Exit=5;		// SVR_TG_EXIT
+	required CsSvrTollgateFight LineUp=6;		// SVR_TG_LINEUP
+	required CsSectionInfo SectionChg=7;		// SVR_TG_SECTION_CHG	
+	required CsSvrSectionAward Award=8;		// SVR_TG_SECTION_AWARD
+	repeated  ExtremeRankInfo RankInfos = 10;	// SVR_TG_EXTREME
+}
+
+
+
+// 队伍请求
+message CsTeamChgReq				// TEAM_REQ
+{
+	required int32 TeamIdx=1;		// 第几对 0-3
+	required int32 Op=2;			// 1-换上 2-撤下 3-交换
+	required int32 TeamCardID=3;		// 队伍中的卡牌
+	required int32 TeamCardWID=4;	
+	required int32 PkgCardID=5;		// 背包中的卡牌
+	required int32 PkgCardWID=6;		
+}
+
+// 队伍回复
+message CsTeamChgRes				// TEAM_RES
+{
+	required int32 Succ=1;			// 0-成功
+	required int32 TeamIdx=2;		// 第几对 0-3
+	required CsTeamOne Team=3;		// 队伍信息
+}
+
+
+// 卡牌信息变化 
+message CsCardInfoChgRes
+{
+	required uint32 Op=1;   		// 1-删除 2-添加 3-卡牌信息变化
+	required CsCardOne Card=2;		// 哪张卡牌			
+}
+
+// 角色信息变化
+message CsRoleInfoChgRes
+{
+	required RoleBaseInfo BaseInfo=1;
+}
+
+
+// 装备信息变化  
+message CsArmInfoChgRes
+{
+	required uint32 Op=1;   		// 1-删除 2-添加 3-装备信息变化 4- 替换一件装备
+	required CsArmOne Arm=2;		//
+	required CsArmOne Swap=3;		// 被替换的装备	Op为4时才有意义
+}
+
+// 说话--gm指令
+message CsChatReq
+{
+	required string Say=1;
+}
+
+
+// 卡牌搜索
+enum CLT_SEARCH_TYPE
+{
+	CLT_SEARCH_START=1;			// 开始搜索
+	CLT_SEARCH_QUICK=2;			// 快速搜索
+	CLT_SEARCH_RECORD=3;			// 查看历史记录
+	CLT_SEARCH_COLLECTION_ADD=4;		// 收藏某条信息
+	CLT_SEARCH_COLLECTION_VIEW=5;		// 查看收藏信息
+	CLT_SEARCH_GET=6;			// 时间到了点击获取卡牌
+	CLT_SEARCH_COLLECTION_DEL=7;		// 删除收藏某条信息
+}
+
+message CsSearchStart
+{
+	required int32 Idx=1;			// 第几个栏位 0开始
+	required int32 Tili=2;
+	required int32 Gold=3;
+	required int32 Shuijing=4;
+	required int32 Rmb=5;	
+}
+
+message CsSearchQuick
+{
+	required int32 Idx=1;			// 第几个栏位 0开始
+}
+
+message CsSearchGet
+{
+	required int32 Idx=1;			// 第几个栏位 0开始
+}
+
+message CsSearchCollDel
+{
+	required int32 Idx=1;			// 第几个栏位 0开始
+}
+
+message CsSearchCollAdd
+{
+	required SearchRecord Record=1;	
+}
+
+message CsCardSearchReq
+{
+	required int32 MsgType=1;		// CLT_SEARCH_TYPE   	查看  不需要其他字段
+	required CsSearchStart Start=2;		// CLT_SEARCH_START
+	required CsSearchQuick Quick=3;		// CLT_SEARCH_QUICK
+	required CsSearchGet Get=4;		// CLT_SEARCH_GET
+	required CsSearchCollAdd Add=5;		// CLT_SEARCH_COLLECTION_ADD
+	required CsSearchCollDel Del=6;		// CLT_SEARCH_COLLECTION_DEL	
+}
+
+enum SVR_SEARCH_TYPE
+{
+	SVR_SEARCH_INFO=1;			// 搜索栏位信息  登录时发  变化时发
+	SVR_SEARCH_QUICK=2;			// 快速搜索回复
+	SVR_SEARCH_RECORD=3;			// 查看历史记录
+	SVR_SEARCH_COLL_INFO=4;			// 收藏夹信息   添加 删除 查看都会发次消息
+	SVR_SEARCH_START=5;			// 搜索回复
+	SVR_SEARCH_GET=6;			// 获取卡牌回复
+}
+
+message SvrSearchStart
+{
+	required int32 Succ=1;		// 0-成功
+	required int32 Idx=2;		// 第几个栏位
+}
+
+message SvrSearchQuick
+{
+	required int32 Succ=1;		// 0-成功
+}
+
+message SvrSearchGet
+{
+	required int32 Succ=1;		// 0-成功
+	required int32 CardID=2;
+}
+
+message SearchRecord
+{
+	required string Name=1;
+	required int32 Tili=2;
+	required int32 Gold=3;
+	required int32 Shuijing=4;
+	required int32 Rmb=5;
+	required int32 CardID=6;
+	required int32 Time=7;			// 记录的时间
+	required int32 Star=8;
+}
+
+message SearchCollInfo
+{
+	repeated SearchRecord Record=1;
+}
+
+message SearchRecordView
+{
+	repeated SearchRecord Record=1;	
+}
+
+message CardSearchOne
+{
+	required int32 Idx=1;				// 第几个栏位
+	required int32 EndTime=2;			// 到期时间
+}
+
+message SearchInfo
+{
+	required int32 CurrGrid=1;			// 当前能用的格子数
+	repeated CardSearchOne One=2;			// 栏位信息 
+}
+
+message CsCardSearchRes
+{
+	required int32 MsgType=1;			// SVR_SEARCH_TYPE
+	required SvrSearchStart Start=2;		// SVR_SEARCH_START
+	required SvrSearchQuick Quick=3;		// SVR_SEARCH_QUICK 
+	required SearchCollInfo CollInfo=4;		// SVR_SEARCH_COLL_INFO
+	required SearchRecordView Record=5;		// SVR_SEARCH_RECORD
+	required SearchInfo Info=6;			// SVR_SEARCH_INFO 
+	required SvrSearchGet Get=7;			// SVR_SEARCH_GET
+}
+// 卡牌搜索
+
+
+// 装备搜索start
+message CsArmSearchStart
+{
+	required int32 Idx=1;			// 第几个栏位 0开始
+	required int32 Tili=2;
+	required int32 Gold=3;
+	required int32 Shuijing=4;
+	required int32 Rmb=5;	
+}
+
+message CsArmSearchQuick
+{
+	required int32 Idx=1;			// 第几个栏位 0开始
+}
+
+message CsArmSearchGet
+{
+	required int32 Idx=1;			// 第几个栏位 0开始
+}
+
+message CsArmSearchCollDel
+{
+	required int32 Idx=1;			// 第几个栏位 0开始
+}
+
+message CsArmSearchCollAdd
+{
+	required CsArmSearchRecord Record=1;	// 添加的记录
+}
+
+enum CLT_ARM_SEARCH_TYPE
+{
+//	CLT_ARM_SEARCH_START=1;				// 开始搜索
+//	CLT_ARM_SEARCH_QUICK=2;				// 快速搜索
+	CLT_ARM_SEARCH_RECORD=3;			// 查看所有记录
+	CLT_ARM_SEARCH_COLLECTION_ADD=4;		// 收藏某条信息
+	CLT_ARM_SEARCH_COLLECTION_VIEW=5;		// 查看收藏信息
+//	CLT_ARM_SEARCH_GET=6;				// 时间到了点击获取卡牌
+	CLT_ARM_SEARCH_COLLECTION_DEL=7;		// 删除收藏某条信息
+}
+
+message CsArmSearchReq
+{
+	required int32 MsgType=1;			// CLT_ARM_SEARCH_TYPE   	查看  不需要其他字段
+//	required CsArmSearchStart Start=2;		// CLT_ARM_SEARCH_START
+//	required CsArmSearchQuick Quick=3;		// CLT_ARM_SEARCH_QUICK
+//	required CsArmSearchGet Get=4;			// CLT_ARM_SEARCH_GET
+	required CsArmSearchCollAdd Add=5;		// CLT_ARM_SEARCH_COLLECTION_ADD
+	required CsArmSearchCollDel Del=6;		// CLT_ARM_SEARCH_COLLECTION_DEL	
+}
+
+
+
+message SvrArmSearchStart
+{
+	required int32 Succ=1;		// 0-成功
+	required int32 Idx=2;		// 第几个栏位
+}
+
+message SvrArmSearchQuick
+{
+	required int32 Succ=1;		// 0-成功
+}
+
+message SvrArmSearchGet
+{
+	required int32 Succ=1;		// 0-成功
+	required int32 CardID=2;
+}
+
+message CsArmSearchRecord
+{
+	required string Name=1;
+	required int32 ArmID=2;
+	required int32 Time=3;			// 记录的时间
+	required int32 Star=4;			// 星级
+	required int32 Icon=5;			// 图标
+	repeated CsMoneyOne Moneys=6;		// 使用材料
+}
+
+message ArmSearchCollInfo
+{
+	repeated CsArmSearchRecord Record=1;
+}
+
+message ArmSearchRecordView
+{
+	repeated CsArmSearchRecord Record=1;	
+}
+
+message CsArmSearchOne
+{
+	required int32 Idx=1;				// 第几个栏位
+	required int32 EndTime=2;			// 到期时间
+}
+
+message CsArmSearchInfo
+{
+	required int32 CurrGrid=1;			// 当前能用的最大格子数
+	repeated CsArmSearchOne One=2;			// 栏位信息 
+}
+
+enum SVR_ARM_SEARCH_TYPE
+{
+//	SVR_ARM_SEARCH_INFO=1;				// 搜索栏位信息  登录时发  变化时发
+//	SVR_ARM_SEARCH_QUICK=2;				// 快速搜索回复
+	SVR_ARM_SEARCH_RECORD=3;			// 查看所有记录
+	SVR_ARM_SEARCH_COLL_INFO=4;			// 收藏夹信息   添加 删除 查看都会发次消息
+//	SVR_ARM_SEARCH_START=5;				// 搜索回复
+//	SVR_ARM_SEARCH_GET=6;				// 获取arm回复
+}
+
+message CsArmSearchRes
+{
+	required int32 MsgType=1;				// SVR_ARM_SEARCH_TYPE
+	//required SvrArmSearchStart Start=2;			// SVR_ARM_SEARCH_START
+	//required SvrArmSearchQuick Quick=3;			// SVR_ARM_SEARCH_QUICK 
+	required ArmSearchCollInfo CollInfo=4;			// SVR_ARM_SEARCH_COLL_INFO
+	required ArmSearchRecordView Record=5;			// SVR_ARM_SEARCH_RECORD
+	//required CsArmSearchInfo Info=6;			// SVR_ARM_SEARCH_INFO 
+	//required SvrArmSearchGet Get=7;				// SVR_ARM_SEARCH_GET
+}
+// 装备搜索end
+
+
+// 卡牌更换
+message CsCardSwapRes
+{
+	required int32 CardID=1;		// 被替换的id
+	required int32 CardWID=2;		// 被替换的wid
+	required CsCardOne Card=3;		// 替换的卡牌信息
+}
+
+// 卡牌升星请求
+message CsCardStarUpReq
+{
+	required int32 CardID=1;		
+	required int32 CardWID=2;
+}
+
+// 卡牌升星回复
+message CsCardStarUpRes
+{
+	required int32 CardID=1;	// 升星之前的卡牌ID	
+	required int32 CardWID=2;	// 升星之前的wid
+	required int32 Succ=3;		// 0-成功
+	required int32 ChgCardID=4;	// 升星成功之后的卡牌ID   wid不变
+}
+
+
+
+// 卡牌强化请求
+message CsCardID
+{
+	required int32 CardID=1;		
+	required uint32 CardWID=2;
+}
+
+message CsCardStrenReq
+{
+	required CsCardID StrenCard=1;		// 强化的卡牌	
+	repeated CsCardID StuffCards=2;		// 材料数组
+}
+
+// 卡牌强化回复
+message CsCardStrenRes
+{
+	required CsCardID StrenCard=1;		// 强化的卡牌	
+	required int32 Succ=2;			// 0-成功
+	repeated CsCardID StuffCards=3;		// 材料卡牌
+}
+
+
+enum CLT_CARD_TRAINING
+{
+	CLT_CARD_TRAINING_LVLUP=1;		// 训练栏位升级
+	CLT_CARD_TRAINING_START=2;		// 开始训练
+	CLT_CARD_TRAINING_ALL=3;		// 所有训练栏位信息
+}
+
+// 卡牌训练请求
+message CsCardTrainingReq
+{
+	required int32 MsgType=1;		// CLT_CARD_TRAINING
+	required int32 Idx=2;			// 第几个栏位 0-3
+	required CsCardID CardID=3;		// 哪张卡牌 升级栏位时此字段都填0			
+}
+
+
+enum SVR_CARD_TRAINING
+{
+	SVR_CARD_TRAINING_ALL=1;		// 卡牌信息全部信息
+	SVR_CARD_TRAINING_LVLUP=2;		// 升级栏位回复
+	SVR_CARD_TRAINING_START=3;		// 开始训练回复
+}
+
+message CsCardTrainingOne
+{
+	required int32 Lvl=1;			// 栏位等级
+	required int32 EndTime=2;		// 训练结束时间
+	required int32 Idx=3;			// 第几个栏位 0-3
+}
+
+message CsCardTrainingOp
+{
+	required CsCardTrainingOne Training=1;	// 栏位信息
+	required int32 Succ=2;			// 0-成功
+}
+
+
+// 卡牌训练回复
+message CsCardTrainingRes
+{
+	required int32 MsgType=1;		// SVR_CARD_TRAINING
+	repeated CsCardTrainingOne All=2;	// SVR_CARD_TRAINING_ALL
+//	required CsCardTrainingOp One=3;	// SVR_CARD_TRAINING_LVLUP SVR_CARD_TRAINING_START
+	required int32 Succ=3;			// 0-成功
+}
+
+
+// 卡牌治疗请求
+enum CLT_CARD_CURE
+{
+	CLT_CARD_CURE_START=1;			// 开始治疗
+	CLT_CARD_CURE_QUICK=2;			// 快速治疗
+	CLT_CARD_CURE_ADD_GRID=3;		// 添加格子
+	CLT_CARD_CURE_ALL=4;			// 所有信息请求
+}
+
+message CsCardCureReq
+{
+	required int32 MsgType=1;		// CLT_CARD_CURE
+	required int32 Idx=2;			// 第几个栏位 0-3  添加格子此字段无意义
+	required CsCardID CardID=3;		// 哪张卡牌 	   添加格子此字段无意义		
+}
+
+// 卡牌治疗回复
+enum SVR_CARD_CURE
+{
+	SVR_CARD_CURE_ALL=1;			// 登录之后会发全部信息
+	SVR_CARD_CURE_START=2;			// 开始治疗回复
+	SVR_CARD_CURE_QUICK=3;			// 快速治疗回复
+	SVR_CARD_CURE_ADD_GIRD=4;		// 添加格子回复
+}
+
+message CsCardCureOne
+{
+	required int32 Idx=1;			// 第几个栏位 0-3
+	required int32 ID=2;			// 哪张卡牌在治疗
+	required int32 WID=3;
+	required int32 EndTime=4;		// 治疗结束时间
+}
+
+
+message CsCardCureRes
+{
+	required int32 MsgType=1;		// SVR_CARD_CURE
+	required int32 Succ=2;			// 0-成功
+	required int32 MaxGird=3;		// 当前能使用的最大格子数
+	repeated CsCardCureOne One=4;		// 所有格子数据		
+}
+
+// 卡牌技能升级
+message CsCardSkillUpReq
+{
+	required CsCardID CardID=1;		// 哪张卡牌
+	required int32 SkillID=2;		// 哪个技能
+}
+
+message CsCardSkillUpRes
+{
+	required CsCardID CardID=1;		// 哪张卡牌
+	required int32 SkillID=2;		// 哪个技能
+	required int32 SkillLvl=3;
+	required int32 Succ=4;			// 0-操作成功
+	required int32 UpSucc=5;		// 0-升级成功
+}
+
+// 卡牌装备请求
+enum CLT_ARM
+{
+	CLT_ARM_PUT_ON=1;			// 穿装备
+	CLT_ARM_PUT_DOWN=2;			// 脱装备		
+	CLT_ARM_SALE=3;				// 卖装备	
+}
+
+message CsArmReq
+{
+	required int32 MsgType=1;
+	required int32 ArmID=2;
+	required int32 ArmWid=3;
+	required int32 CardID=4;		// 穿脱装备此字段要有值
+	required int32 CardWid=5;
+	required int32 Idx=6;			// 第几个装备格子
+}
+
+message CsArmRes
+{
+	required int32 MsgType=1;
+	required int32 ArmID=2;
+	required int32 ArmWid=3;
+	required int32 CardID=4;		
+	required int32 CardWid=5;
+	required int32 Succ=6;			// 0-成功
+	required int32 Idx=7;			
+}
+
+// 角色详细数据请求
+message DetailInfoReq
+{
+	required int32 Invaild=1;			// 暂时无意义字段
+}
+
+message DetailInfoRes
+{
+	required CsCardInfo Card=1;			// 卡牌数据
+	required CsSectionInfo Section=2;		// 章节
+	required CsTeamInfo Team=3;			// 队伍
+	required CsArmInfo Arm=4;			// 装备				
+}
+
+
+// 活动章节信息请求
+message PloySectionInfoReq
+{
+	required int32 Invaild=1;			// 暂时无意义字段
+}
+
+
+// 活动章节信息回复
+message PloySectionOne
+{
+	required int32  ID=1;				// 活动章节ID
+	required int32  Num=2;				// 今天完成的次数
+	required int32  Time=3;				// 今天第一次完成的时间
+}
+
+message GroupInfoOne
+{
+	required int32 GroupID=1;
+	required int32 Num=2;				// 已完成次数
+}
+
+message PloySectionInfoRes
+{
+	repeated PloySectionOne One=1;			// 已完成活动章节数据
+	required int32 Succ=2;				// 0-成功
+	repeated GroupInfoOne GroupOne=3;		// 组信息
+}
+
+
+// 选择阵营请求
+message SelectCampReq
+{
+	required int32 Campidx=1;			// 阵营ID 0-2
+}
+
+// 选择阵营回复
+message SelectCampRes
+{
+	required int32 Succ=1;				// 0-成功
+}
+
+
+// 任务
+enum CLT_TASK
+{
+	CLT_TASK_ALL=1;
+	CLT_TASK_AWARD=2;	
+}
+
+enum SVR_TASK
+{
+	SVR_TASK_ALL=1;
+	SVR_TASK_ONE=2;	
+}
+
+message TaskReq
+{
+	required int32 MsgType=1;
+	required int32 TaskID=2;
+}
+
+message CsTaskOne
+{
+	required int32 ID=1;
+	required int32 Stat=2;			// 任务状态 0-未开启 1-开启 2-可以领取奖励
+	required int32 Curr=3;			// 完成情况 当前进度
+}
+
+message TaskAll
+{
+	repeated CsTaskOne One=1;
+}
+
+message TaskRes
+{
+	required int32 MsgType=1;		// SVR_TASK
+	required TaskAll ALL=2;			// SVR_TASK_ALL 所有任务信息 服务器会把所有符合要求的任务发给客户端
+	required CsTaskOne One=3;		// SVR_TASK_ONE 单个任务信息变化 
+}
+
+
+//  抽奖
+enum CLT_AWARD
+{
+	CLT_AWARD_CARD=1;		// 卡牌
+	CLT_AWARD_ARM=2;		// 装备
+	CLT_AWARD_RIDE=3;		// 坐骑
+}
+
+//  抽奖
+enum CLT_AWARD_CARD_TYPE
+{
+	CLT_AWARD_CARD_TYPE_FREE=1;		// 定时招募
+	CLT_AWARD_CARD_TYPE_MONEY=2;		// 金币招募
+	CLT_AWARD_CARD_TYPE_VIP=3;		// vip招募
+	CLT_AWARD_CARD_TYPE_RMB=4;		// 钻石招募
+	CLT_AWARD_CARD_TYPE_RMB_TEN=5;	// 钻石十连
+}
+
+message AwardReq
+{
+	required int32 MsgType=1;	// CLT_AWARD_CARD_TYPE
+	optional int32 Num=2;		// 抽奖次数 废弃
+	optional int32 IsFree=3;	// 1-免费抽 废弃
+}
+
+message CsAwardOne
+{
+	required int32 ID=1;
+	required int32 IsArm=2;		// 1-装备 0-卡牌 
+	required int32 WID=3;
+}
+
+message AwardRes
+{
+	required int32 MsgType=1;	// CLT_AWARD_CARD_TYPE
+	optional int32 IsFree=2;	// 1-免费抽 废弃
+	repeated CsAwardOne One=3;		// ID列表
+	required int32 Succ=4;		// 0-成功
+}
+
+// 卡牌 装备最大格子变化
+message GridChgNotify
+{
+	required int32 MaxCardNum=1;
+	required int32 MaxArmNum=2;
+}
+
+// 邮件start
+
+enum MAIL_TYPE
+{
+//	MAIL_TYPE_ADD_FRIEND=1;			// 加好友请求
+//	MAIL_TYPE_TILI_REQ=2;			// 体力请求
+//	MAIL_TYPE_UNLOCK_REQ=3;			// 解锁请求
+//	MAIL_TYPE_GIVE_TILI=4;			// 赠送体力
+//	MAIL_TYPE_UNLOCK=5;			// 解锁回复
+//	MAIL_TYPE_SYS=6;			// 系统邮件
+//	MAIL_TYPE_VERIFY=7;			// 充值邮件
+//	MAIL_TYPE_SYS_DEC=8;			// 系统扣除
+	//100以内为自动领取
+	GM_ACIOTN=1;				// GM发东西
+	CHARGE_VERIFY=2;			// 充值到账
+	GM_MESSAGE=3;			// GM指令
+	SILENCE=4;			// 禁言
+}
+
+enum MAIL_CLT_OP
+{
+	MAIL_READ=1;			// 读邮件  只有在邮件标记位未读时，客户端才发此消息。
+	MAIL_GET=2;			// 领取物品
+	MAIL_INFO=3;			// 所有邮件信息拉取 
+	MAIL_DEL=4;			// 删除邮件 Deltime时间到了 客户端要发删除
+}
+
+message CsMailReq
+{
+	required int32 OP=1; 			// 	MAIL_CLT_OP
+	required string WID=2;			// 	邮件唯一ID
+}
+
+message CsMailDetail
+{
+	required string Text=1;
+	required int32 Tili=2;	
+	required int32 ArmID=3;
+	required int32 CardID=4;
+	repeated CsMoneyOne Moneys=5;
+}
+
+message CsMailHead
+{
+	required string WID=1;
+	required int32 DelTime=2; 		// 到期时间 时间到了客户端要发删除邮件消息
+	required int32 Flag=3;			// 位操作 Flag&1 表示邮件未读
+	required string Title=4;		// 邮件标题
+	required int32 Send=5;			// 谁发送的 0-系统邮件 大于0表示发送者UIN
+	required int32 Recv=6;			// 接收方 
+	required int32 SendTime=7;		// 发送时间
+}
+
+message CsMail
+{
+	required CsMailHead Head=1;		// 邮件头
+	required CsMailDetail Detail=2;		// 邮件详细内容	
+}
+
+message CsMailDel
+{
+	required string WID=1;    		// 删除一封邮件 客户端收到此消息即删除邮件
+}
+
+message CsMailGet
+{
+	required string WID=1;    		// Get那一封邮件	
+	required int32 Succ=2;			// 0-成功   领取后客户端自行删除	
+}
+
+
+message CsMailInfo
+{
+	required int32 MailCount = 1;		// 角色有多少封邮件
+	repeated CsMail Mail=2;			// 邮件列表 服务器最多通知30封 当MailCount大于30时,在删除完邮件后客户端重新拉取邮件列表
+}
+
+enum MAIL_SVR_OP
+{
+	MAIL_SVR_INFO=1;			// 所有邮件信息
+	MAIL_SVE_DEL=2;				// 删除一封邮件回复
+	MAIL_SVR_GET=3;				// 领取回复
+	MAIL_ONE=4;				// 一封邮件变化（已读变化等）或者新邮件通知			
+}
+
+message CsMailRes
+{
+	required int32 OP=1; 			// 	MAIL_SVR_OP
+	required CsMail One=2;			// 	MAIL_ONE
+	required CsMailInfo MailInfo=3;		//      MAIL_SVR_INFO
+	required CsMailDel Del=4;		//      MAIL_SVE_DEL 邮件时间到了客户端要发删除命令 或者领取完服务器会主动删除
+	required CsMailGet Get=5;		//  	MAIL_GET 回复 成功后同样要删除此邮件
+}
+// 邮件end
+
+
+enum SHOP_TYPE
+{
+	SHOP_TYPE_BUY = 0;
+	SHOP_TYPE_QUERY = 1;
+	TIME_SHOP_TYPE_BUY = 2;
+	DAILY_SHOP_TYPE_BUY = 3;
+}
+// 商城start
+message ShopReq
+{
+	optional int32 Type = 2;		// 1:查询 0:购买
+	required int32 ID=1;			// 购买商品ID
+}
+
+//限时商品购买信息
+message TimeShopInfo
+{
+	required int32 ID = 1;
+	required int32 Count = 2;
+}
+
+message ShopRes
+{
+	required int32 Type = 4;		
+	required int32 ID=1;			// 购买商品ID
+	required int32 Succ=2;			// 0-成功
+	repeated int32 BoughtIDs = 3;		// 已经购买过的商品id
+	repeated int32 BoughtCount = 5;		// 已经购买过的商品对应的数量
+	repeated TimeShopInfo TimeInfos = 10;	// 限时商品购买信息
+	repeated TimeShopInfo DailyInfos = 11;	// 每日限购购买信息
+}
+// 商城end
+
+
+// jjc start
+enum CLT_JJC
+{
+	CLT_JJC_ALL=1;			// 自己的竞技场全部信息	
+	CLT_JJC_CHG_CARD=2;		// 更换防守卡牌
+	CLT_JJC_GET_ONE=3;		// 更换一个挑战对手
+	CLT_JJC_ENTER=4;		// 开始战斗 进入竞技场
+	CLT_JJC_TOP=5;			// 排行榜
+	CLT_JJC_VIEW=6;			// 查看排行榜信息
+	CLT_JJC_LINEUP=7;		// 阵型选择
+	CLT_JJC_SELF_ENEMY=8;		// 自己的挑战对手
+	CLT_JJC_SHOP_INFO_REQ=9;	// 竞技场商店信息
+	CLT_JJC_SHOP_BUY_REQ=10;	// 竞技场购买请求
+	CLT_JJC_CHG_ATTK_CARD=11;	// 竞技场更换进攻卡牌
+	CLT_JJC_ATTK_NUM_BUY=12;	// 购买挑战次数
+}
+
+message JjcTeamChg
+{
+	required int32 JjcCardID=1;
+	required uint32 JjcCardWid=2;
+	required int32 PkgCardID=3;
+	required uint32 PkgCardWid=4;
+	//required int32 Type=5;			// 0-防守卡牌 1-进攻卡牌 
+	optional int32 Lineup=5;	//防守阵容
+}
+
+message JjcAttkTeamChg
+{
+	required int32 JjcCardID=1;
+	required uint32 JjcCardWid=2;
+	required int32 PkgCardID=3;
+	required uint32 PkgCardWid=4;
+}
+
+message JjcEnter
+{
+	required int32 TeamIdx=1;
+	required int32 EnemyTop=2;		// 敌人排名	
+}
+
+message JjcView
+{
+	required int32 Top=1;			// 第几名 1开始	
+}
+
+message JjcLineup
+{
+	required int32 Lineup=1;		// 阵型
+}
+
+message JjcBuyReq
+{
+	required int32 ID=1;			// 商品ID
+}
+
+message JjcReq
+{
+	required int32 MsgType=1;
+	required JjcTeamChg Chg=2;		// CLT_JJC_CHG_CARD
+	required JjcEnter Enter=3;		// CLT_JJC_ENTER
+	required JjcView View=4;		// CLT_JJC_VIEW
+	required JjcLineup Lineup=5;		// CLT_JJC_LINEUP
+	required JjcBuyReq Buy=6;		// CLT_JJC_SHOP_BUY_REQ
+	required JjcAttkTeamChg AttkChg=7;	// CLT_JJC_CHG_ATTK_CARD
+}
+
+enum SVR_JJC
+{
+	SVR_JJC_ALL=1;			// 自己的竞技场全部信息	
+	SVR_JJC_ENEMY_ONE=2;		// 更换一个对手信息
+	SVR_JJC_ENTER=3;		// 开始战斗回复
+	SVR_JJC_FIGHT=4;		// 竞技场选择阵型回复
+	SVR_JJC_SELF_ENEMY=5;		// 自己的挑战对手信息
+	SVR_JJC_TOP=6;			// 排行榜
+	SVR_JJC_TEAM=7;			// 竞技场自己的防守卡牌信息
+	SVR_JJC_VIEW=8;			// 查看竞技场卡牌信息
+	SVR_JJC_SHOP_INFO=9;		// 竞技场商店信息
+	SVR_JJC_BUY=10;			// 购买回复
+	SVR_JJC_ATTK_TEAM=11;		// 进攻队伍变化
+}
+
+message CsJjcBaseInfo
+{
+	required int32 Top=1;		// 	排名	1开始
+	required int32 VNum=2;		//  	胜利次数	
+	required int32 FNum=3;		//	失败次数
+	required int32 Lvl=4;		//	竞技场等级
+}
+
+message CsJjcInfo
+{
+	required CsJjcBaseInfo JjcBase=1;
+	required int32 FightNum=2;		//	剩余战斗次数
+	required int32 ChgNum=3;		//	剩余更换对手次数
+	required CsTeamOne Team=4;		//      自己防守队伍
+	required CsTeamOne AttkTeam=5;
+	required int32 JjcChgName=6;		// 	1表示已经改过名了
+	required int32 NextAttackNumAddTime=7;	//	挑战次数下次增加的时间
+	required int32 DefendLineup=8;		// 	防守阵型
+}
+
+message CsJjcEnemy
+{	
+	required CsJjcBaseInfo JjcBase=1;
+	required string Name=2;
+	required int32 RoleLvl=3;		// 	角色等级
+	repeated CsCardOne Cards=4;	
+	required int32 ChgNum=5;		// 剩余更换次数
+	required int32 Flag=6;			// 0-表示正常的竞技场 1-探索掠夺竞技场信息
+//	required int32 Lineup=7;		// 守方阵型
+}
+
+message CsJjcEnter
+{
+	required int32 Succ=1;			// 0-成功
+	required int32 Spy=2;			// 1-侦查成功
+}
+
+message CsJjcFight
+{
+	repeated CsAttkOne Hurt=1;
+	required int32 Star=2;	
+	required int32 Succ=3;			// 0-成功
+}
+
+message CsJjcTopOne
+{
+	required string Name=1;
+	required int32 RoleLvl=2;
+	required int32 JjcLvl=3;
+	required int32 CardID=4;		// 防守队伍队长卡牌
+	required int32 CardLvl=5;		// 防守队伍队长等级	
+	required int32 Top=6;
+	required int32 win=7;			//胜利场次
+}
+
+message CsJjcTop
+{
+	repeated CsJjcTopOne One=1;
+}
+
+message CsJjcShopOne
+{
+	required int32 ID=1;			// JjcShopDef中的ID
+	required int32 BuyNum=2;		// 已经购买的次数
+}
+
+message CsJjcShopInfo
+{
+	repeated CsJjcShopOne One=1;
+}
+
+message CsJjcShopBuyRes
+{
+	required CsJjcShopOne One=1;		// 购买了哪个商品
+	required int32 Succ=2;			// 0-成功
+}
+
+message JjcRes
+{
+	required int32 MsgType=1;
+	required CsJjcInfo Info=2;		// SVR_JJC_ALL 
+	required CsJjcEnemy Enemy=3;		// SVR_JJC_ENEMY_ONE
+	required CsJjcEnter Enter=4;		// SVR_JJC_ENTER
+	required CsJjcFight Fight=5;		// SVR_JJC_FIGHT
+	required CsJjcEnemy SelfEnemy=6;	// SVR_JJC_SELF_ENEMY
+	required CsJjcTop Top=7;		// SVR_JJC_TOP
+	required CsTeamOne Team=8;		// SVR_JJC_TEAM
+	repeated CsCardOne Cards=9;		// SVR_JJC_VIEW
+	required CsJjcShopInfo ShopInfo=10;	// SVR_JJC_SHOP_INFO
+	required CsJjcShopBuyRes Buy=11;	// SVR_JJC_BUY
+	required CsTeamOne AttkTeam=12;		// SVR_JJC_ATTK_TEAM	
+}
+
+// jjc end
+
+
+// 签到请求
+enum CLT_SIGNIN
+{
+	CLT_SIGNIN_INFO=1;				// 签到信息请求
+	CLT_SIGNIN_DO=2;				// 签到
+	
+}
+
+message SigninReq
+{
+	required int32 Day=1;				// 第几次签到 0开始
+	required int32 MsgType=2;			// CLT_SIGNIN
+}
+
+message SigninRes
+{
+	required int32 Succ=1;				// 0-成功
+	required int32 Day=2;				// 第几次签到 0开始
+	required int32 MsgType=3;			// CLT_SIGNIN
+	required int32 lastSignTime=4;			// 上次签到时间
+}
+
+// 签到end
+
+// 月卡请求
+enum CLT_MONTH_CARD
+{
+	CLT_MONTH_CARD_INFO=1;				// 月卡信息请求
+	CLT_MONTH_CARD_BUY=2;				// 购买月卡
+	CLT_MONTH_CARD_REWARD=3;			// 月卡奖励领取	
+}
+
+message MonthCardReq
+{
+	required int32 MsgType=2;			// CLT_MONTH_CARD
+}
+
+message MonthCardRes
+{
+	required int32 Succ=1;				// 0-成功
+	required int32 MsgType=3;			// CLT_MONTH_CARD
+	required MonthCardInfo info=4;			// 签到信息
+}
+
+// 月卡end
+
+//升级奖励
+// 升级奖励请求
+enum CLT_LEVELUP_REWARD
+{
+	CLT_LEVELUP_REWARD_INFO=1;			// 升级奖励请求
+	CLT_LEVELUP_REWARD_REWARD=3;			// 升级奖励领取	
+}
+message LevelupRewardReq
+{
+	required int32 MsgType=1;			// CLT_LEVELUP_REWARD
+	optional int32 Reward_id = 2;
+}
+
+message LevelupRewardRsp
+{
+	required int32 Succ=1;				// 0-成功
+	required int32 MsgType=3;			// CLT_LEVELUP_REWARD
+	repeated int32 Reward_ids=4;			// 已经领取过的奖励id
+}
+
+// 改名请求
+enum NANE_ERR
+{	
+	NANE_ERR_NO=0;					// 成功
+	NANE_ERR_DUMP=-1;				// 重名
+	NANE_ERR_DIRTY=-2;				// 名字不合法
+	NANE_ERR_SYS=-3;				// 系统错误
+	NANE_ERR_RMB=-4;				// 钻石不够
+}
+message NameReq
+{
+	required string Name=1;				// 最多16个字符(8个汉字)
+	required int32 Title=2;				// 称谓
+}
+
+message NameRes
+{
+	required int32 Succ=1;				// NANE_ERR
+	required string Name=2;	
+	required int32 Title =3;
+}
+
+// 改名请求 end
+
+enum ARM_MACHINING
+{	
+	ARM_MACHINING_MAKE=1;				// 锻造
+	ARM_MACHINING_FUSE=2;				// 熔炼
+	ARM_MACHINING_RECAST=3;				// 重铸
+}
+
+
+message CsMoneyOne
+{
+	required int32 Type=1;				// 货币类型
+	required int32 Num=2;				// 货币数量
+}
+
+message ArmMakeReq
+{
+	repeated CsMoneyOne Moneys=1;	
+}
+
+message ArmFuseReq
+{
+	repeated CsArmOne Arms=1;	
+}
+
+message ArmRecastReq
+{
+	required CsArmOne Arm=1;	
+}
+
+message ArmMachiningReq
+{
+	required int32 MsgType=1;			// ARM_MACHINING
+	required ArmMakeReq Make=2;			// ARM_MACHINING_MAKE
+	required ArmFuseReq Fuse=3;			// ARM_MACHINING_FUSE
+	required ArmRecastReq Recast=4;			// ARM_MACHINING_RECAST
+}
+
+message ArmMachiningRes
+{
+	required int32 MsgType=1;			// ARM_MACHINING
+	required int32 Succ=2;				// 0-成功
+	required int32 ArmID=3;				// 得到的装备ID 
+	required int32 ArmWID=4;
+}
+
+
+// 卡牌特技学习
+
+enum STUNT_OP
+{	
+	STUNT_OP_LEARN=1;				// 学习
+	STUNT_OP_LOCK=2;				// 锁定
+	STUNT_OP_UNLOCK=3;				// 解锁
+}
+
+message CardStuntReq
+{
+	required int32 CardID=1;		
+	required int32 CardWID=2;
+	required int32 MsgType=3;	// STUNT_OP
+	required int32 Idx=4;		// 锁定和解锁第几个 0开始
+}
+
+message CsStuntOne
+{
+	required int32 ID=1;		// 特技ID	
+	required int32 Lock=2;		// 1-锁定
+}
+
+message CardStuntRes
+{
+	required int32 CardID=1;		// 哪张卡牌	
+	required int32 CardWID=2;	
+	repeated CsStuntOne Ones=3;		// 当前特技列表
+	required int32 Succ=4;			// 0-成功
+	required int32 StuntID=5;		// 特技ID
+	required int32 Replace=6;		// 被顶替的ID 0-增加
+	required int32 MsgType=7;		// STUNT_OP
+}
+// 卡牌特技学习end
+
+
+// 卡牌XL训练请求
+message CardXlReq
+{
+	required int32 CardID=1;		
+	required int32 CardWID=2;
+	required int32 Gaoji=3;			// 非0表示高级
+}
+
+message CardXlRes
+{
+	required int32 CardID=1;		
+	required int32 CardWID=2;
+	required int32 Succ=3;			// 0-成功
+	required int32 Exp=4;			// 增加的exp
+}
+
+// 卡牌XL训练回复
+
+// 卡牌激活
+message CardActiveReq
+{
+	required int32 CardID=1;		// 激活卡牌
+	required int32 CardWID=2;
+	required int32 UseCardID=3;		// 消耗掉的卡牌
+	required int32 UseCardWID=4;
+	required int32 Idx=5;			// 激活第几个属性
+}
+
+message CardActiveRes
+{
+	required int32 CardID=1;		
+	required int32 CardWID=2;
+	required int32 Idx=3;			// 第几个属性 
+	required int32 Succ=4;			// 0-成功
+	required int32 ChgID=5;			// 如果是前部激活 卡牌变成的ID
+	
+}
+// 卡牌激活end
+
+
+// 评价请求
+enum JUDGE_TYPE
+{	
+	JUDGE_TYPE_INFO=1;				// 获取评价信息
+	JUDGE_TYPE_ZAN=2;				// 点赞
+	JUDGE_TYPE_DO=3;				// 发评价
+}
+
+message JudgeReq
+{
+	required int32 ID=1;			// 章节或者卡牌ID
+	required int32 IsCard=2;		// 1-卡牌
+	required int32 Type=3;			// 1-获取评价信息 2-点赞 3-评价 JUDGE_TYPE
+	required string Judge=4;		// 评价 最多38个字 type为3是要有值
+	required int32 Idx=5;			// 对第几条评价点赞
+}
+
+message CsJudgeOneDetail
+{
+	required string Name=1;
+	required string Text=2;
+	required int32 Time=3;
+	required int32 Zan=4;	
+}
+
+message CsJudgeOne
+{
+	required int32 ID=1;
+	repeated CsJudgeOneDetail Ones=2;
+}
+
+message JudgeRes
+{
+	required int32 Type=1;			// 1-获取评价信息 2-点赞 3-评价 JUDGE_TYPE
+	required int32 Succ=2;			// 0-成功
+	required int32 ID=3;			// ID	
+	required int32 IsCard=4;		// 非0卡牌
+	required CsJudgeOne One=5;		// 所有评价 只有在获取信息的时候才有值
+}
+
+// 冒险小队
+enum RISK_TYPE
+{	
+	RISK_TYPE_INFO=1;				// 获取冒险小队信息
+	RISK_TYPE_AWARD=2;				// 领取奖励
+	RISK_TYPE_DO=3;					// 开始冒险
+	RISK_TYPE_ADD_GRID=4;				// 增加栏位	
+}
+
+message CsRiskAwardReq
+{
+	required int32 Idx=1;				// 领取第几条冒险的奖励 0开始	
+}
+
+message CsRiskDoReq
+{
+	required int32 Type=1;				// 资源-1、道具-2、材料-3、稀有材料-4
+	required int32 SubType=2;			// 60 120 240 配置时间
+	required int32 Idx=3;				// 第几个栏位
+}
+
+message RiskReq
+{
+	required int32 MsgType=1;			// RISK_TYPE
+	required CsRiskAwardReq Award=2;		// RISK_TYPE_AWARD
+	required CsRiskDoReq Do=3;			// RISK_TYPE_DO		
+}
+
+message CsRiskOne
+{
+	required int32 Type=1;				// 资源-1、道具-2、材料-3、稀有材料-4
+	required int32 SubType=2;			// 60分钟-1、120分钟-2、240分钟-3
+	required int32 StartTime=3;			// 开始时间
+	required int32 EndTime=4;			// 结束时间
+	required int32 Idx=5;				// 第几个栏位
+}
+
+message CsRiskInfo
+{
+	required int32 MaxNum=1;			// 最多几个栏位
+	repeated CsRiskOne Ones=2;			// 栏位信息	
+}
+
+message RiskRes
+{
+	required int32 MsgType=1;			// RISK_TYPE
+	required CsRiskInfo Info=2;			// RISK_TYPE_INFO
+	required CsMoneyOne Award=3;			// RISK_TYPE_AWARD
+	required CsRiskOne One=4;			// RISK_TYPE_DO
+	required int32 Succ=5;				// 0-成功
+}
+// 冒险小队
+
+// 探索请求
+enum SEEK_CLT
+{	
+	SEEK_CLT_MAX_VAL_ADD=1;			// 增加探索值上限
+	SEEK_CLT_ADD_EVENT=2;			// 添加一个事件
+	SEEK_CLT_START_EVENT=3;			// 开始一个事件
+	SEEK_CLT_EVENT_SPEED_UP=4;		// 加速一个事件
+	SEEK_CLT_MAX_GIRD_ADD=5;		// 增加探索栏位
+	SEEK_CLT_AWARD=6;			// 领取奖励
+	SEEK_CLT_RESET=7;			// 重置
+	SEEK_CLT_INFO=8;			// 探索全部信息
+	SEEK_CLT_ADD_QREEL=9;			// 增加加速卷轴
+	SEEK_CLT_ADD_TSVAL=10;			// 增加探索值
+}
+
+message SeekReq
+{
+	required int32 MsgType=1;		// SEEK_CLT
+	required int32 ActionID=2;		// SEEK_CLT_ADD_EVENT 1-聆听2-寻找 3-线人
+	required int32 EventIdx=3;		// SEEK_CLT_START_EVENT SEEK_CLT_EVENT_SPEED_UP SEEK_CLT_AWARD 第几个事件 0-开始 
+}
+
+message CsSeekOne
+{
+	required int32 EventID=1;		// 事件ID
+	required int32 Stat=2;			// 事件状态 0-未开始 1-开始 2-失败 3-可以领奖
+	required int32 EndTime=3;		// 结束时间(如果是时间事件的话)
+	required int32 JjcTop=4;		// jjc排名 如果是掠夺事件
+	required int32 SectionID=5;		// 章节ID 如果是boss事件
+	required int32 LdIdx=6;			// 第几次掠夺 0开始		
+}
+
+message CsSeekInfo
+{
+	required int32 Lvl=1;			// 探索等级
+	required int32 MaxGird=2;		// 最大事件格子
+	required int32 TsNum=3;			// 探索次数
+	required int32 LdNum=4;			// 掠夺次数
+	required int32 PreResetTime=5;		// 上一次重置时间	
+	repeated CsSeekOne SeekOne=6;		// 事件列表
+	required int32 MaxTsVal=7;		// 当前探索最大值
+	required int32 TsVal=8;			// 当前探索值
+}
+
+message SeekRes
+{
+	required int32 MsgType=1;		// SEEK_CLT
+	required int32 Succ=2;			// 0-成功
+	required CsSeekInfo Info=3;		// 探索信息
+	required CsMoneyOne AwardMoney=4;	// 奖励
+}
+
+// 探索请求end
+
+
+// 图鉴
+message TujianReq
+{
+	optional int32 xxoo=1;	 			// 没屌用的字段
+}
+
+message TujianRes
+{
+	repeated int32 CardID=1;			// 卡牌ID列表	 
+}
+// 图鉴
+
+// 勇者之塔请求
+enum BCT_CLT
+{	
+	BCT_CLT_INFO=1;					// 所有信息请求
+}
+
+message BctReq
+{
+	repeated int32 MsgType=1;			// BCT_CLT
+}
+
+
+message CsBctTopOne
+{
+	required int32 Uin=1;
+	required string Name=2;
+	required int32 Time=3;
+	required int32 Tollgate=4;
+}
+
+enum BCT_SVR
+{	
+	BCT_SVR_INFO=1;					// 所有信息请求
+	BCT_SVR_SELF=2;					// 个人信息变化
+}
+
+message CsBctSelf
+{
+	required int32 CurrTollgateID=1;		// 当前打到的关卡	
+	required int32 CurrTollgateStat=2;		// 当前关卡状态 1-过关 0-失败
+}
+
+message CsBctInfo
+{
+	repeated CsBctTopOne One=1;			// 排行榜信息
+	required CsBctSelf Self=2;			// 个人信心
+}
+
+message BctRes
+{
+	required int32 MsgType=1;			// BCT_SVR
+	required CsBctInfo Info=2;			// BCT_SVR_INFO
+	required CsBctSelf Self=3;			// BCT_SVR_SELF
+}
+
+enum TILI_ACTION
+{
+	TILI_ACTION_FREE=1;
+	TILI_ACTION_MONEY=2;
+	TILI_ACTION_RMB=3;
+}
+message TiliActionReq
+{
+	required int32 type = 10;	// 
+}
+
+message TiliActionRes
+{
+	required int32 Succ=10;			// 0-成功
+}
+
+message ClientExtendReq
+{
+	required string extend = 10;
+}
+
+message ClientExtendRes
+{
+	optional int32 Succ = 10;
+}
+
+enum CHARGE_CHANNEL
+{
+	HAIMA_PAY = 101;//海马支付
+	LE8_PAY = 102;	//乐8支付
+	XY_PAY 	= 103;	//XY支付
+	I4_PAY	= 104;	//爱思支付
+	APPLE_PAY = 110;	//app store 支付
+
+	HAIMA_PAY_2 = 201;//海马支付-安卓端
+
+	//500-1000 安卓客户端自定义
+}
+
+enum CHARGE_TYPE
+{
+	SHOP = 1;	//商店购买
+	MONTHCARD = 2;	//购买月卡
+	RMB = 3;	//通用充值（暂不支持）
+	TIME_SHOP = 4;	//限时商店
+	FUND = 5;		//成长基金
+	DAILY_SHOP = 6;	//每日限购
+}
+
+
+message ChargeOrderReq
+{
+	required int32 Channel =1;	//充值渠道 CHARGE_CHANNEL
+	required int32 Type = 2;	//商品类型  CHARGE_TYPE
+	optional int32 Value =3;	//数量 SHOP为对应商品编号 MONTHCARD只支持1 RMB为钻石金额
+	optional int32 Rmb =4;		//对应人民币数额
+}
+
+message ChargeOrderRsp
+{
+	required int32 Succ = 1;
+	required string Transaction = 2;	//订单号
+	required string param = 3;	//sdk下单带上去的参数信息
+}
+
+message AppleVerifyReq
+{
+	required string state=1;
+	required string productIdentifier =2;	
+	required int32  quantity =3;
+	required string transactionIdentifier =4;
+	required int64  date =5;
+	required string receipt=6;
+	required string o_transactionIdentifier=7;
+}
+
+message AppleVerifyRsp
+{
+	required int32 Succ=1;			//  0-成功
+	required int32 ID=2;			// 内部商品ID	
+}
+
+message RegisterInfo {
+  required uint32 uid        = 1;		// 用户id
+  required string imsi          = 2;
+  required string imei          = 3;
+  required string phone         = 4;
+  required string mac           = 5;
+  required string ssid          = 6;
+  required uint32 cellid        = 7;
+  required uint32 lac           = 8;
+  required uint32 mcc           = 9;
+  required uint32 mnc           = 10;
+  required uint32 client_ver    = 11;
+  required string phone_type    = 12;
+  required uint64 channel        = 13;
+  required uint32 screen_width  = 14;
+  required uint32 screen_height = 15;
+  required string os            = 16;
+  required string udid          = 18;
+  required string ip 		= 20;		//用户注册时的IP
+  required string net 		= 21;		//手机网络类型
+  required string iccid		= 22;		//iccid
+  required uint32 partner_channel = 23;
+}
+
+message RegisterInfoReq
+{
+	required RegisterInfo info = 10;
+}
+
+message RegisterInfoRsp
+{
+	required int32 iSucc = 10;
+}
+
+//活动请求
+enum CLT_ACTIVITY_ID
+{
+	//CLT_ACTIVITY_LEVELUP=1;			// 升级奖励请求
+	CLT_ACTIVITY_FIRST_CHARGE=2;			// 首冲
+	CLT_ACTIVITY_BOSS_KILL=3;			// 斩杀boss
+	CLT_ACTIVITY_CARD_AWARD=4;			// 欧皇招募	
+}
+
+enum CLT_ACTIVITY_TYPE
+{
+	CLT_ACTIVITY_TYPE_QUERY = 1;			// 查询
+	CLT_ACTIVITY_TYPE_REWARD = 2;			// 领奖
+}
+
+message ActivityReq
+{
+	required int32 MsgType=1;			// CLT_ACTIVITY_TYPE
+	required int32 ActivityId = 2;			// CLT_ACTIVITY_ID type为query的情况传0
+	required int32 RewardId = 3;			// 奖项id 首冲传0
+}
+
+message ActivityRsp
+{
+	required int32 Succ=1;				// 0-成功
+	required int32 MsgType=3;			// CLT_ACTIVITY_TYPE
+	repeated int32 Boss_Kill_Rewards_Old=4;		// boss斩杀-已经领过的奖励
+	repeated int32 Boss_Kill_Rewards_New=5;		// boss斩杀-可以领的奖励
+	required int32 Rmb_Card_Award_Time = 6;		// 钻石招募次数
+	repeated int32 Rmb_Card_Award_Time_Rewards = 7;	// 已经领取过的欧皇招募奖励
+	required int32 First_Charge_Reward = 8;		// 首冲奖励（0-未达到 1-可领取 2-已经领取）
+}
+
+enum SCORE_SHOP_TYPE
+{
+	SCORE_SHOP_TYPE_QUERY = 1;		//查询
+	SCORE_SHOP_TYPE_REFRESH = 2;		//刷新
+	SCORE_SHOP_TYPE_BUY = 3;		//购买
+}
+message ScoreShopReq
+{
+	required int32 MsgType = 1;
+	optional int32 CaridId = 2;
+}
+
+message RoleShopInfo
+{
+	required int32 Cardid = 1;
+	required int32 Bought = 2; //1-已经购买过
+	required int32 Price = 3;
+}
+
+message ScoreShopRsp
+{
+	required int32 Succ=1;				// 0-成功 
+	repeated RoleShopInfo infos = 2;
+}
+
+enum CARD_EVOLVE_TYPE
+{
+	CARD_EVOLVE_TYPE_EVOLVE = 1;		//修炼
+	CARD_EVOLVE_TYPE_UPGRADE = 2;		//蜕变
+}
+message CardEvolveReq
+{
+	required int32 MsgType = 1;
+	required int32 Wid = 2;
+}
+
+message CardEvolveRsp
+{
+	required int32 Succ=1;
+}
+
+enum MANOR_REQ_TYPE
+{
+	QUERY = 1;	//查询
+	LEVELUP = 2;	//升级
+	MONEY = 3;	//收取金币
+	FORGE = 4;	//锻造
+	LINEUP = 5;	//升级阵法
+	SHUIJING  = 6;	//收集水晶
+	CD = 7;		//升级加速
+	FORGE_FINISH = 8;	//锻造结束
+	SALARY = 9;	//职位俸禄
+}
+
+message ManorBuildingInfo
+{
+	required int32 Buildingid = 1;
+	required int32 LevelupTime = 2;
+}
+
+message ManorInfo
+{
+	repeated ManorBuildingInfo buildings = 1;
+	repeated int32 LineupLevels = 2;	//指挥所各阵法等级
+	required int32 ForgeId  = 3;	//当前锻造id
+	required int32 ForgeTime  = 4;	//锻造结束时间
+	required int32 MoneyFreeCount = 5;		//本日免费金币收取次数
+	required int32 ShuijingFreeCount = 6;	//本日免费水晶收取次数
+	required int32 MoneyRMBCount = 7;	//本日钻石金币收取次数
+	required int32 ShuijingRMBCount = 8;	//本日钻石水晶收取次数
+	required int32 NextSalaryTime = 9;	//下次可领取俸禄时间
+}
+
+message ManorReq
+{
+	required int32 MsgType = 1;		//MANOR_REQ_TYPE
+	required int32 Buildingid = 2;
+	optional int32 ForgeId = 3;	//锻造方案
+	optional int32 LineupId = 4;	//阵法id
+}
+ 
+message ManorRsp
+{
+	required int32 Succ = 1;
+	required ManorInfo info = 2;
+}
+
+
+enum REG_TASK_REQ_TYPE
+{
+	REG_TASK_QUERY = 1;	//查询
+	REG_TASK_REWARD = 2;	//领奖
+	REG_TASK_SHOP = 3;	//商店购买
+	REG_TASK_SHOP_2 = 4;	//商店2购买
+}
+
+message RegTaskInfo
+{
+	required int32 Id = 1;
+	required int32 Value = 2;//当前进度
+	required int32 State = 3;// 1-未完成 2-可领奖 3-已领奖 4-已关闭
+}
+
+message RegShopBoughtInfo
+{
+	required int32 Id = 1;	//商品id
+	required int32 Count = 2;	//已经购买次数
+}
+
+message RegTaskReq
+{
+	required int32 MsgType = 1;		//enum REG_TASK_REQ_TYPE
+	optional int32 TaskId = 3;	//任务id
+	optional int32 ShopId = 4;	//商品id
+}
+ 
+message RegTaskRsp
+{
+	required int32 Succ = 1;
+	required int32 Day = 2;	//任务开始时刻
+	repeated RegTaskInfo infos = 10;
+	repeated int32 bought = 11;	//已购买过的商品
+	repeated RegShopBoughtInfo bought_infos = 12;//已购买过的商品2
+}
+
+enum FUND_REQ_TYPE
+{
+	FUND_QUERY = 1;	//查询
+	FUND_BUY = 2;	//购买
+	FUND_REWARD = 3;	//领奖
+	FUND_WORLD = 4;	//全服奖励
+}
+
+message FundReq
+{
+	required int32 MsgType = 1;		//enum FUND_REQ_TYPE
+	optional int32 Id = 3;	//奖励id
+}
+ 
+message FundRsp
+{
+	required int32 MsgType = 3;
+	required int32 Succ = 1;	
+	required int32 bought =2;		//是否购买
+	required int32 world_bought =4;		//全服购买人数
+	repeated int32 reward = 10;		//可以领取的
+	repeated int32 reward_already = 11;	//已经领取的
+	repeated int32 world_reward = 12;		//可以领取的
+	repeated int32 world_reward_already = 13;	//已经领取的
+
+}
+
+enum MESSAGE_REQ_TYPE
+{
+	MESSAGE_QUERY = 1;	//查询-同服聊天
+	MESSAGE_WORLD = 2;	//发送-同服聊天
+	MESSAGE_REGION = 3;	//发送-全服聊天 普通呐喊
+	MESSAGE_REGION_EX = 4;	//发送-全服聊天 超级呐喊
+	MESSAGE_REGION_QUERY = 5;	//查询-全服聊天(服务器推送)
+}
+
+message MessageInfo
+{
+	required int32 type =1;		//2-同服 3-普通呐喊 4-超级呐喊
+	required string text = 2;
+	required string name = 3;
+	required int32 zone = 4;	//服id
+	required int32 time = 5;	
+}
+
+message MessageReq
+{
+	required int32 MsgType = 1;
+	optional string text = 2;
+	optional int32 Full = 3;	//1：全量请求
+}
+
+message MessageRsp
+{
+	required int32 MsgType = 1;
+	required int32 Succ = 2;
+	repeated MessageInfo infos = 10;//只在MESSAGE_QUERY时返回
+}
+
+message CardLockReq
+{
+	required int32 wid = 1;
+	required int32 op = 2;	// 1- lock 0 -Unlock
+}
+
+message CardLockRsp
+{
+	required int32 succ = 1;
+}
+
+enum MONTH_FUND_REQ_TYPE
+{
+	MONTH_FUND_QUERY = 1;
+	MONTH_FUND_REWARD = 2;
+}
+
+message MonthFundReq
+{
+	required int32 MsgType = 1;
+//	required int32 rewardid = 2;
+}
+
+message MonthFundRsp
+{
+	required int32 succ = 6;
+	repeated int32 charged_shopid = 1;	//已经激活的充值商品id
+	required int32 monthcard = 2;		//是否已激活月卡
+//	required int32 reward1_next_time = 3;	//98基金下次可领奖时间
+//	required int32 reward2_next_time = 4;
+//	required int32 reward3_next_time = 5;
+	repeated int32 reward1 = 11;		//98基金已经领取过的天数
+	repeated int32 reward2 = 12;
+	repeated int32 reward3 = 13;
+}
+
+
+// 改名请求
+enum GAME_ERR
+{		
+	COMM=-1;				// 未知错误
+	NEED_GOLD = -51;				// 金币不够
+	NEED_SHUIJING = -52;				// 银币不够
+	NEED_RMB = -53;				// 钻石不够
+	NEED_ZJQB = -54;			// 战姬情报
+	NEED_BQTZ = -55;			// 兵器图纸
+	NEED_QSEARCH = -56;			// 快速搜索
+	NEED_QCURE = -57;			// 快速治疗
+	NEED_GOUYU = -58;			// 勾玉
+	NEED_FREEAWARD = -59;			// 免费抽奖
+	NEED_GLORY = -60;			// 竞技场荣誉
+	
+	NEED_WOOD = -61;			// 木材
+	NEED_IRON = -62;			// 钢铁
+	NEED_CLOTH = -63;			// 布匹
+	NEED_ROCK = -64;			// 原石
+	NEED_XUANIRON = -65;			// 玄铁
+	NEED_SILK = -66;			// 丝绸
+	NEED_QIROCK = -67;			// 奇石
+	
+	NEED_XLREEL = -68;			// 训练卷轴
+	NEED_XLREEL_GAO = -69;		// 高级训练卷轴
+	NEED_QREEL = -70;			// 加速卷轴
+	NEED_TSVAL = -71;			// 探索值 探索文档上的体力
+	NEED_TS_EVENT_MAX = -72;		// 探索事件上限 
+	NEED_TSVAL_MAX = -73;		// 探索值上限
+	NEED_QUICK_FIGHT = -74;		// 快速战斗
+	NEED_CARD_SCORE = -75;		// 卡牌积分
+	
+	NEED_CARD_EVOLVE_A = -76;		// 卡牌蜕变道具A
+	NEED_CARD_EVOLVE_B = -77;		// 卡牌蜕变道具B
+	NEED_CARD_EVOLVE_C = -78;		// 卡牌蜕变道具C
+	NEED_CARD_EVOLVE_D = -79;		// 卡牌蜕变道具D
+	NEED_CARD_EVOLVE_E= -80;		// 卡牌蜕变道具E
+	NEED_EXPLOIT= -81;			// 缺少功勋
+	
+	
+	ARM_FULL=-102;				// 装备已满
+	CARD_FULL=-103;				// 卡牌已满
+	PLAYER_SILENCE=-104;				// 被禁言了
+	CARD_LOCK=-105;				// 卡牌锁定中
+	CARD_JJC=-106;				// 卡牌在竞技场
+	CARD_CURE=-107;				// 卡牌治疗中
+	CARD_TEAM =-108;			// 卡牌已上阵
+	REG_SHOP_MAX= -109;			// 超过此商品的最大购买次数
+	REG_SHOP_OVERTIME= -110;		// 此商品不在购买时间内
+	NEED_TILI = -111;			// 体力不够
+	BUILDING_SALARY_TIME = -112;			// 建筑-俸禄 已经领过了
+	TIME_SHOP_ITEM_OVER = -113;		// 限时商店-对应商品已下架
+	TIME_SHOP_ITEM_MAX = -114;		// 限时商店-对应商品已达最大购买次数
+
+	MAX_GOLD = -151;				// 金币上限
+	MAX_SHUIJING = -152;				// 银币上限
+	MAX_RMB = -153;				// 钻石上限
+	MAX_ZJQB = -154;			// 战姬情报
+	MAX_BQTZ = -155;			// 兵器图纸
+	MAX_QSEARCH = -156;			// 快速搜索
+	MAX_QCURE = -157;			// 快速治疗
+	MAX_GOUYU = -158;			// 勾玉
+	MAX_FREEAWARD = -159;			// 免费抽奖
+	MAX_GLORY = -160;			// 竞技场荣誉
+	
+	MAX_WOOD = -161;			// 木材
+	MAX_IRON = -162;			// 钢铁
+	MAX_CLOTH = -163;			// 布匹
+	MAX_ROCK = -164;			// 原石
+	MAX_XUANIRON = -165;			// 玄铁
+	MAX_SILK = -166;			// 丝绸
+	MAX_QIROCK = -167;			// 奇石
+	
+	MAX_XLREEL = -168;			// 训练卷轴
+	MAX_XLREEL_GAO = -169;		// 高级训练卷轴
+	MAX_QREEL = -170;			// 加速卷轴
+	MAX_TSVAL = -171;			// 探索值 探索文档上的体力
+	MAX_TS_EVENT_MAX = -172;		// 探索事件上限 
+	MAX_TSVAL_MAX = -173;		// 探索值上限
+	MAX_QUICK_FIGHT = -174;		// 快速战斗
+	MAX_CARD_SCORE = -175;		// 卡牌积分
+	
+	MAX_CARD_EVOLVE_A = -176;		// 卡牌蜕变道具A
+	MAX_CARD_EVOLVE_B = -177;		// 卡牌蜕变道具B
+	MAX_CARD_EVOLVE_C = -178;		// 卡牌蜕变道具C
+	MAX_CARD_EVOLVE_D = -179;		// 卡牌蜕变道具D
+	MAX_CARD_EVOLVE_E = -180;		// 卡牌蜕变道具E
+	MAX_EXPLOIT = -181;			// 缺少功勋
+
+}

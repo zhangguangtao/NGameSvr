@@ -1,0 +1,1 @@
+INDEX VERSION 1.126+E:\xiangtoneWork\NGameSvr\ngamewebjar\.metadata\.plugins\org.eclipse.jdt.core

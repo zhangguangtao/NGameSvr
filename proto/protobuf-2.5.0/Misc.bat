@@ -1,0 +1,1 @@
+protoc.exe ./Misc.proto --java_out=./

@@ -1,6 +1,8 @@
 package com.game.service.net.servlet;
 
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.http.HttpContent;
+import io.netty.handler.codec.http.HttpRequest;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +30,10 @@ public class Request {
 	
 	private ChannelHandlerContext ctx;
 	
+	private HttpRequest httpRequest;
+	
+	private HttpContent httpContent;
+	
 	public Request(){
 		
 	}
@@ -52,6 +58,22 @@ public class Request {
 	}
 
 
+
+	public HttpContent getHttpContent() {
+		return httpContent;
+	}
+
+	public void setHttpContent(HttpContent httpContent) {
+		this.httpContent = httpContent;
+	}
+
+	public HttpRequest getHttpRequest() {
+		return httpRequest;
+	}
+
+	public void setHttpRequest(HttpRequest httpRequest) {
+		this.httpRequest = httpRequest;
+	}
 
 	public String getProtocol() {
 		return protocol;

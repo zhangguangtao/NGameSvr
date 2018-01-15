@@ -1,9 +1,13 @@
 package com.game.bootstrap;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.game.logic.net.ZONESVRENV;
+import com.game.logic.net.ZoneMail;
 import com.game.service.net.LocalNetService;
 import com.game.service.net.http.AbstractNettyHttpServerService;
 import com.game.service.net.http.GameNetProtoMessageHttpServerChannelInitializer;
@@ -56,8 +60,23 @@ public class GameServer {
 	 }
 	 
 	 private void initServer()throws Exception {
+		 tick();
 		 start(); 
 	 }
+	 
+	 //启动计时器
+	 private void tick(){
+		 Timer timer = new Timer();
+		 TimerTask task = new TimerTask() {
+			@Override
+			public void run() {
+				ZoneMail.getInstance().mailDelByTime();
+			}
+		};
+		timer.schedule(task, 1000,1000);
+	 }
+	 
+	 
 	 
 	 
 	 /**
